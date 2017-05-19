@@ -21,6 +21,7 @@ Mod List:
 ----------------------------------------------------------------
 Full Setup Instructions:
 ----------------------------------------------------------------
+0.	Unpack .zip file. Drag mods folder to \<game folder\>\binaries. Merge and overwrite existing files or folders.
 
 1.	Open mods\Initialize.lua
 
