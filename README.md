@@ -32,7 +32,7 @@ Full Setup Instructions:
     
 	underneath "--Additional mods go here :" comment.
 
-    **OPTIONAL:**   Open patch\SkipCutscenes.lua and change "display_warning = true" to false not display a one-time warning upon skipping a mission cutscene.
+    **OPTIONAL:**   Open patch\SkipCutscenes.lua and change "display_warning = true" to false to not display a one-time warning upon skipping a mission cutscene.
 	
     **OPTIONAL:**   Open patch\SizeTweaks.lua to modify creature and player sizes. By default, Krench and rat ogres are scaled by 1.5x for demonstration purposes.
 	
@@ -48,7 +48,7 @@ Full Setup Instructions:
     
 	to bottom of commands.
 	
-    **OPTIONAL:**   Open commands\missionstats.lua and change "send_all = true" to false not print stats publicly.
+    **OPTIONAL:**   Open commands\missionstats.lua and change "send_all = true" to false to not print stats publicly.
 	
     **OPTIONAL:**   Open patch\SkipCutscenes.lua and change "display_warning = true" to false to not display a one-time warning upon skipping a mission cutscene.
 	
@@ -84,7 +84,7 @@ For **Mission Stats** command (print # completions per level):
     
 	to bottom of commands.
 
-    **OPTIONAL:**   Open commands\missionstats.lua and change "send_all = true" to false not print stats publicly.
+    **OPTIONAL:**   Open commands\missionstats.lua and change "send_all = true" to false to not print stats publicly.
 	
 3.	In-game command is "/missionstats" without quotes.
 
