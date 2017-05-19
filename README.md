@@ -1,5 +1,9 @@
 # Vermintide Just-Have-Fun Mod Collection
-A collection of interesting Vermintide mods I've created, with no particular theme.
+A collection of interesting Vermintide mods I've created, with no particular theme. 
+
+Requires Grimalackt's quality-of-life modpack installed to function:
+
+(https://www.reddit.com/r/Vermintide/search?sort=new&restrict_sr=on&q=flair%3ACustom%2BContent) 
 
 ----------------------------------------------------------------
 Mod List:
