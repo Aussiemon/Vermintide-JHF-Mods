@@ -49,6 +49,8 @@ Full Setup Instructions:
 	to bottom of commands.
 	
     **OPTIONAL:**   Open commands\missionstats.lua and change "send_all = true" to false to not print stats publicly.
+    
+    **KNOWN ISSUE:**  The chat window is small. Hold tab and use the Page Up / Page Down keys to navigate.
 	
     **OPTIONAL:**   Open patch\SkipCutscenes.lua and change "display_warning = true" to false to not display a one-time warning upon skipping a mission cutscene.
 	
@@ -85,6 +87,8 @@ For **Mission Stats** command (print # completions per level):
 	to bottom of commands.
 
     **OPTIONAL:**   Open commands\missionstats.lua and change "send_all = true" to false to not print stats publicly.
+    
+    **KNOWN ISSUE:**  The chat window is small. Hold tab and use the Page Up / Page Down keys to navigate.
 	
 3.	In-game command is "/missionstats" without quotes.
 
