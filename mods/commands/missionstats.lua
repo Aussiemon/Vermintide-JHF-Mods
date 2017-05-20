@@ -46,7 +46,7 @@ local total_completed = 0
 local translated_name = ""
 local user_name = ""
 
-local send_all = false -- Change to false to never publicly display level completion stats
+local send_all = true -- Change to false to never publicly display level completion stats
 if Managers.chat then
 	if local_player._cached_name ~= nil then
 		user_name = local_player._cached_name
