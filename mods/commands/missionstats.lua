@@ -46,23 +46,16 @@ local total_completed = 0
 local translated_name = ""
 local user_name = ""
 
-local send_all = true -- Change to false to never publicly display level completion stats
 if Managers.chat then
 	if local_player._cached_name ~= nil then
 		user_name = local_player._cached_name
 	end
-else
-	send_all = false
 end
 
-if send_all then
-	Managers.chat:send_system_chat_message(1, "------------------------------", 0, true)
-	if user_name ~= "" then
-		Managers.chat:send_system_chat_message(1, (user_name .. "'s Mission Completions"), 0, true)
-	else
-		Managers.chat:send_system_chat_message(1, ("Mission Completions"), 0, true)
-	end
-	Managers.chat:send_system_chat_message(1, "------------------------------", 0, true)
+if user_name then
+	EchoConsole("------------------------------")
+	EchoConsole(user_name .. "'s Mission Completions")
+	EchoConsole("------------------------------")
 else
 	EchoConsole("------------------------------")
 	EchoConsole("Mission Completions")
@@ -172,29 +165,15 @@ for _, level_name in ipairs(UnlockableLevels) do
 			stat_db.get_persistent_stat(stat_db, stats_id, ("survival_dlc_survival_" .. survival_level_name .. "_survival_hardest_waves"))
 	end
 	
-	if send_all then
-		if not survival_level_name then
-			Managers.chat:send_system_chat_message(1, (translated_name .. ": " .. this_completion), 0, true)
-		else
-			Managers.chat:send_system_chat_message(1, (translated_name .. ": " .. this_total_kills .. " kills, (" .. this_veteran_waves .. ", " .. this_champion_waves .. ", " .. this_heroic_waves .. ") best waves"), 0, true)
-		end
+	if not survival_level_name then
+		EchoConsole(translated_name .. ": " .. this_completion)
 	else
-		if not survival_level_name then
-			EchoConsole(translated_name .. ": " .. this_completion)
-		else
-			EchoConsole(translated_name .. ": " .. this_total_kills .. " kills, (" .. this_veteran_waves .. ", " .. this_champion_waves .. ", " .. this_heroic_waves .. ") best waves")
-		end
+		EchoConsole(translated_name .. ": " .. this_total_kills .. " kills, (" .. this_veteran_waves .. ", " .. this_champion_waves .. ", " .. this_heroic_waves .. ") best waves")
 	end
 end
 
 local total_badges = stat_db.get_persistent_stat(stat_db, stats_id, "endurance_badges")
 
-if send_all then
-	Managers.chat:send_system_chat_message(1, ("Total Completions: " .. total_completed), 0, true)
-	Managers.chat:send_system_chat_message(1, ("Total Endurance Badges: " .. total_badges), 0, true)
-	Managers.chat:send_system_chat_message(1, ("------------------------------"), 0, true)
-else
-	EchoConsole("Total Completions: " .. total_completed)
-	EchoConsole("Total Endurance Badges: " .. total_badges)
-	EchoConsole("------------------------------")
-end
+EchoConsole("Total Completions: " .. total_completed)
+EchoConsole("Total Endurance Badges: " .. total_badges)
+EchoConsole("------------------------------")
