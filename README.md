@@ -11,11 +11,16 @@ Mod List:
 
 **Krench Mutation** command (replace ogres with Krench) 
 
-**Mission Stats** command (print # completions per level) 
-
 **Skip Cutscenes** mod (skip all cutscenes with space or escape)  
 
 **Size Tweaks** mod (control sizes of creatures and players)  
+
+
+----------------------------------------------------------------
+Retired Mods:
+----------------------------------------------------------------
+
+**Mission Stats** command (print # completions per level) has been included in QoL pack. An alternate version is included with this pack that prints stats publicly for the entire lobby to see. 
 
 
 ----------------------------------------------------------------
