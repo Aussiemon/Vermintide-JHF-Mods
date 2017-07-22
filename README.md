@@ -17,6 +17,8 @@ Mod List:
 
 **Steam Warning** mod (displays warning on Steam routine maintenance days)  
 
+**Lorebook** command (reports unlock stats of lorebook pages)
+
 
 ----------------------------------------------------------------
 Retired Mods:
@@ -52,6 +54,7 @@ Full Setup Instructions:
 
 		{"/krenchtation",	 false, 	"commands", 	"krenchtation"},
 		{"/missionstats",	 false, 	"commands", 	"missionstats"},
+		{"/lorebook",	 false, 	"commands", 	"lorebook"},
 		{"/fixcursor",	 false, 	"commands", 	"fixcursor"},
     
 	to bottom of commands.
@@ -151,5 +154,19 @@ For **Steam Warning** mod (displays warning on Steam routine maintenance days):
 		Mods.exec("patch", "SteamWarning")
     
 	underneath "--Additional mods go here :" comment.
+
+----------------------------------------------------------------
+
+For **Lorebook** command (reports unlock stats of lorebook pages):
+
+1.	Open mods\CommandList.lua
+
+2.	Add line 
+
+		{"/lorebook",	 false, 	"commands", 	"lorebook"},
+    
+	to bottom of commands.
+	
+3.	In-game command is "/lorebook" without quotes.
 
 ----------------------------------------------------------------
