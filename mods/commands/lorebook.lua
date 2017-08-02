@@ -13,12 +13,11 @@
  
 	-----
  
-	Reports number of completed attempts for each level.
+	Reports lorebook unlock stats to the user.
 --]]
 
-local command_name = "missionstats"
+local command_name = "lorebook"
 
--- Level name lookup table
 if not mod.LevelKeyLookups then
 	mod.LevelKeyLookups = {
 		magnus = "Horn of Magnus",
@@ -48,7 +47,6 @@ if not mod.LevelKeyLookups then
 	}
 end
 
--- Print stats to console.
 safe_pcall(function()
 	if not Managers.player then
 		EchoConsole("Please wait: stats not yet loaded!")
@@ -73,54 +71,49 @@ safe_pcall(function()
 		return
 	end
 
-	local total_completed = 0
-
 	EchoConsole("------------------------------")
-	EchoConsole("Mission Completions")
+	EchoConsole("Lorebook Unlocks")
 	EchoConsole("------------------------------")
+	
+	local total_count = 0
+	local total_unlock_count = 0
 
-	for _, level_name in ipairs(UnlockableLevels) do
+	for level_key, _ in pairs(mod.LevelKeyLookups) do
+		local pages = table.clone(LorebookCollectablePages[level_key])
+		local num_pages = #pages
+		total_count = total_count + num_pages
+		local unlocked_count = 0
+		
+		for i = 1, num_pages, 1 do
+			local category_name = pages[i]
+			local page_id = LorebookCategoryLookup[category_name]
+			local persistent_unlocked = stat_db.get_persistent_array_stat(stat_db, stats_id, "lorebook_unlocks", page_id)
 
-		local translated_name = mod.LevelKeyLookups[level_name] or level_name
-		
-		local this_completion = stat_db.get_persistent_stat(stat_db, stats_id, "completed_levels", level_name) or 0
-		total_completed = total_completed + this_completion
-		
-		local survival_level_name = nil
-		local this_total_kills = nil
-		local this_veteran_waves = nil
-		local this_champion_waves = nil
-		local this_heroic_waves = nil
-		
-		if level_name == "dlc_survival_ruins" then
-			survival_level_name = "ruins"
-		elseif level_name == "dlc_survival_magnus" then
-			survival_level_name = "magnus"
+			if persistent_unlocked then
+				unlocked_count = unlocked_count + 1
+			end
 		end
 		
-		if survival_level_name then
-			this_total_kills = 
-				stat_db.get_persistent_stat(stat_db, stats_id, ("survival_dlc_survival_" .. survival_level_name .. "_survival_hard_kills")) 
-				+ stat_db.get_persistent_stat(stat_db, stats_id, ("survival_dlc_survival_" .. survival_level_name .. "_survival_harder_kills")) 
-				+ stat_db.get_persistent_stat(stat_db, stats_id, ("survival_dlc_survival_" .. survival_level_name .. "_survival_hardest_kills"))
-			this_veteran_waves = 
-				stat_db.get_persistent_stat(stat_db, stats_id, ("survival_dlc_survival_" .. survival_level_name .. "_survival_hard_waves")) 
-			this_champion_waves =
-				stat_db.get_persistent_stat(stat_db, stats_id, ("survival_dlc_survival_" .. survival_level_name .. "_survival_harder_waves")) 
-			this_heroic_waves =
-				stat_db.get_persistent_stat(stat_db, stats_id, ("survival_dlc_survival_" .. survival_level_name .. "_survival_hardest_waves"))
-		end
-		
-		if not survival_level_name then
-			EchoConsole(translated_name .. ": " .. this_completion)
-		else
-			EchoConsole(translated_name .. ": " .. this_total_kills .. " kills, (" .. this_veteran_waves .. ", " .. this_champion_waves .. ", " .. this_heroic_waves .. ") best waves")
+		total_unlock_count = total_unlock_count + unlocked_count
+		EchoConsole(mod.LevelKeyLookups[level_key]..": "..unlocked_count.."/"..num_pages)
+	end
+
+	local any_level_pages = table.clone(LorebookCollectablePages.any)
+	local num_any_pages = #any_level_pages
+	local unlocked_any_count = 0
+
+	for i = 1, num_any_pages, 1 do
+		local category_name = any_level_pages[i]
+		local page_id = LorebookCategoryLookup[category_name]
+		local persistent_unlocked = stat_db.get_persistent_array_stat(stat_db, stats_id, "lorebook_unlocks", page_id)
+
+		if persistent_unlocked then
+			unlocked_any_count = unlocked_any_count + 1
 		end
 	end
 
-	local total_badges = stat_db.get_persistent_stat(stat_db, stats_id, "endurance_badges")
-
-	EchoConsole("Total Completions: " .. total_completed)
-	EchoConsole("Total Endurance Badges: " .. total_badges)
+	total_unlock_count = total_unlock_count + unlocked_any_count
+	EchoConsole("Any Level: "..unlocked_any_count.."/"..num_any_pages)
+	EchoConsole("Total Unlocked: "..total_unlock_count.."/"..total_count)
 	EchoConsole("------------------------------")
 end)
