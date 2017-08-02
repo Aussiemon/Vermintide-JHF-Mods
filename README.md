@@ -21,6 +21,8 @@ Mod List:
 
 **Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walterr's BotImprovements mod)
 
+**Fashion Patrol** mod (Stormvermin patrols have white armor, client-side, host only)
+
 
 ----------------------------------------------------------------
 Retired Mods:
@@ -43,6 +45,7 @@ Full Setup Instructions:
 		Mods.exec("patch", "SizeTweaks")
 		Mods.exec("patch", "SteamWarning")
 		Mods.exec("patch", "BotImprovementsExtra")
+		Mods.exec("patch", "FashionPatrol")
     
 	underneath "--Additional mods go here :" comment.
 
@@ -182,6 +185,18 @@ For **Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walter
 2.	Add line 
 
 		Mods.exec("patch", "BotImprovementsExtra")
+    
+	underneath "--Additional mods go here :" comment.
+
+----------------------------------------------------------------
+
+For **Fashion Patrol** mod (Stormvermin patrols have white armor, client-side, host only)
+
+1.	Open mods\Initialize.lua
+
+2.	Add line 
+
+		Mods.exec("patch", "FashionPatrol")
     
 	underneath "--Additional mods go here :" comment.
 
