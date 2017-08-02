@@ -19,6 +19,8 @@ Mod List:
 
 **Lorebook** command (reports unlock stats of lorebook pages)
 
+**Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walterr's BotImprovements mod)
+
 
 ----------------------------------------------------------------
 Retired Mods:
@@ -30,6 +32,7 @@ Retired Mods:
 ----------------------------------------------------------------
 Full Setup Instructions:
 ----------------------------------------------------------------
+
 0.	Unpack .zip file. Drag mods folder to \<game folder\>\binaries. Merge and overwrite existing files or folders.
 
 1.	Open mods\Initialize.lua
@@ -39,6 +42,7 @@ Full Setup Instructions:
 		Mods.exec("patch", "SkipCutscenes")
 		Mods.exec("patch", "SizeTweaks")
 		Mods.exec("patch", "SteamWarning")
+		Mods.exec("patch", "BotImprovementsExtra")
     
 	underneath "--Additional mods go here :" comment.
 
@@ -168,5 +172,17 @@ For **Lorebook** command (reports unlock stats of lorebook pages):
 	to bottom of commands.
 	
 3.	In-game command is "/lorebook" without quotes.
+
+----------------------------------------------------------------
+
+For **Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walterr's BotImprovements mod)
+
+1.	Open mods\Initialize.lua
+
+2.	Add line 
+
+		Mods.exec("patch", "BotImprovementsExtra")
+    
+	underneath "--Additional mods go here :" comment.
 
 ----------------------------------------------------------------

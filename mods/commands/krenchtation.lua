@@ -13,7 +13,7 @@
  
 	-----
  
-	
+	Replaces ogres with Krench the Stormvermin Champion
 --]]
 
 local command_name = "krenchtation"
