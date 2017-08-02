@@ -111,6 +111,8 @@ safe_pcall(function()
 			unlocked_any_count = unlocked_any_count + 1
 		end
 	end
+	
+	total_count = total_count + num_any_pages
 
 	total_unlock_count = total_unlock_count + unlocked_any_count
 	EchoConsole("Any Level: "..unlocked_any_count.."/"..num_any_pages)
