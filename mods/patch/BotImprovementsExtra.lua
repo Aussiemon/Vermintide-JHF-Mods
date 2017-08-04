@@ -82,8 +82,8 @@ end
 -- ##########################################################
 -- #################### Hooks ###############################
 
--- ## Teleport to Ally Action ##
--- Start blocking as the teleport action runs.
+-- ## Bots Block on Path Search - Teleport to Ally Action ##
+-- Start blocking as the teleport action runs
 Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.run", function (func, self, unit, blackboard, t, dt)
 	
 	if get(me.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
@@ -96,11 +96,11 @@ Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.run", function (func, self, u
 	return result
 end)
 
--- Cancel blocking as the teleport action ends.
+-- Cancel blocking when the teleport action ends
 Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.leave", function (func, self, unit, blackboard, t)
 	
 	if get(me.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
-		--me.auto_block(unit, false)
+		--me.auto_block(unit, true)
 		me.manual_block(unit, blackboard.input_extension, false)
 	end
 	
@@ -108,6 +108,24 @@ Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.leave", function (func, self,
 	local result = func(self, unit, blackboard, t)
 	return result
 end)
+
+-- ## Bots Block on Path Search - Nil Action ##
+-- Start blocking when the nil action ends, and hold the block until the game decides to release it
+Mods.hook.set(mod_name, "BTNilAction.leave", function (func, self, unit, blackboard)
+	
+	if get(me.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
+		local Unit_alive = Unit.alive
+		if Unit_alive(unit) and blackboard then
+			--me.auto_block(unit, true)
+			me.manual_block(unit, blackboard.input_extension, true)
+		end
+	end
+	
+	-- Original Function
+	local result = func(self, unit, blackboard)
+	return result
+end)
+
 
 -- ##########################################################
 
