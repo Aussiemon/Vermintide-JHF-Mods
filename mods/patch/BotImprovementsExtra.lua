@@ -100,7 +100,7 @@ end)
 Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.leave", function (func, self, unit, blackboard, t)
 	
 	if get(me.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
-		--me.auto_block(unit, true)
+		--me.auto_block(unit, false)
 		me.manual_block(unit, blackboard.input_extension, false)
 	end
 	
