@@ -17,8 +17,6 @@ Mod List:
 
 **Steam Warning** mod (displays warning on Steam routine maintenance days)  
 
-**Lorebook** command (reports unlock stats of lorebook pages)
-
 **Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walterr's BotImprovements mod)
 
 **Fashion Patrol** mod (Stormvermin patrols have white armor, client-side, host only)
@@ -31,6 +29,8 @@ Retired Mods:
 **Mission Stats** command (print # completions per level) has been included in QoL pack. An alternate version is included with this pack that prints stats publicly for the entire lobby to see. 
 
 **Remind** command (save reminders to be repeated back to you at the scoreboard screen) has been included in QoL pack.
+
+**Lorebook** command (reports unlock stats of lorebook pages) has been included in QoL pack.
 
 
 ----------------------------------------------------------------
@@ -62,17 +62,11 @@ Full Setup Instructions:
 4.	Add lines
 
 		{"/krenchtation",	 false, 	"commands", 	"krenchtation"},
-		{"/missionstats",	 false, 	"commands", 	"missionstats"},
-		{"/lorebook",	 false, 	"commands", 	"lorebook"},
 		{"/fixcursor",	 false, 	"commands", 	"fixcursor"},
     
 	to bottom of commands.
 	
-    **OPTIONAL:**   Open commands\missionstats.lua and change "send_all = true" to false to not print stats publicly.
-    
-    **KNOWN ISSUE:**  The chat window is small. Hold tab and use the Page Up / Page Down keys to navigate.
-	
-    **OPTIONAL:**   Open patch\SkipCutscenes.lua and change "display_warning = true" to false to not display a one-time warning upon skipping a mission cutscene.
+   **OPTIONAL:**   Open patch\SkipCutscenes.lua and change "display_warning = true" to false to not display a one-time warning upon skipping a mission cutscene.
 	
 5.	Use spacebar or escape in-game to skip cutscenes.
 
@@ -93,24 +87,6 @@ For **Krench Mutation** command (replace ogres with Krench):
 	to bottom of commands.
 	
 3.	In-game command is "/krenchtation" without quotes.
-
-----------------------------------------------------------------
-
-For **Mission Stats** command (print # completions per level):
-
-1.	Open mods\CommandList.lua
-
-2.	Add line 
-
-		{"/missionstats",	 false, 	"commands", 	"missionstats"},
-    
-	to bottom of commands.
-
-    **OPTIONAL:**   Open commands\missionstats.lua and change "send_all = true" to false to not print stats publicly.
-    
-    **KNOWN ISSUE:**  The chat window is small. Hold tab and use the Page Up / Page Down keys to navigate.
-	
-3.	In-game command is "/missionstats" without quotes.
 
 ----------------------------------------------------------------
 
@@ -163,20 +139,6 @@ For **Steam Warning** mod (displays warning on Steam routine maintenance days):
 		Mods.exec("patch", "SteamWarning")
     
 	underneath "--Additional mods go here :" comment.
-
-----------------------------------------------------------------
-
-For **Lorebook** command (reports unlock stats of lorebook pages):
-
-1.	Open mods\CommandList.lua
-
-2.	Add line 
-
-		{"/lorebook",	 false, 	"commands", 	"lorebook"},
-    
-	to bottom of commands.
-	
-3.	In-game command is "/lorebook" without quotes.
 
 ----------------------------------------------------------------
 
