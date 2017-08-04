@@ -1,6 +1,6 @@
 =============================
 
-To use an alternate version of a command, remove ".alternate" from the file and replace the original.
+To use an alternate version of a command, replace the original file with the version in this folder.
 
 =============================
 
