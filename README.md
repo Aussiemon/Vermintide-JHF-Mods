@@ -30,6 +30,8 @@ Retired Mods:
 
 **Mission Stats** command (print # completions per level) has been included in QoL pack. An alternate version is included with this pack that prints stats publicly for the entire lobby to see. 
 
+**Remind** command (save reminders to be repeated back to you at the scoreboard screen) has been included in QoL pack.
+
 
 ----------------------------------------------------------------
 Full Setup Instructions:
