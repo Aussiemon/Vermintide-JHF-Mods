@@ -69,7 +69,7 @@ if not krenchMutationToken then
 					local result = func(self, unit, blackboard, t)
 					return result
 				else
-					EchoConsole("Problem finding spawn group to adopt.")
+					--EchoConsole("Problem finding spawn group to adopt.")
 					self._activate_ward(self, unit, blackboard)
 					return
 				
@@ -100,7 +100,7 @@ if not krenchMutationToken then
 				end
 			end
 			
-			EchoConsole("Nil champion husk unit or actor!")
+			--EchoConsole("Nil champion husk unit or actor!")
 			return
 	end)
 	
