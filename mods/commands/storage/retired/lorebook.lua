@@ -184,7 +184,7 @@ safe_pcall(function()
 	-- Start closing chat window and transfer input
 	local chat_manager = Managers.chat
 	local chat_gui = chat_manager.chat_gui
-    chat_gui:unblock_input(false)
+	chat_gui:unblock_input(false)
 	chat_gui.chat_closed = true
 	chat_gui.chat_focused = false
 	chat_gui.chat_close_time = 0
