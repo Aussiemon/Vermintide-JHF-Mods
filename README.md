@@ -53,8 +53,6 @@ Full Setup Instructions:
 
     **OPTIONAL:**   Open patch\SkipCutscenes.lua and change "display_warning = true" to false to not display a one-time warning upon skipping a mission cutscene.
 	
-	**KNOWN ISSUE:**   Cursor appears on screen until game is restarted if equipment chest is open when cutscene would've ended. Use /fixcursor command to hide.
-	
     **OPTIONAL:**   Open patch\SizeTweaks.lua to modify creature and player sizes. By default, Krench and rat ogres are scaled by 1.5x for demonstration purposes.
 	
 3.	Open mods\CommandList.lua
@@ -111,8 +109,6 @@ For **Skip Cutscenes** mod (skip all cutscenes with space or escape):
 	to bottom of commands.
 	
 5.	Use spacebar or escape in-game to skip cutscenes.
-
-    **KNOWN ISSUE:**   Cursor appears on screen until game is restarted if equipment chest is open when cutscene would've ended. Use /fixcursor command to hide.
 	
 ----------------------------------------------------------------
 
