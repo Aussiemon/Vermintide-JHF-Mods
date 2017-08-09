@@ -50,8 +50,6 @@ Full Setup Instructions:
 		Mods.exec("patch", "FashionPatrol")
     
 	underneath "--Additional mods go here :" comment.
-
-    **OPTIONAL:**   Open patch\SkipCutscenes.lua and change "display_warning = true" to false to not display a one-time warning upon skipping a mission cutscene.
 	
     **OPTIONAL:**   Open patch\SizeTweaks.lua to modify creature and player sizes. By default, Krench and rat ogres are scaled by 1.5x for demonstration purposes.
 	
@@ -63,8 +61,6 @@ Full Setup Instructions:
 		{"/fixcursor",	 false, 	"commands", 	"fixcursor"},
     
 	to bottom of commands.
-	
-   **OPTIONAL:**   Open patch\SkipCutscenes.lua and change "display_warning = true" to false to not display a one-time warning upon skipping a mission cutscene.
 	
 5.	Use spacebar or escape in-game to skip cutscenes.
 
@@ -97,8 +93,6 @@ For **Skip Cutscenes** mod (skip all cutscenes with space or escape):
 		Mods.exec("patch", "SkipCutscenes")
     
 	underneath "--Additional mods go here :" comment.
-
-    **OPTIONAL:**   Open patch\SkipCutscenes.lua and change "display_warning = true" to false to not display a one-time warning upon skipping a mission cutscene.
 	
 3.	Open mods\CommandList.lua
 
