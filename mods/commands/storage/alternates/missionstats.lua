@@ -21,8 +21,10 @@ local command_name = "missionstats"
 -- ##########################################################
 -- #################### Tables ##############################
 
+StatPopups = StatPopups or {}
+
 -- Level Key to Level Name Lookup Table
-mod.LevelKeyLookups = {
+StatPopups.LevelKeyLookups = {
 	magnus = "Horn of Magnus",
 	merchant = "Supply and Demand",
 	sewers_short = "Smuggler's Run",
@@ -50,7 +52,7 @@ mod.LevelKeyLookups = {
 }
 
 -- Array of ordered keys for proper printing order
-mod.LevelKeyArray = {
+StatPopups.LevelKeyArray = {
 	"magnus",
 	"merchant",
 	"sewers_short",
@@ -78,11 +80,707 @@ mod.LevelKeyArray = {
 }
 
 -- Lookup table for the prefixes under which Last Stand stats are stored
-mod.SurvivalLevelPrefixes = {
+StatPopups.SurvivalLevelPrefixes = {
 	dlc_survival_ruins = "ruins",
 	dlc_survival_magnus = "magnus",
 	length = 2
 }
+
+-- 1200p and lower sizing definitions
+StatPopups.scenegraph_definition = {
+	root = {
+		is_root = true,
+		position = {
+			0,
+			0,
+			UILayer.popup + 1
+		},
+		size = {
+			1920,
+			1080
+		}
+	},
+	screen = {
+		scale = "fit",
+		position = {
+			0,
+			0,
+			UILayer.popup
+		},
+		size = {
+			1920,
+			1080
+		}
+	},
+	popup_root = {
+		vertical_alignment = "center",
+		parent = "root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			100,
+			1
+		},
+		size = {
+			844,
+			740
+		}
+	},
+	title_text = {
+		vertical_alignment = "top",
+		parent = "popup_root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			-125,
+			1
+		},
+		size = {
+			700,
+			60
+		}
+	},
+	popup_text = {
+		vertical_alignment = "top",
+		parent = "popup_root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			-240,
+			1
+		},
+		size = {
+			1920,
+			260
+		}
+	},
+	buttons_root = {
+		vertical_alignment = "bottom",
+		parent = "popup_root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			83,
+			1
+		},
+		size = {
+			1,
+			1
+		}
+	},
+	button_1_1 = {
+		vertical_alignment = "center",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			0,
+			1
+		},
+		size = {
+			220,
+			62
+		}
+	},
+	button_2_1 = {
+		vertical_alignment = "center",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			-150,
+			0,
+			1
+		},
+		size = {
+			220,
+			62
+		}
+	},
+	button_2_2 = {
+		vertical_alignment = "center",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			150,
+			0,
+			1
+		},
+		size = {
+			220,
+			62
+		}
+	},
+	button_3_1 = {
+		vertical_alignment = "center",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			-200,
+			18,
+			1
+		},
+		size = {
+			220,
+			62
+		}
+	},
+	button_3_2 = {
+		vertical_alignment = "center",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			-15,
+			1
+		},
+		size = {
+			220,
+			62
+		}
+	},
+	button_3_3 = {
+		vertical_alignment = "center",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			200,
+			18,
+			1
+		},
+		size = {
+			220,
+			62
+		}
+	},
+	timer = {
+		vertical_alignment = "top",
+		parent = "popup_root",
+		horizontal_alignment = "right"
+	},
+	center_timer = {
+		vertical_alignment = "bottom",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			100,
+			1
+		}
+	}
+}
+
+-- 1200p and lower widget definitions
+StatPopups.frame_widget_definition = {
+	scenegraph_id = "popup_root",
+	element = {
+		passes = {
+			{
+				pass_type = "texture",
+				style_id = "background_tint",
+				texture_id = "background_tint"
+			},
+			{
+				pass_type = "texture",
+				texture_id = "background"
+			},
+			{
+				style_id = "text",
+				pass_type = "text",
+				text_id = "text_field"
+			},
+			{
+				style_id = "topic",
+				pass_type = "text",
+				text_id = "topic_field"
+			},
+			{
+				style_id = "timer",
+				pass_type = "text",
+				text_id = "timer_field"
+			},
+			{
+				style_id = "center_timer",
+				pass_type = "text",
+				text_id = "center_timer_field"
+			}
+		}
+	},
+	content = {
+		topic_field = "",
+		text_start_offset = 0,
+		background = "prestige_bg",
+		center_timer_field = "",
+		timer_field = "",
+		background_tint = "gradient_dice_game_reward",
+		text_field = ""
+	},
+	style = {
+		background_tint = {
+			scenegraph_id = "screen",
+			offset = {
+				0,
+				0,
+				0
+			},
+			color = {
+				255,
+				255,
+				255,
+				255
+			}
+		},
+		text = {
+			word_wrap = true,
+			scenegraph_id = "popup_text",
+			font_size = 28,
+			pixel_perfect = true,
+			horizontal_alignment = "center",
+			vertical_alignment = "center",
+			dynamic_font = true,
+			font_type = "hell_shark",
+			text_color = Colors.get_color_table_with_alpha("white", 255),
+			offset = {
+				0,
+				0,
+				2
+			}
+		},
+		topic = {
+			font_size = 54,
+			scenegraph_id = "title_text",
+			pixel_perfect = true,
+			horizontal_alignment = "center",
+			vertical_alignment = "center",
+			dynamic_font = true,
+			font_type = "hell_shark_header",
+			text_color = Colors.get_color_table_with_alpha("white", 255),
+			offset = {
+				0,
+				8,
+				2
+			}
+		},
+		timer = {
+			font_size = 36,
+			scenegraph_id = "timer",
+			pixel_perfect = true,
+			horizontal_alignment = "center",
+			vertical_alignment = "center",
+			dynamic_font = true,
+			font_type = "hell_shark",
+			text_color = Colors.get_color_table_with_alpha("white", 255),
+			offset = {
+				320,
+				203,
+				8
+			}
+		},
+		center_timer = {
+			vertical_alignment = "center",
+			dynamic_font = true,
+			font_size = 44,
+			horizontal_alignment = "center",
+			pixel_perfect = true,
+			font_type = "hell_shark",
+			scenegraph_id = "center_timer",
+			text_color = Colors.get_color_table_with_alpha("white", 255)
+		}
+	}
+}
+
+-- 1440p and higher sizing definitons
+StatPopups.scenegraph_definition_hd = {
+	root = {
+		is_root = true,
+		position = {
+			0,
+			0,
+			UILayer.popup + 1
+		},
+		size = {
+			1920,
+			1080
+		}
+	},
+	screen = {
+		scale = "fit",
+		position = {
+			0,
+			0,
+			UILayer.popup
+		},
+		size = {
+			1920,
+			1080
+		}
+	},
+	popup_root = {
+		vertical_alignment = "center",
+		parent = "root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			100,
+			1
+		},
+		size = {
+			1110,
+			1000
+		}
+	},
+	title_text = {
+		vertical_alignment = "top",
+		parent = "popup_root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			-170,
+			1
+		},
+		size = {
+			700,
+			60
+		}
+	},
+	popup_text = {
+		vertical_alignment = "top",
+		parent = "popup_root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			-368,
+			1
+		},
+		size = {
+			1920,
+			260
+		}
+	},
+	buttons_root = {
+		vertical_alignment = "bottom",
+		parent = "popup_root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			130,
+			1
+		},
+		size = {
+			1,
+			1
+		}
+	},
+	button_1_1 = {
+		vertical_alignment = "center",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			0,
+			1
+		},
+		size = {
+			220,
+			62
+		}
+	},
+	button_2_1 = {
+		vertical_alignment = "center",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			-150,
+			0,
+			1
+		},
+		size = {
+			220,
+			62
+		}
+	},
+	button_2_2 = {
+		vertical_alignment = "center",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			150,
+			0,
+			1
+		},
+		size = {
+			220,
+			62
+		}
+	},
+	button_3_1 = {
+		vertical_alignment = "center",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			-200,
+			18,
+			1
+		},
+		size = {
+			220,
+			62
+		}
+	},
+	button_3_2 = {
+		vertical_alignment = "center",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			-15,
+			1
+		},
+		size = {
+			220,
+			62
+		}
+	},
+	button_3_3 = {
+		vertical_alignment = "center",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			200,
+			18,
+			1
+		},
+		size = {
+			220,
+			62
+		}
+	},
+	timer = {
+		vertical_alignment = "top",
+		parent = "popup_root",
+		horizontal_alignment = "right"
+	},
+	center_timer = {
+		vertical_alignment = "bottom",
+		parent = "buttons_root",
+		horizontal_alignment = "center",
+		position = {
+			0,
+			100,
+			1
+		}
+	}
+}
+
+-- 1440p and higher widget definitons
+StatPopups.frame_widget_definition_hd = {
+	scenegraph_id = "popup_root",
+	element = {
+		passes = {
+			{
+				pass_type = "texture",
+				style_id = "background_tint",
+				texture_id = "background_tint"
+			},
+			{
+				pass_type = "texture",
+				texture_id = "background"
+			},
+			{
+				style_id = "text",
+				pass_type = "text",
+				text_id = "text_field"
+			},
+			{
+				style_id = "topic",
+				pass_type = "text",
+				text_id = "topic_field"
+			},
+			{
+				style_id = "timer",
+				pass_type = "text",
+				text_id = "timer_field"
+			},
+			{
+				style_id = "center_timer",
+				pass_type = "text",
+				text_id = "center_timer_field"
+			}
+		}
+	},
+	content = {
+		topic_field = "",
+		text_start_offset = 0,
+		background = "prestige_bg",
+		center_timer_field = "",
+		timer_field = "",
+		background_tint = "gradient_dice_game_reward",
+		text_field = ""
+	},
+	style = {
+		background_tint = {
+			scenegraph_id = "screen",
+			offset = {
+				0,
+				0,
+				0
+			},
+			color = {
+				255,
+				255,
+				255,
+				255
+			}
+		},
+		text = {
+			word_wrap = true,
+			scenegraph_id = "popup_text",
+			font_size = 28,
+			pixel_perfect = true,
+			horizontal_alignment = "center",
+			vertical_alignment = "center",
+			dynamic_font = true,
+			font_type = "hell_shark",
+			text_color = Colors.get_color_table_with_alpha("white", 255),
+			offset = {
+				0,
+				0,
+				2
+			}
+		},
+		topic = {
+			font_size = 72,
+			scenegraph_id = "title_text",
+			pixel_perfect = true,
+			horizontal_alignment = "center",
+			vertical_alignment = "center",
+			dynamic_font = true,
+			font_type = "hell_shark_header",
+			text_color = Colors.get_color_table_with_alpha("white", 255),
+			offset = {
+				0,
+				8,
+				2
+			}
+		},
+		timer = {
+			font_size = 36,
+			scenegraph_id = "timer",
+			pixel_perfect = true,
+			horizontal_alignment = "center",
+			vertical_alignment = "center",
+			dynamic_font = true,
+			font_type = "hell_shark",
+			text_color = Colors.get_color_table_with_alpha("white", 255),
+			offset = {
+				320,
+				203,
+				8
+			}
+		},
+		center_timer = {
+			vertical_alignment = "center",
+			dynamic_font = true,
+			font_size = 44,
+			horizontal_alignment = "center",
+			pixel_perfect = true,
+			font_type = "hell_shark",
+			scenegraph_id = "center_timer",
+			text_color = Colors.get_color_table_with_alpha("white", 255)
+		}
+	}
+}
+
+StatPopups._old_ui_scenegraph = StatPopups._old_ui_scenegraph or nil
+StatPopups._old_ui_frame_widget = StatPopups._old_ui_frame_widget or nil
+
+-- ##########################################################
+-- ################### Functions ############################
+
+-- Check for a resolution greater than 1200p
+StatPopups.must_resize = function()
+
+	local screen_w, screen_h = UIResolution()
+	
+	if screen_h > 1200 then
+		return true
+	else
+		return false
+	end
+end
+
+-- Display the statistic's popup
+StatPopups.create_popup = function(title, output_string)
+	
+	-- Start closing chat window and transfer input
+	local chat_manager = Managers.chat
+	local chat_gui = chat_manager.chat_gui
+	chat_gui:unblock_input(false)
+	chat_gui.chat_closed = true
+	chat_gui.chat_focused = false
+	chat_gui.chat_close_time = 0
+	chat_gui:clear_current_transition()
+	chat_gui:set_menu_transition_fraction(0)
+	chat_gui:_set_chat_window_alpha(1)
+	chat_gui.tab_widget.style.button_notification.color[1] = UISettings.chat.tab_notification_alpha_1
+	
+	-- Change scenegraph definition and frame widget in popup handler
+	local popup_manger = Managers.popup
+	local popup_handler = popup_manger._handler
+	StatPopups._old_ui_scenegraph = StatPopups._old_ui_scenegraph or popup_handler.ui_scenegraph
+	StatPopups._old_ui_frame_widget = StatPopups._old_ui_frame_widget or popup_handler.frame_widget
+	
+	-- Choose definition based upon current resolution
+	local must_resize = StatPopups.must_resize()
+	if not must_resize then
+		StatPopups._ui_scenegraph = UISceneGraph.init_scenegraph(StatPopups.scenegraph_definition)
+		StatPopups._ui_frame_widget = UIWidget.init(StatPopups.frame_widget_definition)
+	else
+		StatPopups._ui_scenegraph = UISceneGraph.init_scenegraph(StatPopups.scenegraph_definition_hd)
+		StatPopups._ui_frame_widget = UIWidget.init(StatPopups.frame_widget_definition_hd)
+	end
+	
+	popup_handler.ui_scenegraph = StatPopups._ui_scenegraph
+	popup_handler.frame_widget = StatPopups._ui_frame_widget
+	
+	-- Initialize simple popup manager if necessary
+	if not Managers.simple_popup then
+		Managers.simple_popup = SimplePopup:new()
+	end
+
+	-- Display popup
+	local simple_popup = Managers.simple_popup
+	simple_popup.queue_popup(simple_popup, output_string, title, "accept", "Close")
+	
+	-- Resize text
+	local n_popups = popup_handler.n_popups
+	local popup = popup_handler.popups[n_popups]
+	if not must_resize then
+		popup.text_font_size = 21
+	else
+		popup.text_font_size = 28
+	end
+end
+
+-- ##########################################################
+-- #################### Hooks ###############################
+
+Mods.hook.set("StatPopups", "SimplePopup.update", function(func, self, dt)
+
+	func(self, dt)
+
+	local popup_manger = Managers.popup
+	local popup_handler = popup_manger._handler
+	if #self._tracked_popups == 0 then
+		if StatPopups._old_ui_scenegraph then
+			popup_handler.ui_scenegraph = StatPopups._old_ui_scenegraph
+			StatPopups._old_ui_scenegraph = nil
+		end
+		if StatPopups._old_ui_frame_widget then
+			popup_handler.frame_widget = StatPopups._old_ui_frame_widget
+			StatPopups._old_ui_frame_widget = nil
+		end
+	end
+end)
 
 -- ##########################################################
 -- #################### Script ##############################
@@ -144,17 +842,17 @@ safe_pcall(function()
 	local stored_survival_lines = ""
 
 	-- Get listing for each level
-	for _, level_name in pairs(mod.LevelKeyArray) do
+	for _, level_name in pairs(StatPopups.LevelKeyArray) do
 	
 		line_count = line_count + 1
 		total_count = total_count + 1
 
-		local translated_name = mod.LevelKeyLookups[level_name] or level_name
+		local translated_name = StatPopups.LevelKeyLookups[level_name] or level_name
 		
 		-- If this is a Last Stand map, retrieve the prefix used in the stats database
 		local survival_level_name = nil
-		if mod.SurvivalLevelPrefixes[level_name] then
-			survival_level_name = mod.SurvivalLevelPrefixes[level_name]
+		if StatPopups.SurvivalLevelPrefixes[level_name] then
+			survival_level_name = StatPopups.SurvivalLevelPrefixes[level_name]
 		end
 		
 		-- Format statistics into a line to append to the total output
@@ -180,7 +878,7 @@ safe_pcall(function()
 			line_count = line_count - 1
 		
 			-- Line is stored for printing after regular mission stats
-			stored_survival_lines = stored_survival_lines .. "\n" .. translated_name .. ": " .. this_total_kills .. " kills, (" .. this_veteran_waves .. ", " .. this_champion_waves .. ", " .. this_heroic_waves .. ") best waves"
+			stored_survival_lines = stored_survival_lines .. "\n" .. translated_name .. ": " .. (this_total_kills) .. " kills, (" .. this_veteran_waves .. ", " .. this_champion_waves .. ", " .. this_heroic_waves .. ") best waves"
 			
 			if send_all then
 				Managers.chat:send_system_chat_message(1, (translated_name .. ": " .. this_total_kills .. " kills, (" .. this_veteran_waves .. ", " .. this_champion_waves .. ", " .. this_heroic_waves .. ") best waves"), 0, true)
@@ -197,9 +895,9 @@ safe_pcall(function()
 			end
 			
 			-- Line is appended immediately
-			output_string = output_string .. translated_name .. ": " .. this_completion
+			output_string = output_string .. translated_name .. ": " .. (this_completion)
 			
-			if line_count < 3 and total_count ~= (#mod.LevelKeyArray - mod.SurvivalLevelPrefixes.length) then
+			if line_count < 3 and total_count ~= (#StatPopups.LevelKeyArray - StatPopups.SurvivalLevelPrefixes.length) then
 				output_string = output_string .. ",  "
 			end
 			
@@ -226,33 +924,7 @@ safe_pcall(function()
 	
 	-- ############## End String Format ########################
 	
-	-- Initialize simple popup manager if necessary
-	if not Managers.simple_popup then
-		Managers.simple_popup = SimplePopup:new()
-	end
-	
-	-- Start closing chat window and transfer input
-	local chat_manager = Managers.chat
-	local chat_gui = chat_manager.chat_gui
-	chat_gui:unblock_input(false)
-	chat_gui.chat_closed = true
-	chat_gui.chat_focused = false
-	chat_gui.chat_close_time = 0
-	chat_gui:clear_current_transition()
-	chat_gui:set_menu_transition_fraction(0)
-	chat_gui:_set_chat_window_alpha(1)
-	chat_gui.tab_widget.style.button_notification.color[1] = UISettings.chat.tab_notification_alpha_1
-	
-	-- Display popup
-	local simple_popup = Managers.simple_popup
-	simple_popup.queue_popup(simple_popup, output_string, "Mission Stats", "accept", "Close")
-	
-	-- Resize popup font to fit small display window
-	local popup_manger = Managers.popup
-	local popup_handler = popup_manger._handler
-	local n_popups = popup_handler.n_popups
-	local popup = popup_handler.popups[n_popups]
-	popup.text_font_size = 17
+	StatPopups.create_popup("Mission Stats", output_string)
 	
 end)
 
