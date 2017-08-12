@@ -711,6 +711,12 @@ end
 -- Display the statistic's popup
 StatPopups.create_popup = function(title, output_string)
 	
+	-- Prevent popup from stacking on an existing popup
+	local popup_manager = Managers.popup
+	if popup_manager.has_popup(popup_manager) or ShowCursorStack.stack_depth > 0 then
+		return
+	end
+	
 	-- Start closing chat window and transfer input
 	local chat_manager = Managers.chat
 	local chat_gui = chat_manager.chat_gui
@@ -724,8 +730,7 @@ StatPopups.create_popup = function(title, output_string)
 	chat_gui.tab_widget.style.button_notification.color[1] = UISettings.chat.tab_notification_alpha_1
 	
 	-- Change scenegraph definition and frame widget in popup handler
-	local popup_manger = Managers.popup
-	local popup_handler = popup_manger._handler
+	local popup_handler = popup_manager._handler
 	StatPopups._old_ui_scenegraph = StatPopups._old_ui_scenegraph or popup_handler.ui_scenegraph
 	StatPopups._old_ui_frame_widget = StatPopups._old_ui_frame_widget or popup_handler.frame_widget
 	
@@ -768,8 +773,8 @@ Mods.hook.set("StatPopups", "SimplePopup.update", function(func, self, dt)
 
 	func(self, dt)
 
-	local popup_manger = Managers.popup
-	local popup_handler = popup_manger._handler
+	local popup_manager = Managers.popup
+	local popup_handler = popup_manager._handler
 	if #self._tracked_popups == 0 then
 		if StatPopups._old_ui_scenegraph then
 			popup_handler.ui_scenegraph = StatPopups._old_ui_scenegraph
@@ -815,7 +820,7 @@ safe_pcall(function()
 	local user_name = ""
 	
 	-- ############## Begin String Format ########################
-	
+
 	output_string = output_string .. "\n"
 	
 	local line_count = 0
