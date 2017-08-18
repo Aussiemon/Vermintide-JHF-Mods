@@ -21,6 +21,8 @@ Mod List:
 
 **Fashion Patrol** mod (Stormvermin patrols have white armor, client-side, host only)
 
+**HiDef UI Scaling** mod (resizes display to fit resolutions greater than 1080p)
+
 
 ----------------------------------------------------------------
 Retired Mods:
@@ -48,6 +50,7 @@ Full Setup Instructions:
 		Mods.exec("patch", "SteamWarning")
 		Mods.exec("patch", "BotImprovementsExtra")
 		Mods.exec("patch", "FashionPatrol")
+		Mods.exec("patch", "HiDefUIScaling")
     
 	underneath "--Additional mods go here :" comment.
 	
@@ -151,6 +154,18 @@ For **Fashion Patrol** mod (Stormvermin patrols have white armor, client-side, h
 2.	Add line 
 
 		Mods.exec("patch", "FashionPatrol")
+    
+	underneath "--Additional mods go here :" comment.
+
+----------------------------------------------------------------
+
+For **HiDef UI Scaling** mod (resizes display to fit resolutions greater than 1080p):
+
+1.	Open mods\Initialize.lua
+
+2.	Add line 
+
+		Mods.exec("patch", "HiDefUIScaling")
     
 	underneath "--Additional mods go here :" comment.
 
