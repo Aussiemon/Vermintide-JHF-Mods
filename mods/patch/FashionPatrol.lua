@@ -18,6 +18,27 @@
 
 local mod_name = "FashionPatrol"
 
+-- ##########################################################
+-- ################## Variables #############################
+	
+FashionPatrol = {
+	SETTINGS = {
+		ACTIVE = {
+			["save"] = "cb_fashion_patrol_enabled",
+			["widget_type"] = "stepper",
+			["text"] = "Fashion Patrol - Enabled",
+			["tooltip"] = "Fashion Patrol\n" ..
+				"Patrol stormvermin have white armor in hosted games (client-side).",
+			["value_type"] = "boolean",
+			["options"] = {
+				{text = "Off", value = false},
+				{text = "On", value = true}
+			},
+			["default"] = 1, -- Default second option is enabled. In this case Off
+		}
+	}
+}
+
 mod.original_storm_variation = {
 		max = UnitVariationSettings.skaven_storm_vermin.material_variations.cloth_tint.max,
 		min = UnitVariationSettings.skaven_storm_vermin.material_variations.cloth_tint.min
@@ -27,7 +48,26 @@ mod.new_storm_variation = { -- Variation gradient values above 30 are treated as
 		max = 31,
 		min = 31
 	}
-	
+
+-- ##########################################################
+-- ################## Functions #############################
+
+local me = BotImprovementsExtra
+
+local get = function(data)
+	return Application.user_setting(data.save)
+end
+local set = Application.set_user_setting
+local save = Application.save_user_settings
+
+FashionPatrol.create_options = function()
+	Mods.option_menu:add_group("fashion_patrol", "Fashion Patrol")
+	Mods.option_menu:add_item("fashion_patrol", FashionPatrol.SETTINGS.ACTIVE, true)
+end
+
+-- ##########################################################
+-- #################### Hooks ###############################
+
 Mods.hook.set(mod_name, "UnitSpawner.spawn_network_unit", function(func, self, unit_name, unit_template_name, extension_init_data, position, rotation, material)
 	
 	-- Identify Stormvermin patrol unit and change colors
@@ -50,3 +90,10 @@ Mods.hook.set(mod_name, "UnitSpawner.spawn_network_unit", function(func, self, u
 	-- Return result
 	return unit, go_id
 end)
+
+-- ##########################################################
+-- ################### Script ###############################
+
+FashionPatrol.create_options()
+
+-- ##########################################################

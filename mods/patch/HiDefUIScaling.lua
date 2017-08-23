@@ -23,10 +23,10 @@ local mod_name = "HiDefUIScaling"
 
 HiDefUIScaling = {
 	SETTINGS = {
-		HIDEFUISCALING = {
+		ACTIVE = {
 			["save"] = "cb_scale_high_definition_UI",
-			["widget_type"] = "checkbox",
-			["text"] = "Scale UI for HD Displays",
+			["widget_type"] = "stepper",
+			["text"] = "Scale UI for HD Displays - Enabled",
 			["tooltip"] = "Scale UI for HD Displays\n" ..
 				"Toggle UI-scaling for HD displays on / off.\n\n" ..
 				"Automatically resizes UI for resolutions greater than 1080p.\n\n" ..
@@ -36,7 +36,7 @@ HiDefUIScaling = {
 				{text = "Off", value = false},
 				{text = "On", value = true}
 			},
-			["default"] = 1, -- Default second option is enabled. In this case On
+			["default"] = 1, -- Default first option is enabled. In this case Off
 		},
 		SCALE = {
 			["save"] = "cb_scale_high_definition_UI_scale_factor",
@@ -69,7 +69,7 @@ mod.hd_ui_scaling_enabled = false
 
 HiDefUIScaling.create_options = function()
 	Mods.option_menu:add_group("HDUserInterface", "HD User Interface")
-	Mods.option_menu:add_item("HDUserInterface", HiDefUIScaling.SETTINGS.HIDEFUISCALING, true)
+	Mods.option_menu:add_item("HDUserInterface", HiDefUIScaling.SETTINGS.ACTIVE, true)
 	Mods.option_menu:add_item("HDUserInterface", HiDefUIScaling.SETTINGS.SCALE, true)
 end
 
@@ -86,7 +86,7 @@ local save = Application.save_user_settings
 
 Mods.hook.set(mod_name, "UIResolutionScale", function (func, ...)
 	local w, h = UIResolution()
-	if get(HiDefUIScaling.SETTINGS.HIDEFUISCALING) and (w > UIResolutionWidthFragments() and h > UIResolutionHeightFragments()) then
+	if get(HiDefUIScaling.SETTINGS.ACTIVE) and (w > UIResolutionWidthFragments() and h > UIResolutionHeightFragments()) then
 		local max_scaling_factor = math.max((((get(HiDefUIScaling.SETTINGS.SCALE) or 4) + 1) / 100), 1)
 		
 		local width_scale = math.min(w/UIResolutionWidthFragments(), max_scaling_factor) -- Changed to allow scaling up to quadruple the original max scale (1 -> 4)
@@ -101,6 +101,9 @@ Mods.hook.set(mod_name, "UIResolutionScale", function (func, ...)
 end)
 
 -- ##########################################################
+-- ################### Script ###############################
 
 HiDefUIScaling.create_options()
 UPDATE_RESOLUTION_LOOKUP(true)
+
+-- ##########################################################

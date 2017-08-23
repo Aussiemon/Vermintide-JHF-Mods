@@ -15,10 +15,11 @@
  
 	Supplementary additions to grimalackt, iamlupo, and walterr's BotImprovements mod.
 --]]
+
 local mod_name = "BotImprovementsExtra"
 
 -- ##########################################################
--- #################### Options #############################
+-- ################### Variables ############################
 
 BotImprovementsExtra = {
 	SETTINGS = {
@@ -41,8 +42,6 @@ BotImprovementsExtra = {
 -- ##########################################################
 -- ################## Functions #############################
 
-local me = BotImprovementsExtra
-
 local get = function(data)
 	return Application.user_setting(data.save)
 end
@@ -52,10 +51,10 @@ local save = Application.save_user_settings
 BotImprovementsExtra.create_options = function()
 	if not BotImprovements then
 		Mods.option_menu:add_group("bot_improvements_extra", "Bot Improvements Extra")
-		Mods.option_menu:add_item("bot_improvements_extra", me.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH, true)
+		Mods.option_menu:add_item("bot_improvements_extra", BotImprovementsExtra.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH, true)
 	else
 		Mods.option_menu:add_group("bot_improvements", "Bot Improvements")
-		Mods.option_menu:add_item("bot_improvements", me.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH, true)
+		Mods.option_menu:add_item("bot_improvements", BotImprovementsExtra.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH, true)
 	end
 end
 
@@ -83,12 +82,25 @@ end
 -- #################### Hooks ###############################
 
 -- ## Bots Block on Path Search - Teleport to Ally Action ##
--- Start blocking as the teleport action runs
+-- Start blocking as the teleport action begins
+Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.enter", function (func, self, unit, blackboard, t)
+	
+	if get(BotImprovementsExtra.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
+		--BotImprovementsExtra.auto_block(unit, true)
+		BotImprovementsExtra.manual_block(unit, blackboard.input_extension, true)
+	end
+	
+	-- Original Function
+	local result = func(self, unit, blackboard, t)
+	return result
+end)
+
+-- Continue blocking as the teleport action runs
 Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.run", function (func, self, unit, blackboard, t, dt)
 	
-	if get(me.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
-		--me.auto_block(unit, true)
-		me.manual_block(unit, blackboard.input_extension, true)
+	if get(BotImprovementsExtra.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
+		--BotImprovementsExtra.auto_block(unit, true)
+		BotImprovementsExtra.manual_block(unit, blackboard.input_extension, true)
 	end
 	
 	-- Original Function
@@ -99,9 +111,9 @@ end)
 -- Cancel blocking when the teleport action ends
 Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.leave", function (func, self, unit, blackboard, t)
 	
-	if get(me.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
-		--me.auto_block(unit, false)
-		me.manual_block(unit, blackboard.input_extension, false)
+	if get(BotImprovementsExtra.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
+		--BotImprovementsExtra.auto_block(unit, false)
+		BotImprovementsExtra.manual_block(unit, blackboard.input_extension, false)
 	end
 	
 	-- Original Function
@@ -109,15 +121,16 @@ Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.leave", function (func, self,
 	return result
 end)
 
+
 -- ## Bots Block on Path Search - Nil Action ##
 -- Start blocking when the nil action ends, and hold the block until the game decides to release it
 Mods.hook.set(mod_name, "BTNilAction.leave", function (func, self, unit, blackboard)
 	
-	if get(me.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
+	if get(BotImprovementsExtra.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
 		local Unit_alive = Unit.alive
 		if Unit_alive(unit) and blackboard then
-			--me.auto_block(unit, true)
-			me.manual_block(unit, blackboard.input_extension, true)
+			--BotImprovementsExtra.auto_block(unit, true)
+			BotImprovementsExtra.manual_block(unit, blackboard.input_extension, true)
 		end
 	end
 	
@@ -126,8 +139,9 @@ Mods.hook.set(mod_name, "BTNilAction.leave", function (func, self, unit, blackbo
 	return result
 end)
 
+-- ##########################################################
+-- ################### Script ###############################
+
+BotImprovementsExtra.create_options()
 
 -- ##########################################################
-
-
-me.create_options()

@@ -18,6 +18,9 @@
 
 local mod_name = "SkipCutscenes"
 
+-- ##########################################################
+-- ################## Variables #############################
+
 -- Variable to track the need to skip the fade effect
 mod.skip_next_fade = false
 
@@ -25,6 +28,9 @@ mod.skip_next_fade = false
 if script_data then
 	script_data.skippable_cutscenes = true
 end
+
+-- ##########################################################
+-- #################### Hooks ###############################
 
 -- Set up skip for fade effect
 Mods.hook.set(mod_name, "CutsceneSystem.skip_pressed", function (func, self)
@@ -81,3 +87,5 @@ Mods.hook.set(mod_name, "ShowCursorStack.pop", function (func)
 	local result = func()
 	return result
 end)
+
+-- ##########################################################
