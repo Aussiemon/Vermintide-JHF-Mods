@@ -52,18 +52,16 @@ mod.new_storm_variation = { -- Variation gradient values above 30 are treated as
 -- ##########################################################
 -- ################## Functions #############################
 
-local me = BotImprovementsExtra
+FashionPatrol.create_options = function()
+	Mods.option_menu:add_group("fashion_patrol", "Fashion Patrol")
+	Mods.option_menu:add_item("fashion_patrol", FashionPatrol.SETTINGS.ACTIVE, true)
+end
 
 local get = function(data)
 	return Application.user_setting(data.save)
 end
 local set = Application.set_user_setting
 local save = Application.save_user_settings
-
-FashionPatrol.create_options = function()
-	Mods.option_menu:add_group("fashion_patrol", "Fashion Patrol")
-	Mods.option_menu:add_item("fashion_patrol", FashionPatrol.SETTINGS.ACTIVE, true)
-end
 
 -- ##########################################################
 -- #################### Hooks ###############################

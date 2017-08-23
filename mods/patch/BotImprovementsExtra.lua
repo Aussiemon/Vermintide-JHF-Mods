@@ -42,12 +42,6 @@ BotImprovementsExtra = {
 -- ##########################################################
 -- ################## Functions #############################
 
-local get = function(data)
-	return Application.user_setting(data.save)
-end
-local set = Application.set_user_setting
-local save = Application.save_user_settings
-
 BotImprovementsExtra.create_options = function()
 	if not BotImprovements then
 		Mods.option_menu:add_group("bot_improvements_extra", "Bot Improvements Extra")
@@ -77,6 +71,12 @@ BotImprovementsExtra.auto_block = function(unit, status)
 		status_extension.set_blocking(status_extension, status)
 	end
 end
+
+local get = function(data)
+	return Application.user_setting(data.save)
+end
+local set = Application.set_user_setting
+local save = Application.save_user_settings
 
 -- ##########################################################
 -- #################### Hooks ###############################
