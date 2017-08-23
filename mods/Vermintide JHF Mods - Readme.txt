@@ -18,8 +18,6 @@ Mod List:
 
 **Skip Cutscenes** mod (skip all cutscenes with space or escape)  
 
-**Size Tweaks** mod (control sizes of creatures and players)  
-
 **Steam Warning** mod (displays warning on Steam routine maintenance days)  
 
 **Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walterr's BotImprovements mod)
@@ -27,6 +25,12 @@ Mod List:
 **Fashion Patrol** mod (Stormvermin patrols have white armor, client-side, host only)
 
 **HiDef UI Scaling** mod (resizes display to fit resolutions greater than 1080p)
+
+**Fair Loot Dice** mod (adjusts loot die chance to reflect number of chests in a map)
+
+**Pub Brawl** mod (restores pub brawl to the inn with the option of several other minor inclusions)
+
+**Smaller Bright Wizard Staffs** mod (allows scaling of all first-person bright wizard staff models)
 
 
 ----------------------------------------------------------------
@@ -38,6 +42,8 @@ Retired Mods:
 **Remind** command (save reminders to be repeated back to you at the scoreboard screen) has been included in QoL pack.
 
 **Lorebook** command (reports unlock stats of lorebook pages) has been included in QoL pack.
+
+**Size Tweaks** mod (control sizes of creatures and players)  is at least temporarily retired for lack of immediate interest
 
 
 ----------------------------------------------------------------
@@ -56,10 +62,11 @@ Full Setup Instructions:
 		Mods.exec("patch", "BotImprovementsExtra")
 		Mods.exec("patch", "FashionPatrol")
 		Mods.exec("patch", "HiDefUIScaling")
+		Mods.exec("patch", "FairLootDice")
+		Mods.exec("patch", "PubBrawl")
+		Mods.exec("patch", "SmallerBWStaffs")
     
 	underneath "--Additional mods go here :" comment.
-	
-    **OPTIONAL:**   Open patch\SizeTweaks.lua to modify creature and player sizes. By default, Krench and rat ogres are scaled by 1.5x for demonstration purposes.
 	
 3.	Open mods\CommandList.lua
 
@@ -114,20 +121,6 @@ For **Skip Cutscenes** mod (skip all cutscenes with space or escape):
 	
 ----------------------------------------------------------------
 
-For **Size Tweaks** mod (control sizes of creatures and players):
-
-1.	Open mods\Initialize.lua
-
-2.	Add line 
-
-		Mods.exec("patch", "SizeTweaks")
-    
-	underneath "--Additional mods go here :" comment.
-
-    **OPTIONAL:**   Open patch\SizeTweaks.lua to modify creature and player sizes. By default, Krench and rat ogres are scaled by 1.5x for demonstration purposes.
-
-----------------------------------------------------------------
-
 For **Steam Warning** mod (displays warning on Steam routine maintenance days):
 
 1.	Open mods\Initialize.lua
@@ -171,6 +164,42 @@ For **HiDef UI Scaling** mod (resizes display to fit resolutions greater than 10
 2.	Add line 
 
 		Mods.exec("patch", "HiDefUIScaling")
+    
+	underneath "--Additional mods go here :" comment.
+
+----------------------------------------------------------------
+
+For **Fair Loot Dice** mod (adjusts loot die chance to reflect number of chests in a map):
+
+1.	Open mods\Initialize.lua
+
+2.	Add line 
+
+		Mods.exec("patch", "FairLootDice")
+    
+	underneath "--Additional mods go here :" comment.
+
+----------------------------------------------------------------
+
+For **Pub Brawl** mod (restores pub brawl to the inn with the option of several other minor inclusions):
+
+1.	Open mods\Initialize.lua
+
+2.	Add line 
+
+		Mods.exec("patch", "PubBrawl")
+    
+	underneath "--Additional mods go here :" comment.
+
+----------------------------------------------------------------
+
+For **Smaller Bright Wizard Staffs** mod (allows scaling of all first-person bright wizard staff models):
+
+1.	Open mods\Initialize.lua
+
+2.	Add line 
+
+		Mods.exec("patch", "SmallerBWStaffs")
     
 	underneath "--Additional mods go here :" comment.
 
