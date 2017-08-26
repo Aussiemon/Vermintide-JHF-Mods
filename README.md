@@ -27,6 +27,10 @@ Mod List:
 
 **Smaller Bright Wizard Staffs** mod (allows scaling of all first-person bright wizard staff models)
 
+**Pages Forever** mod (lorebook pages visible after full unlock, option to prevent sackrat pages)
+
+**Unequip Hats** mod (allows unequipping headgear for non-elf characters)
+
 
 ----------------------------------------------------------------
 Retired Mods:
@@ -38,7 +42,7 @@ Retired Mods:
 
 **Lorebook** command (reports unlock stats of lorebook pages) has been included in QoL pack.
 
-**Size Tweaks** mod (control sizes of creatures and players)  is at least temporarily retired for lack of immediate interest
+**Size Tweaks** mod (control sizes of creatures and players)  is at least temporarily retired for lack of immediate interest.
 
 
 ----------------------------------------------------------------
@@ -52,7 +56,6 @@ Full Setup Instructions:
 2.	Add lines 
 
 		Mods.exec("patch", "SkipCutscenes")
-		Mods.exec("patch", "SizeTweaks")
 		Mods.exec("patch", "SteamWarning")
 		Mods.exec("patch", "BotImprovementsExtra")
 		Mods.exec("patch", "FashionPatrol")
@@ -60,6 +63,8 @@ Full Setup Instructions:
 		Mods.exec("patch", "FairLootDice")
 		Mods.exec("patch", "PubBrawl")
 		Mods.exec("patch", "SmallerBWStaffs")
+		Mods.exec("patch", "PagesForever")
+		Mods.exec("patch", "UnequipHats")
     
 	underneath "--Additional mods go here :" comment.
 	
@@ -195,6 +200,30 @@ For **Smaller Bright Wizard Staffs** mod (allows scaling of all first-person bri
 2.	Add line 
 
 		Mods.exec("patch", "SmallerBWStaffs")
+    
+	underneath "--Additional mods go here :" comment.
+
+----------------------------------------------------------------
+
+For **Pages Forever** mod (lorebook pages visible after full unlock, option to prevent sackrat pages):
+
+1.	Open mods\Initialize.lua
+
+2.	Add line 
+
+		Mods.exec("patch", "PagesForever")
+    
+	underneath "--Additional mods go here :" comment.
+
+----------------------------------------------------------------
+
+For **Unequip Hats** mod (allows unequipping headgear for non-elf characters):
+
+1.	Open mods\Initialize.lua
+
+2.	Add line 
+
+		Mods.exec("patch", "UnequipHats")
     
 	underneath "--Additional mods go here :" comment.
 

@@ -18,7 +18,7 @@
 
 local command_name = "krenchtation"
 local display_name = "Krench"
-local announce_in_chat = false
+local announce_in_chat = true
 
 local local_player = Managers.player
 if not local_player.is_server and not krenchMutationToken then
