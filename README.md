@@ -65,7 +65,7 @@ Full Setup Instructions:
 		Mods.exec("patch", "SmallerBWStaffs")
 		Mods.exec("patch", "PagesForever")
 		Mods.exec("patch", "UnequipHats")
-    
+	
 	underneath "--Additional mods go here :" comment.
 	
 3.	Open mods\CommandList.lua
@@ -74,7 +74,7 @@ Full Setup Instructions:
 
 		{"/krenchtation",	 false, 	"commands", 	"krenchtation"},
 		{"/fixcursor",	 false, 	"commands", 	"fixcursor"},
-    
+	
 	to bottom of commands.
 	
 5.	Use spacebar or escape in-game to skip cutscenes.
@@ -92,7 +92,7 @@ For **Krench Mutation** command (replace ogres with Krench):
 2.	Add line 
 
 		{"/krenchtation",	 false, 	"commands", 	"krenchtation"},
-    
+	
 	to bottom of commands.
 	
 3.	In-game command is "/krenchtation" without quotes.
@@ -106,7 +106,7 @@ For **Skip Cutscenes** mod (skip all cutscenes with space or escape):
 2.	Add line 
 
 		Mods.exec("patch", "SkipCutscenes")
-    
+	
 	underneath "--Additional mods go here :" comment.
 	
 3.	Open mods\CommandList.lua
@@ -114,7 +114,7 @@ For **Skip Cutscenes** mod (skip all cutscenes with space or escape):
 4.	Add line 
 
 		{"/fixcursor",	 false, 	"commands", 	"fixcursor"},
-    
+	
 	to bottom of commands.
 	
 5.	Use spacebar or escape in-game to skip cutscenes.
@@ -128,7 +128,7 @@ For **Steam Warning** mod (displays warning on Steam routine maintenance days):
 2.	Add line 
 
 		Mods.exec("patch", "SteamWarning")
-    
+	
 	underneath "--Additional mods go here :" comment.
 
 ----------------------------------------------------------------
@@ -140,7 +140,7 @@ For **Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walter
 2.	Add line 
 
 		Mods.exec("patch", "BotImprovementsExtra")
-    
+	
 	underneath "--Additional mods go here :" comment.
 
 ----------------------------------------------------------------
@@ -152,7 +152,7 @@ For **Fashion Patrol** mod (Stormvermin patrols have white armor, client-side, h
 2.	Add line 
 
 		Mods.exec("patch", "FashionPatrol")
-    
+	
 	underneath "--Additional mods go here :" comment.
 
 ----------------------------------------------------------------
@@ -164,7 +164,7 @@ For **HiDef UI Scaling** mod (resizes display to fit resolutions greater than 10
 2.	Add line 
 
 		Mods.exec("patch", "HiDefUIScaling")
-    
+	
 	underneath "--Additional mods go here :" comment.
 
 ----------------------------------------------------------------
@@ -176,7 +176,7 @@ For **Fair Loot Dice** mod (adjusts loot die chance to reflect number of chests 
 2.	Add line 
 
 		Mods.exec("patch", "FairLootDice")
-    
+	
 	underneath "--Additional mods go here :" comment.
 
 ----------------------------------------------------------------
@@ -188,7 +188,7 @@ For **Pub Brawl** mod (restores pub brawl to the inn with the option of several 
 2.	Add line 
 
 		Mods.exec("patch", "PubBrawl")
-    
+	
 	underneath "--Additional mods go here :" comment.
 
 ----------------------------------------------------------------
@@ -200,7 +200,7 @@ For **Smaller Bright Wizard Staffs** mod (allows scaling of all first-person bri
 2.	Add line 
 
 		Mods.exec("patch", "SmallerBWStaffs")
-    
+	
 	underneath "--Additional mods go here :" comment.
 
 ----------------------------------------------------------------
@@ -212,7 +212,7 @@ For **Pages Forever** mod (lorebook pages visible after full unlock, option to p
 2.	Add line 
 
 		Mods.exec("patch", "PagesForever")
-    
+	
 	underneath "--Additional mods go here :" comment.
 
 ----------------------------------------------------------------
@@ -224,7 +224,7 @@ For **Unequip Hats** mod (allows unequipping headgear for non-elf characters):
 2.	Add line 
 
 		Mods.exec("patch", "UnequipHats")
-    
+	
 	underneath "--Additional mods go here :" comment.
 
 ----------------------------------------------------------------

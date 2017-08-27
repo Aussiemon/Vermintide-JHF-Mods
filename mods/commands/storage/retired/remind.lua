@@ -1,19 +1,19 @@
 --[[
-    author: Aussiemon
+	author: Aussiemon
  
-    -----
+	-----
  
-    Copyright 2017 Aussiemon
+	Copyright 2017 Aussiemon
  
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+	The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  
-    -----
+	-----
    
-    Allows the player to input a string that will reappear at the end of a mission.
+	Allows the player to input a string that will reappear at the end of a mission.
 --]]
  
 local command_name = "remind"
@@ -56,50 +56,50 @@ end)
 local args = {...}
 if #args > 0 then
 
-    local this_reminder = ""
+	local this_reminder = ""
    
-    -- Start new line if existing reminders
-    if mod.reminder_string ~= "" then
-        mod.reminder_string = mod.reminder_string .. "\n"
-    end
+	-- Start new line if existing reminders
+	if mod.reminder_string ~= "" then
+		mod.reminder_string = mod.reminder_string .. "\n"
+	end
    
-    -- Process/format arguments into a new reminder
-    for key, value in pairs(args) do
+	-- Process/format arguments into a new reminder
+	for key, value in pairs(args) do
 	
-        if type(value) == "string" then
-            if mod.reminder_string ~= "" then
-                mod.reminder_string = mod.reminder_string .. " " .. value
-            else
-                mod.reminder_string = value
-            end
-            this_reminder = this_reminder .. value
+		if type(value) == "string" then
+			if mod.reminder_string ~= "" then
+				mod.reminder_string = mod.reminder_string .. " " .. value
+			else
+				mod.reminder_string = value
+			end
+			this_reminder = this_reminder .. value
 			
-        elseif type(value) == "table" then
-            for value_key, value_value in pairs(value) do
-                if type(value_value) == "string" then
-                    if mod.reminder_string ~= "" then
-                        mod.reminder_string = mod.reminder_string .. " " .. value_value
-                    else
-                        mod.reminder_string = value_value
-                    end
-                    this_reminder = this_reminder .. value_value
-                end
-            end
-        end
-    end
+		elseif type(value) == "table" then
+			for value_key, value_value in pairs(value) do
+				if type(value_value) == "string" then
+					if mod.reminder_string ~= "" then
+						mod.reminder_string = mod.reminder_string .. " " .. value_value
+					else
+						mod.reminder_string = value_value
+					end
+					this_reminder = this_reminder .. value_value
+				end
+			end
+		end
+	end
    
-    -- Make sure this isn't a clearing command before confirming saved reminder
-    if this_reminder ~= " clear" and this_reminder ~= "clear" then
-        EchoConsole("Reminder saved: " .. this_reminder)
-    else
-        mod.reminder_string = ""
-        EchoConsole("Reminders cleared!")
-    end
+	-- Make sure this isn't a clearing command before confirming saved reminder
+	if this_reminder ~= " clear" and this_reminder ~= "clear" then
+		EchoConsole("Reminder saved: " .. this_reminder)
+	else
+		mod.reminder_string = ""
+		EchoConsole("Reminders cleared!")
+	end
 	
 else
-    if mod.reminder_string == "" then
-        EchoConsole("No reminder given!")
-    end
+	if mod.reminder_string == "" then
+		EchoConsole("No reminder given!")
+	end
 end
 
 -- ##########################################################
