@@ -15,32 +15,34 @@
  
 	Displays a warning on the day that Steam usually schedules routine maintenance.
 --]]
+
 local mod_name = "SteamWarning"
 
-local day_of_usual_steam_maintenance = nil -- Change this to manually set scheduled maintenance day
+-- ##########################################################
+-- ################## Variables #############################
 
--- With help from user gwell at https://stackoverflow.com/questions/22518443/lua-get-current-day
-local days = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday"}
-local day = days[os.date("*t").wday]
+local day_of_usual_steam_maintenance = "Tuesday" -- Change this to set the day upon which the warning will be displayed.
 
--- With help from http://lua-users.org/wiki/TimeZone
-local currentTime = os.time()
-local diffTime = os.difftime(currentTime, os.time(os.date("!*t", currentTime)))
-local h, m = math.modf(diffTime / 3600)
+local steam_time_zone = -8 -- Change this to set the timezone relative to the chosen day
 
--- I think it's pretty assured that Steam's scheduled maintenance would be Wednesday in timezones past UTC+4.00
-if (h > 4) and not day_of_usual_steam_maintenance then
-	day_of_usual_steam_maintenance = "Wednesday"
+-- ##########################################################
+-- ################### Script ###############################
 
--- Otherwise maintenance day is on Tuesday as usual
-elseif not day_of_usual_steam_maintenance then
-	day_of_usual_steam_maintenance = "Tuesday"
-	
+if GameSettingsDevelopment.network_mode == "steam" then
+
+	-- Calculate the day of the week at the PDT timezone
+	local days = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}
+	local current_steam_date = os.date("!*t", (os.time() + (steam_time_zone * 60 * 60)))
+	local current_steam_day = days[current_steam_date.wday]
+
+	-- EchoConsole("Time at Steam: "..current_steam_day..", "..tostring(current_steam_date.hour)..":"..tostring(current_steam_date.min))
+
+	-- Display warning once per startup on maintenance day
+	if current_steam_day == day_of_usual_steam_maintenance then
+		EchoConsole("------------------------------------------------------------------------------")
+		EchoConsole("WARNING: Steam may go down for maintenance today.")
+		EchoConsole("------------------------------------------------------------------------------")
+	end
 end
 
--- Display warning once per startup on maintenance day
-if GameSettingsDevelopment.network_mode == "steam" and day == day_of_usual_steam_maintenance then
-	EchoConsole("-------------------------------------------------------------------------------")
-	EchoConsole("WARNING: Steam may go down for maintenance today.")
-	EchoConsole("-------------------------------------------------------------------------------")
-end
+-- ##########################################################
