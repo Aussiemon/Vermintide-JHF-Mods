@@ -52,17 +52,24 @@ BotImprovementsExtra.create_options = function()
 	end
 end
 
-BotImprovementsExtra.manual_block = function(unit, input_extension, should_block)
-	if Managers.player.is_server and unit and input_extension then
+BotImprovementsExtra.manual_block = function(unit, blackboard, should_block, t)
+	if unit and Unit.alive(unit) and blackboard and blackboard.input_extension then
+		local input_extension = blackboard.input_extension
+		
 		if should_block then
-			input_extension.wield(input_extension, "slot_melee")
+			input_extension:wield("slot_melee")
+			input_extension._defend = true
+			blackboard._block_start_time_BIE = t
+			
+		elseif t > (blackboard._block_start_time_BIE + 1) then
+			input_extension._defend = false
+			blackboard._block_start_time_BIE = nil
 		end
-		input_extension._defend = should_block
 	end
 end
 
 BotImprovementsExtra.auto_block = function(unit, status)
-	if Managers.player.is_server and unit and ScriptUnit.has_extension(unit, "status_system") then
+	if unit and Unit.alive(unit) and ScriptUnit.has_extension(unit, "status_system") then
 		local status_extension = ScriptUnit.extension(unit, "status_system")
 		local go_id = Managers.state.unit_storage:go_id(unit)
 
@@ -86,8 +93,7 @@ local save = Application.save_user_settings
 Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.enter", function (func, self, unit, blackboard, t)
 	
 	if get(BotImprovementsExtra.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
-		--BotImprovementsExtra.auto_block(unit, true)
-		BotImprovementsExtra.manual_block(unit, blackboard.input_extension, true)
+		BotImprovementsExtra.manual_block(unit, blackboard, true, t)
 	end
 	
 	-- Original Function
@@ -96,24 +102,10 @@ Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.enter", function (func, self,
 end)
 
 -- Continue blocking as the teleport action runs
-Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.run", function (func, self, unit, blackboard, t, dt)
+Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.run", function (func, self, unit, blackboard, t)
 	
 	if get(BotImprovementsExtra.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
-		--BotImprovementsExtra.auto_block(unit, true)
-		BotImprovementsExtra.manual_block(unit, blackboard.input_extension, true)
-	end
-	
-	-- Original Function
-	local result = func(self, unit, blackboard, t, dt)
-	return result
-end)
-
--- Cancel blocking when the teleport action ends
-Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.leave", function (func, self, unit, blackboard, t)
-	
-	if get(BotImprovementsExtra.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
-		--BotImprovementsExtra.auto_block(unit, false)
-		BotImprovementsExtra.manual_block(unit, blackboard.input_extension, false)
+		BotImprovementsExtra.manual_block(unit, blackboard, true, t)
 	end
 	
 	-- Original Function
@@ -121,21 +113,30 @@ Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.leave", function (func, self,
 	return result
 end)
 
+-- Cancel blocking when the teleport action ends
+Mods.hook.set(mod_name, "BTBotTeleportToAllyAction.leave", function (func, self, unit, blackboard, t)
+	
+	-- Original Function
+	local result = func(self, unit, blackboard, t)
+	
+	if get(BotImprovementsExtra.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
+		BotImprovementsExtra.manual_block(unit, blackboard, false, t)
+	end
+	
+	return result
+end)
+
 
 -- ## Bots Block on Path Search - Nil Action ##
 -- Start blocking when the nil action ends, and hold the block until the game decides to release it
-Mods.hook.set(mod_name, "BTNilAction.leave", function (func, self, unit, blackboard)
+Mods.hook.set(mod_name, "BTNilAction.leave", function (func, self, unit, blackboard, t)
 	
 	if get(BotImprovementsExtra.SETTINGS.BOTS_BLOCK_ON_PATH_SEARCH) then 
-		local Unit_alive = Unit.alive
-		if Unit_alive(unit) and blackboard then
-			--BotImprovementsExtra.auto_block(unit, true)
-			BotImprovementsExtra.manual_block(unit, blackboard.input_extension, true)
-		end
+		BotImprovementsExtra.manual_block(unit, blackboard, true, t)
 	end
 	
 	-- Original Function
-	local result = func(self, unit, blackboard)
+	local result = func(self, unit, blackboard, t)
 	return result
 end)
 
