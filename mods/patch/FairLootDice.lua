@@ -145,7 +145,6 @@ end
 
 -- Recreates binomial probabilites to calculate most-accurate loot-die chance
 FairLootDice.complex_calculate_chance = function (num_chests, target_num_chests)
-	
 	local normal_chance = 0.05
 	if num_chests >= target_num_chests then
 		return normal_chance

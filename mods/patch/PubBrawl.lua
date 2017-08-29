@@ -176,49 +176,14 @@ Mods.hook.set(mod_name, "StateInGameRunning.event_game_started", function(func, 
 	
 	if get(PubBrawl.SETTINGS.ACTIVE) and get(PubBrawl.SETTINGS.ADDITIONAL_ITEMS) and Managers.player.is_server then
 		if Managers.state.game_mode and Managers.state.game_mode._game_mode_key == "inn" then
-			-- initialize spawn time
-			mod.brawl_spawn_time = 0
 			
-			-- Make the hook
-			Mods.hook.set(mod_name, "MatchmakingManager.update", function(func2, self2, dt, t)
-				func2(self2, dt, t)
-				
-				-- initialize spawn time
-				if mod.brawl_spawn_time == 0 then
-					mod.brawl_spawn_time = t
-				end
-				
-				-- Check time has passed 1 second
-				if mod.brawl_spawn_time + 1 > t then
-					return
-				end
-				
-				-- Spawn items
-				local pickup_system = Managers.state.entity:system("pickup_system")
-				if #pickup_system._spawned_pickups < 6 then
-					mod.spawn_brawl_swords_and_other_items()
-				end
-				
-				-- Disable the hook
-				Mods.hook.enable(false, mod_name, "MatchmakingManager.update")
-			end)
+			-- Spawn items
+			local pickup_system = Managers.state.entity:system("pickup_system")
+			if #pickup_system._spawned_pickups < 4 then
+				mod.spawn_brawl_swords_and_other_items()
+			end
 		end
 	end
-end)
-
--- Regenerates taken inn pickups
-Mods.hook.set(mod_name, "PickupSystem.set_taken", function (func, self, spawn_index)
-	
-	-- Changes here:
-	if get(PubBrawl.SETTINGS.ACTIVE) and get(PubBrawl.SETTINGS.ADDITIONAL_ITEMS) and self.is_server then
-		if Managers.state.game_mode and Managers.state.game_mode._game_mode_key == "inn" then
-			return
-		end
-	end
-	-- Changes end.
-	
-	local result = func(self, spawn_index)
-	return result
 end)
 
 -- ##########################################################

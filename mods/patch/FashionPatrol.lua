@@ -68,24 +68,30 @@ local save = Application.save_user_settings
 
 Mods.hook.set(mod_name, "UnitSpawner.spawn_network_unit", function(func, self, unit_name, unit_template_name, extension_init_data, position, rotation, material)
 	
-	-- Identify Stormvermin patrol unit and change colors
-	local changed_color = false
-	if extension_init_data and extension_init_data.ai_group_system and extension_init_data.ai_group_system.template == "storm_vermin_formation_patrol" then
-		UnitVariationSettings.skaven_storm_vermin.material_variations.cloth_tint.max = mod.new_storm_variation.max
-		UnitVariationSettings.skaven_storm_vermin.material_variations.cloth_tint.min = mod.new_storm_variation.min
-		changed_color = true
+	if get(FashionPatrol.SETTINGS.ACTIVE) then
+		-- Identify Stormvermin patrol unit and change colors
+		local changed_color = false
+		if extension_init_data and extension_init_data.ai_group_system and extension_init_data.ai_group_system.template == "storm_vermin_formation_patrol" then
+			UnitVariationSettings.skaven_storm_vermin.material_variations.cloth_tint.max = mod.new_storm_variation.max
+			UnitVariationSettings.skaven_storm_vermin.material_variations.cloth_tint.min = mod.new_storm_variation.min
+			changed_color = true
+		end
+		
+		-- Original function
+		local unit, go_id = func(self, unit_name, unit_template_name, extension_init_data, position, rotation, material)
+		
+		-- Restore color settings
+		if changed_color then
+			UnitVariationSettings.skaven_storm_vermin.material_variations.cloth_tint.max = mod.original_storm_variation.max
+			UnitVariationSettings.skaven_storm_vermin.material_variations.cloth_tint.min = mod.original_storm_variation.min
+		end
+	
+		-- Return result
+		return unit, go_id
 	end
 	
 	-- Original function
 	local unit, go_id = func(self, unit_name, unit_template_name, extension_init_data, position, rotation, material)
-	
-	-- Restore color settings
-	if changed_color then
-		UnitVariationSettings.skaven_storm_vermin.material_variations.cloth_tint.max = mod.original_storm_variation.max
-		UnitVariationSettings.skaven_storm_vermin.material_variations.cloth_tint.min = mod.original_storm_variation.min
-	end
-	
-	-- Return result
 	return unit, go_id
 end)
 
