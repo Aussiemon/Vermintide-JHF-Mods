@@ -93,6 +93,7 @@ Mods.hook.set(mod_name, "UIResolutionScale", function (func, ...)
 		HiDefUIScaling.is_enabled = true
 		return math.min(width_scale, height_scale)
 	else
+		HiDefUIScaling.is_enabled = false
 		return func(...)
 	end
 end)
