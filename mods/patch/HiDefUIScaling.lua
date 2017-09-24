@@ -62,8 +62,6 @@ HiDefUIScaling = {
 	},
 }
 
-mod.hd_ui_scaling_enabled = false
-
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -92,10 +90,9 @@ Mods.hook.set(mod_name, "UIResolutionScale", function (func, ...)
 		local width_scale = math.min(w/UIResolutionWidthFragments(), max_scaling_factor) -- Changed to allow scaling up to quadruple the original max scale (1 -> 4)
 		local height_scale = math.min(h/UIResolutionHeightFragments(), max_scaling_factor) -- Changed to allow scaling up to quadruple the original max scale (1 -> 4)
 
-		mod.hd_ui_scaling_enabled = true
+		HiDefUIScaling.is_enabled = true
 		return math.min(width_scale, height_scale)
 	else
-		mod.hd_ui_scaling_enabled = false
 		return func(...)
 	end
 end)

@@ -701,7 +701,7 @@ StatPopups.must_resize = function()
 
 	local screen_w, screen_h = UIResolution()
 	
-	if screen_h > 1200 and not mod.hd_ui_scaling_enabled then
+	if screen_h > 1200 and not (HiDefUIScaling and HiDefUIScaling.is_enabled) then
 		return true
 	else
 		return false
