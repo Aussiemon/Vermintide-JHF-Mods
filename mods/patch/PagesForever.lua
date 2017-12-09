@@ -69,36 +69,20 @@ PagesForever.create_options = function()
 	Mods.option_menu:add_item("pages_forever", PagesForever.SETTINGS.SACKRAT, true)
 end
 
--- ##########################################################
--- #################### Hooks ###############################
+PagesForever.redo_sackrat_weights = function()
+	local total_loot_rat_spawn_weighting = 0
+	for pickup_name, spawn_weighting in pairs(LootRatPickups) do
+		total_loot_rat_spawn_weighting = total_loot_rat_spawn_weighting + spawn_weighting
+	end
 
-Mods.hook.set(mod_name, "Pickups.lorebook_pages.lorebook_page.hide_func", function (func, ...)
-	
-	-- Change sackrat drops if applicable
-	local result = func(...)
-	if get(PagesForever.SETTINGS.SACKRAT) and result and LootRatPickups and LootRatPickups["lorebook_page"]  then
-		LootRatPickups = {
-			first_aid_kit = 3,
-			healing_draught = 2,
-			damage_boost_potion = 1,
-			speed_boost_potion = 1,
-			frag_grenade_t2 = 1,
-			fire_grenade_t2 = 1,
-			loot_die = 4,
-		}
-		
-		local total_loot_rat_spawn_weighting = 0
+	for pickup_name, spawn_weighting in pairs(LootRatPickups) do
+		LootRatPickups[pickup_name] = spawn_weighting/total_loot_rat_spawn_weighting
+	end
+end
 
-		for pickup_name, spawn_weighting in pairs(LootRatPickups) do
-			total_loot_rat_spawn_weighting = total_loot_rat_spawn_weighting + spawn_weighting
-		end
-
-		for pickup_name, spawn_weighting in pairs(LootRatPickups) do
-			LootRatPickups[pickup_name] = spawn_weighting/total_loot_rat_spawn_weighting
-		end
-		
-	-- Restore sackrat drops to default
-	elseif not LootRatPickups or not LootRatPickups["lorebook_page"] then
+PagesForever.set_sackrat_pages = function(enabled)
+	-- Enable sackrat pages
+	if enabled then
 		LootRatPickups = {
 			first_aid_kit = 3,
 			healing_draught = 2,
@@ -109,19 +93,39 @@ Mods.hook.set(mod_name, "Pickups.lorebook_pages.lorebook_page.hide_func", functi
 			loot_die = 4,
 			lorebook_page = 4
 		}
-		local total_loot_rat_spawn_weighting = 0
+		PagesForever.redo_sackrat_weights()
+	
+	-- Disable sackrat pages
+	else
+		LootRatPickups = {
+			first_aid_kit = 3,
+			healing_draught = 2,
+			damage_boost_potion = 1,
+			speed_boost_potion = 1,
+			frag_grenade_t2 = 1,
+			fire_grenade_t2 = 1,
+			loot_die = 4,
+		}
+		PagesForever.redo_sackrat_weights()
+	end
+end
 
-		for pickup_name, spawn_weighting in pairs(LootRatPickups) do
-			total_loot_rat_spawn_weighting = total_loot_rat_spawn_weighting + spawn_weighting
-		end
+-- ##########################################################
+-- #################### Hooks ###############################
 
-		for pickup_name, spawn_weighting in pairs(LootRatPickups) do
-			LootRatPickups[pickup_name] = spawn_weighting/total_loot_rat_spawn_weighting
-		end
+Mods.hook.set(mod_name, "Pickups.lorebook_pages.lorebook_page.hide_func", function (func, ...)
+	
+	-- Change sackrat drops if necessary
+	local result = func(...)
+	if get(PagesForever.SETTINGS.SACKRAT) and LootRatPickups["lorebook_page"] then
+		PagesForever.set_sackrat_pages(false)
+		
+	-- Restore sackrat drops to default if necessary
+	elseif not (LootRatPickups["lorebook_page"] or get(PagesForever.SETTINGS.SACKRAT)) then
+		PagesForever.set_sackrat_pages(true)
 	end
 	
 	if get(PagesForever.SETTINGS.ACTIVE) then
-		
 		-- Show lorebook pages
 		return false
 	end
