@@ -51,7 +51,7 @@ Retired Mods:
 Full Setup Instructions:
 ----------------------------------------------------------------
 
-**Many of the mods in the JHF Modpack are disabled by default. Enable their respective settings in Mod Settings to activate them.**
+**Many mods in the JHF Modpack are disabled by default. Enable their respective settings in Mod Settings to activate them.**
 
 1.	Unpack .zip file. Drag mods folder to \<game folder\>\binaries. Merge and overwrite existing files or folders.
 
