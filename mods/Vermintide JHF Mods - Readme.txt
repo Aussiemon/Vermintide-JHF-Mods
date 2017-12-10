@@ -20,8 +20,6 @@ Mod List:
 
 **Steam Warning** mod (displays warning on Steam routine maintenance days)  
 
-**Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walterr's BotImprovements mod)
-
 **Fashion Patrol** mod (Stormvermin patrols have white armor, client-side, host only)
 
 **HiDef UI Scaling** mod (resizes display to fit resolutions greater than 1080p)
@@ -48,6 +46,8 @@ Retired Mods:
 **Lorebook** command (reports unlock stats of lorebook pages) has been included in QoL pack.
 
 **Size Tweaks** mod (control sizes of creatures and players)  is at least temporarily retired for lack of immediate interest.
+
+**Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walterr's BotImprovements mod) has been included in QoL pack.
 
 
 ----------------------------------------------------------------
