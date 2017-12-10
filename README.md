@@ -29,6 +29,8 @@ Mod List:
 
 **Unequip Hats** mod (allows unequipping headgear for non-elf characters)
 
+**Red Moon Variety** mod (restores multiple loading screen images to Red Moon Inn)
+
 
 ----------------------------------------------------------------
 Retired Mods:
@@ -49,15 +51,16 @@ Retired Mods:
 Full Setup Instructions:
 ----------------------------------------------------------------
 
-0.	Unpack .zip file. Drag mods folder to \<game folder\>\binaries. Merge and overwrite existing files or folders.
+**Many of the mods in the JHF Modpack are disabled by default. Enable their respective settings in Mod Settings to activate them.**
 
-1.	Open mods\Initialize.lua
+1.	Unpack .zip file. Drag mods folder to \<game folder\>\binaries. Merge and overwrite existing files or folders.
 
-2.	Add lines 
+2.	Open mods\Initialize.lua
+
+3.	Add lines 
 
 		Mods.exec("patch", "SkipCutscenes")
 		Mods.exec("patch", "SteamWarning")
-		Mods.exec("patch", "BotImprovementsExtra")
 		Mods.exec("patch", "FashionPatrol")
 		Mods.exec("patch", "HiDefUIScaling")
 		Mods.exec("patch", "FairLootDice")
@@ -65,19 +68,20 @@ Full Setup Instructions:
 		Mods.exec("patch", "SmallerBWStaffs")
 		Mods.exec("patch", "PagesForever")
 		Mods.exec("patch", "UnequipHats")
+		Mods.exec("patch", "RedMoonVariety")
 	
 	underneath "--Additional mods go here :" comment.
 	
-3.	Open mods\CommandList.lua
+4.	Open mods\CommandList.lua
 
-4.	Add lines
+5.	Add lines
 
 		{"/krenchtation",	 false, 	"commands", 	"krenchtation"},
 		{"/fixcursor",	 false, 	"commands", 	"fixcursor"},
 	
 	to bottom of commands.
 	
-5.	Use spacebar or escape in-game to skip cutscenes.
+6.	Use spacebar or escape in-game to skip cutscenes.
 
 
 
@@ -133,18 +137,6 @@ For **Steam Warning** mod (displays warning on Steam routine maintenance days):
 
 ----------------------------------------------------------------
 
-For **Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walterr's BotImprovements mod)
-
-1.	Open mods\Initialize.lua
-
-2.	Add line 
-
-		Mods.exec("patch", "BotImprovementsExtra")
-	
-	underneath "--Additional mods go here :" comment.
-
-----------------------------------------------------------------
-
 For **Fashion Patrol** mod (Stormvermin patrols have white armor, client-side, host only)
 
 1.	Open mods\Initialize.lua
@@ -154,6 +146,8 @@ For **Fashion Patrol** mod (Stormvermin patrols have white armor, client-side, h
 		Mods.exec("patch", "FashionPatrol")
 	
 	underneath "--Additional mods go here :" comment.
+	
+3.  Enable in Mod Settings
 
 ----------------------------------------------------------------
 
@@ -167,6 +161,8 @@ For **HiDef UI Scaling** mod (resizes display to fit resolutions greater than 10
 	
 	underneath "--Additional mods go here :" comment.
 
+3.  Enable in Mod Settings
+
 ----------------------------------------------------------------
 
 For **Fair Loot Dice** mod (adjusts loot die chance to reflect number of chests in a map):
@@ -178,6 +174,8 @@ For **Fair Loot Dice** mod (adjusts loot die chance to reflect number of chests 
 		Mods.exec("patch", "FairLootDice")
 	
 	underneath "--Additional mods go here :" comment.
+
+3.  Enable in Mod Settings
 
 ----------------------------------------------------------------
 
@@ -191,6 +189,8 @@ For **Pub Brawl** mod (restores pub brawl to the inn with the option of several 
 	
 	underneath "--Additional mods go here :" comment.
 
+3.  Enable in Mod Settings
+
 ----------------------------------------------------------------
 
 For **Smaller Bright Wizard Staffs** mod (allows scaling of all first-person bright wizard staff models):
@@ -202,6 +202,8 @@ For **Smaller Bright Wizard Staffs** mod (allows scaling of all first-person bri
 		Mods.exec("patch", "SmallerBWStaffs")
 	
 	underneath "--Additional mods go here :" comment.
+
+3.  Enable in Mod Settings
 
 ----------------------------------------------------------------
 
@@ -215,6 +217,8 @@ For **Pages Forever** mod (lorebook pages visible after full unlock, option to p
 	
 	underneath "--Additional mods go here :" comment.
 
+3.  Enable in Mod Settings
+
 ----------------------------------------------------------------
 
 For **Unequip Hats** mod (allows unequipping headgear for non-elf characters):
@@ -224,6 +228,18 @@ For **Unequip Hats** mod (allows unequipping headgear for non-elf characters):
 2.	Add line 
 
 		Mods.exec("patch", "UnequipHats")
+	
+	underneath "--Additional mods go here :" comment.
+
+----------------------------------------------------------------
+
+For **Red Moon Variety** mod (restores multiple loading screen images to Red Moon Inn):
+
+1.	Open mods\Initialize.lua
+
+2.	Add line 
+
+		Mods.exec("patch", "RedMoonVariety")
 	
 	underneath "--Additional mods go here :" comment.
 
