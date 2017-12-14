@@ -121,11 +121,13 @@ FairLootDice = {
 	},
 }
 
+local mod = FairLootDice
+
 -- ##########################################################
 -- ################## Functions #############################
 
 -- Uses linear proportions to calculate loot-die chance
-FairLootDice.calculate_chance = function (num_chests, target_num_chests, reduce_excess)
+mod.calculate_chance = function (num_chests, target_num_chests, reduce_excess)
 	local normal_chance = 0.05
 	if not reduce_excess and num_chests >= target_num_chests then
 		return normal_chance
@@ -144,17 +146,17 @@ FairLootDice.calculate_chance = function (num_chests, target_num_chests, reduce_
 end
 
 -- Recreates binomial probabilites to calculate most-accurate loot-die chance
-FairLootDice.complex_calculate_chance = function (num_chests, target_num_chests)
+mod.complex_calculate_chance = function (num_chests, target_num_chests)
 	local normal_chance = 0.05
 	if num_chests >= target_num_chests then
 		return normal_chance
 	end
 
 	local return_chance = normal_chance
-	local target_probability = FairLootDice.TargetProbabilitiesTwoDice[target_num_chests]
+	local target_probability = mod.TargetProbabilitiesTwoDice[target_num_chests]
 	local best_probability = 0
 	for i = 50, 999 do
-		local probability = FairLootDice.calculate_probability(num_chests, (i/1000))
+		local probability = mod.calculate_probability(num_chests, (i/1000))
 		if probability < target_probability then
 			best_probability = probability
 		else
@@ -170,18 +172,18 @@ FairLootDice.complex_calculate_chance = function (num_chests, target_num_chests)
 		end
 	end
 	
-	return_chance = FairLootDice.calculate_chance(num_chests, target_num_chests, false) or normal_chance
+	return_chance = mod.calculate_chance(num_chests, target_num_chests, false) or normal_chance
 	return return_chance
 end
 
 -- Finds binomial probability of at least two dice with given odds and number of chests
-FairLootDice.calculate_probability = function (num_chests, odds)
+mod.calculate_probability = function (num_chests, odds)
 	local total_probability = 0
 	for i = 0, 1 do
 		if i == 0 then
 			total_probability = total_probability + (math.pow(odds, i) * (math.pow((1 - odds), (num_chests - i))))
 		else
-			total_probability = total_probability + ((FairLootDice.factorial(num_chests) / (FairLootDice.factorial(i) * FairLootDice.factorial(num_chests - i))) * math.pow(odds, i) * (math.pow((1 - odds), (num_chests - i))))
+			total_probability = total_probability + ((mod.factorial(num_chests) / (mod.factorial(i) * mod.factorial(num_chests - i))) * math.pow(odds, i) * (math.pow((1 - odds), (num_chests - i))))
 		end
 	end
 	if 1 < total_probability then
@@ -190,7 +192,7 @@ FairLootDice.calculate_probability = function (num_chests, odds)
 	return (1 - total_probability)
 end
 
-FairLootDice.factorial = function (input)
+mod.factorial = function (input)
 	if input == 0 then
 		return 0
 	end
@@ -201,10 +203,10 @@ FairLootDice.factorial = function (input)
 	return output
 end
 
-FairLootDice.create_options = function()
+mod.create_options = function()
 	Mods.option_menu:add_group("FairLootDice", "Fair Loot Dice")
-	Mods.option_menu:add_item("FairLootDice", FairLootDice.SETTINGS.ACTIVE, true)
-	Mods.option_menu:add_item("FairLootDice", FairLootDice.SETTINGS.METHOD, true)
+	Mods.option_menu:add_item("FairLootDice", mod.SETTINGS.ACTIVE, true)
+	Mods.option_menu:add_item("FairLootDice", mod.SETTINGS.METHOD, true)
 end
 
 local get = function(data)
@@ -221,30 +223,30 @@ local save = Application.save_user_settings
 Mods.hook.set(mod_name, "DiceKeeper.chest_loot_dice_chance", function (func, ...)
 	
 	-- Change odds according to settings
-	if get(FairLootDice.SETTINGS.ACTIVE) then
+	if get(mod.SETTINGS.ACTIVE) then
 		if Managers and Managers.state and Managers.state.game_mode then
 		
 			-- Take level key and lookup chest information
 			local level_key = Managers.state.game_mode:level_key()
-			if FairLootDice.LevelChestNumbers[level_key] then
-				local num_chests = FairLootDice.LevelChestNumbers[level_key]
+			if mod.LevelChestNumbers[level_key] then
+				local num_chests = mod.LevelChestNumbers[level_key]
 				
 				-- Normalize odds according to setting
-				local calc_method = get(FairLootDice.SETTINGS.METHOD) or 1
+				local calc_method = get(mod.SETTINGS.METHOD) or 1
 				if calc_method == LENGTH_METHOD then
 				
 					-- Check mission length
-					if FairLootDice.LongLevels[level_key] then
-						local chance = FairLootDice.calculate_chance(num_chests, 17, false)
+					if mod.LongLevels[level_key] then
+						local chance = mod.calculate_chance(num_chests, 17, false)
 						return chance
 					else
-						local chance = FairLootDice.calculate_chance(num_chests, 14, false)
+						local chance = mod.calculate_chance(num_chests, 14, false)
 						return chance
 					end
 					
 				-- Flat-rate normalization
 				elseif calc_method == FLATRATE_METHOD then
-					local chance = FairLootDice.calculate_chance(num_chests, 17, true)
+					local chance = mod.calculate_chance(num_chests, 17, true)
 					return chance
 				end
 			end
@@ -259,6 +261,6 @@ end)
 -- ##########################################################
 -- ################### Script ###############################
 
-FairLootDice.create_options()
+mod.create_options()
 
 -- ##########################################################

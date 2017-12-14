@@ -21,6 +21,9 @@ local mod_name = "UnequipHats"
 -- ##########################################################
 -- ################## Variables #############################
 
+UnequipHats = {}
+local mod = UnequipHats
+
 mod.allow_no_wood_elf_hat = false -- Kerillian has no full face model, so hat removal is disabled by default.
 
 -- ##########################################################

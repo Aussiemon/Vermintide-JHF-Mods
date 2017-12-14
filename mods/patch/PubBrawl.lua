@@ -54,13 +54,15 @@ PubBrawl = {
 	},
 }
 
+local mod = PubBrawl
+
 -- ##########################################################
 -- ################## Functions #############################
 
-PubBrawl.create_options = function()
+mod.create_options = function()
 	Mods.option_menu:add_group("pub_brawl", "Pub Brawl")
-	Mods.option_menu:add_item("pub_brawl", PubBrawl.SETTINGS.ACTIVE, true)
-	Mods.option_menu:add_item("pub_brawl", PubBrawl.SETTINGS.ADDITIONAL_ITEMS, true)
+	Mods.option_menu:add_item("pub_brawl", mod.SETTINGS.ACTIVE, true)
+	Mods.option_menu:add_item("pub_brawl", mod.SETTINGS.ADDITIONAL_ITEMS, true)
 end
 
 mod.update_title_properties = function()
@@ -161,7 +163,7 @@ local save = Application.save_user_settings
 Mods.hook.set(mod_name, "GameModeManager.pvp_enabled", function (func, self)
 	
 	-- Changes here:
-	if get(PubBrawl.SETTINGS.ACTIVE) and Managers.state.game_mode and Managers.state.game_mode._game_mode_key == "inn" then
+	if get(mod.SETTINGS.ACTIVE) and Managers.state.game_mode and Managers.state.game_mode._game_mode_key == "inn" then
 		return true
 	end
 	-- Changes end.
@@ -174,7 +176,7 @@ end)
 Mods.hook.set(mod_name, "StateInGameRunning.event_game_started", function(func, self)
 	func(self)
 	
-	if get(PubBrawl.SETTINGS.ACTIVE) and get(PubBrawl.SETTINGS.ADDITIONAL_ITEMS) and Managers.player.is_server then
+	if get(mod.SETTINGS.ACTIVE) and get(mod.SETTINGS.ADDITIONAL_ITEMS) and Managers.player.is_server then
 		if Managers.state.game_mode and Managers.state.game_mode._game_mode_key == "inn" then
 			
 			-- Spawn items
@@ -189,8 +191,8 @@ end)
 -- ##########################################################
 -- ################### Script ###############################
 
-PubBrawl.create_options()
-if get(PubBrawl.SETTINGS.ACTIVE) then
+mod.create_options()
+if get(mod.SETTINGS.ACTIVE) then
 	mod.update_title_properties()
 end
 

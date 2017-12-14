@@ -154,53 +154,55 @@ SmallerBWStaffs = {
 	LookupScaleTable = {},
 }
 
+local mod = SmallerBWStaffs
+
 -- Lookup table for active settings
-SmallerBWStaffs.LookupTable["units/weapons/player/wpn_brw_staff_06/wpn_brw_staff_06"] = SmallerBWStaffs.SETTINGS.RED_ACTIVE -- Red
-SmallerBWStaffs.LookupTable["units/weapons/player/wpn_brw_staff_05/wpn_brw_staff_05"] = SmallerBWStaffs.SETTINGS.BOLT_ACTIVE -- Bolt
-SmallerBWStaffs.LookupTable["units/weapons/player/wpn_brw_staff_04/wpn_brw_staff_04"] = SmallerBWStaffs.SETTINGS.BEAM_ACTIVE -- Beam
-SmallerBWStaffs.LookupTable["units/weapons/player/wpn_brw_staff_03/wpn_brw_staff_03"] = SmallerBWStaffs.SETTINGS.CONFLAG_ACTIVE -- Conflag
-SmallerBWStaffs.LookupTable["units/weapons/player/wpn_brw_staff_02/wpn_brw_staff_02"] = SmallerBWStaffs.SETTINGS.FIREBALL_ACTIVE -- Fireball
+mod.LookupTable["units/weapons/player/wpn_brw_staff_06/wpn_brw_staff_06"] = mod.SETTINGS.RED_ACTIVE -- Red
+mod.LookupTable["units/weapons/player/wpn_brw_staff_05/wpn_brw_staff_05"] = mod.SETTINGS.BOLT_ACTIVE -- Bolt
+mod.LookupTable["units/weapons/player/wpn_brw_staff_04/wpn_brw_staff_04"] = mod.SETTINGS.BEAM_ACTIVE -- Beam
+mod.LookupTable["units/weapons/player/wpn_brw_staff_03/wpn_brw_staff_03"] = mod.SETTINGS.CONFLAG_ACTIVE -- Conflag
+mod.LookupTable["units/weapons/player/wpn_brw_staff_02/wpn_brw_staff_02"] = mod.SETTINGS.FIREBALL_ACTIVE -- Fireball
 
 -- Lookup table for scale settings
-SmallerBWStaffs.LookupScaleTable["units/weapons/player/wpn_brw_staff_06/wpn_brw_staff_06"] = SmallerBWStaffs.SETTINGS.RED_SCALE -- Red
-SmallerBWStaffs.LookupScaleTable["units/weapons/player/wpn_brw_staff_05/wpn_brw_staff_05"] = SmallerBWStaffs.SETTINGS.BOLT_SCALE -- Bolt
-SmallerBWStaffs.LookupScaleTable["units/weapons/player/wpn_brw_staff_04/wpn_brw_staff_04"] = SmallerBWStaffs.SETTINGS.BEAM_SCALE -- Beam
-SmallerBWStaffs.LookupScaleTable["units/weapons/player/wpn_brw_staff_03/wpn_brw_staff_03"] = SmallerBWStaffs.SETTINGS.CONFLAG_SCALE -- Conflag
-SmallerBWStaffs.LookupScaleTable["units/weapons/player/wpn_brw_staff_02/wpn_brw_staff_02"] = SmallerBWStaffs.SETTINGS.FIREBALL_SCALE -- Fireball
+mod.LookupScaleTable["units/weapons/player/wpn_brw_staff_06/wpn_brw_staff_06"] = mod.SETTINGS.RED_SCALE -- Red
+mod.LookupScaleTable["units/weapons/player/wpn_brw_staff_05/wpn_brw_staff_05"] = mod.SETTINGS.BOLT_SCALE -- Bolt
+mod.LookupScaleTable["units/weapons/player/wpn_brw_staff_04/wpn_brw_staff_04"] = mod.SETTINGS.BEAM_SCALE -- Beam
+mod.LookupScaleTable["units/weapons/player/wpn_brw_staff_03/wpn_brw_staff_03"] = mod.SETTINGS.CONFLAG_SCALE -- Conflag
+mod.LookupScaleTable["units/weapons/player/wpn_brw_staff_02/wpn_brw_staff_02"] = mod.SETTINGS.FIREBALL_SCALE -- Fireball
 
 -- ##########################################################
 -- ################## Functions #############################
 
-SmallerBWStaffs.create_options = function()
+mod.create_options = function()
 	Mods.option_menu:add_group("smaller_bw_staffs", "Smaller Bright Wizard Staffs")
-	Mods.option_menu:add_item("smaller_bw_staffs", SmallerBWStaffs.SETTINGS.ACTIVE, true)
-	Mods.option_menu:add_item("smaller_bw_staffs", SmallerBWStaffs.SETTINGS.RED_ACTIVE, true)
-	Mods.option_menu:add_item("smaller_bw_staffs", SmallerBWStaffs.SETTINGS.RED_SCALE, true)
-	Mods.option_menu:add_item("smaller_bw_staffs", SmallerBWStaffs.SETTINGS.BOLT_ACTIVE, true)
-	Mods.option_menu:add_item("smaller_bw_staffs", SmallerBWStaffs.SETTINGS.BOLT_SCALE, true)
-	Mods.option_menu:add_item("smaller_bw_staffs", SmallerBWStaffs.SETTINGS.BEAM_ACTIVE, true)
-	Mods.option_menu:add_item("smaller_bw_staffs", SmallerBWStaffs.SETTINGS.BEAM_SCALE, true)
-	Mods.option_menu:add_item("smaller_bw_staffs", SmallerBWStaffs.SETTINGS.CONFLAG_ACTIVE, true)
-	Mods.option_menu:add_item("smaller_bw_staffs", SmallerBWStaffs.SETTINGS.CONFLAG_SCALE, true)
-	Mods.option_menu:add_item("smaller_bw_staffs", SmallerBWStaffs.SETTINGS.FIREBALL_ACTIVE, true)
-	Mods.option_menu:add_item("smaller_bw_staffs", SmallerBWStaffs.SETTINGS.FIREBALL_SCALE, true)
+	Mods.option_menu:add_item("smaller_bw_staffs", mod.SETTINGS.ACTIVE, true)
+	Mods.option_menu:add_item("smaller_bw_staffs", mod.SETTINGS.RED_ACTIVE, true)
+	Mods.option_menu:add_item("smaller_bw_staffs", mod.SETTINGS.RED_SCALE, true)
+	Mods.option_menu:add_item("smaller_bw_staffs", mod.SETTINGS.BOLT_ACTIVE, true)
+	Mods.option_menu:add_item("smaller_bw_staffs", mod.SETTINGS.BOLT_SCALE, true)
+	Mods.option_menu:add_item("smaller_bw_staffs", mod.SETTINGS.BEAM_ACTIVE, true)
+	Mods.option_menu:add_item("smaller_bw_staffs", mod.SETTINGS.BEAM_SCALE, true)
+	Mods.option_menu:add_item("smaller_bw_staffs", mod.SETTINGS.CONFLAG_ACTIVE, true)
+	Mods.option_menu:add_item("smaller_bw_staffs", mod.SETTINGS.CONFLAG_SCALE, true)
+	Mods.option_menu:add_item("smaller_bw_staffs", mod.SETTINGS.FIREBALL_ACTIVE, true)
+	Mods.option_menu:add_item("smaller_bw_staffs", mod.SETTINGS.FIREBALL_SCALE, true)
 end
 
 -- Updates bright wizard staff size with scaling factor
 mod.bw_staff_apply_scale = function(scaling_factor, remove_unit, calling_function)
-	if SmallerBWStaffs.scaled_unit and Unit.alive(SmallerBWStaffs.scaled_unit) then
+	if mod.scaled_unit and Unit.alive(mod.scaled_unit) then
 	
 		safe_pcall(function()
 		
-			local root_node = Unit.has_node(SmallerBWStaffs.scaled_unit, "root_point") and Unit.node(SmallerBWStaffs.scaled_unit, "root_point") or 0
-			local current_scale = Unit.local_scale(SmallerBWStaffs.scaled_unit, root_node)
+			local root_node = Unit.has_node(mod.scaled_unit, "root_point") and Unit.node(mod.scaled_unit, "root_point") or 0
+			local current_scale = Unit.local_scale(mod.scaled_unit, root_node)
 			
-			Unit.set_local_scale(SmallerBWStaffs.scaled_unit, root_node, 
+			Unit.set_local_scale(mod.scaled_unit, root_node, 
 				Vector3(current_scale.x * (scaling_factor or 1),
 					current_scale.y * (scaling_factor or 1),
 					current_scale.z * (scaling_factor or 1)))
 			if remove_unit then
-				SmallerBWStaffs.scaled_unit = nil
+				mod.scaled_unit = nil
 			end
 		end)
 		
@@ -225,12 +227,12 @@ local save = Application.save_user_settings
 Mods.hook.set(mod_name, "UnitSpawner.spawn_local_unit", function (func, self, unit_name, position, rotation, material)
 	local unit = func(self, unit_name, position, rotation, material)
 	
-	if get(SmallerBWStaffs.LookupTable[unit_name]) then
+	if get(mod.LookupTable[unit_name]) then
 		-- Save oversized staff unit
-		if SmallerBWStaffs.LookupTable[unit_name] then
-			SmallerBWStaffs.scaled_unit = unit
-			SmallerBWStaffs.scaled_unit_name = unit_name
-			SmallerBWStaffs.counter = 1
+		if mod.LookupTable[unit_name] then
+			mod.scaled_unit = unit
+			mod.scaled_unit_name = unit_name
+			mod.counter = 1
 		end
 	end
 	
@@ -240,14 +242,14 @@ end)
 Mods.hook.set(mod_name, "UnitSpawner.spawn_local_unit_with_extensions", function (func, self, unit_name, ...)
 	local unit, unit_template_name = func(self, unit_name, ...)
 	
-	if get(SmallerBWStaffs.LookupTable[unit_name]) then
+	if get(mod.LookupTable[unit_name]) then
 		-- Apply scaling factor
-		local scale_setting = SmallerBWStaffs.LookupScaleTable[SmallerBWStaffs.scaled_unit_name]
+		local scale_setting = mod.LookupScaleTable[mod.scaled_unit_name]
 		local scale_factor = math.pow(((get(scale_setting)/100) or 1), (1/3))
 		
-		if SmallerBWStaffs.counter < 3 then
+		if mod.counter < 3 then
 			mod.bw_staff_apply_scale(scale_factor, false, nil)
-			SmallerBWStaffs.counter = SmallerBWStaffs.counter + 1
+			mod.counter = mod.counter + 1
 		else
 			mod.bw_staff_apply_scale(scale_factor, true, nil)
 		end
@@ -259,6 +261,6 @@ end)
 -- ##########################################################
 -- ################### Script ###############################
 
-SmallerBWStaffs.create_options()
+mod.create_options()
 
 -- ##########################################################

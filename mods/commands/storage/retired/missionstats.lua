@@ -46,6 +46,8 @@ StatPopups.LevelKeyLookups = {
 	dlc_dwarf_beacons = "Chain of Fire",
 	dlc_stromdorf_hills = "The Courier",
 	dlc_stromdorf_town = "Reaching Out",
+	dlc_reikwald_forest = "Reikwald Forest",
+	dlc_reikwald_river = "The River Reik",
 	dlc_challenge_wizard = "Trial of the Foolhardy",
 	dlc_survival_magnus = "Town Meeting",
 	dlc_survival_ruins = "The Fall"
@@ -74,6 +76,8 @@ StatPopups.LevelKeyArray = {
 	"dlc_dwarf_beacons",
 	"dlc_stromdorf_hills",
 	"dlc_stromdorf_town",
+	"dlc_reikwald_forest",
+	"dlc_reikwald_river",
 	"dlc_challenge_wizard",
 	"dlc_survival_magnus",
 	"dlc_survival_ruins"

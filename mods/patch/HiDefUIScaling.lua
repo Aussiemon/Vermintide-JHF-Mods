@@ -62,13 +62,15 @@ HiDefUIScaling = {
 	},
 }
 
+local mod = HiDefUIScaling
+
 -- ##########################################################
 -- ################## Functions #############################
 
-HiDefUIScaling.create_options = function()
+mod.create_options = function()
 	Mods.option_menu:add_group("HDUserInterface", "HD User Interface")
-	Mods.option_menu:add_item("HDUserInterface", HiDefUIScaling.SETTINGS.ACTIVE, true)
-	Mods.option_menu:add_item("HDUserInterface", HiDefUIScaling.SETTINGS.SCALE, true)
+	Mods.option_menu:add_item("HDUserInterface", mod.SETTINGS.ACTIVE, true)
+	Mods.option_menu:add_item("HDUserInterface", mod.SETTINGS.SCALE, true)
 end
 
 local get = function(data)
@@ -84,16 +86,16 @@ local save = Application.save_user_settings
 
 Mods.hook.set(mod_name, "UIResolutionScale", function (func, ...)
 	local w, h = UIResolution()
-	if get(HiDefUIScaling.SETTINGS.ACTIVE) and (w > UIResolutionWidthFragments() and h > UIResolutionHeightFragments()) then
-		local max_scaling_factor = math.max((((get(HiDefUIScaling.SETTINGS.SCALE) or 4) + 1) / 100), 1)
+	if get(mod.SETTINGS.ACTIVE) and (w > UIResolutionWidthFragments() and h > UIResolutionHeightFragments()) then
+		local max_scaling_factor = math.max((((get(mod.SETTINGS.SCALE) or 4) + 1) / 100), 1)
 		
 		local width_scale = math.min(w/UIResolutionWidthFragments(), max_scaling_factor) -- Changed to allow scaling up to quadruple the original max scale (1 -> 4)
 		local height_scale = math.min(h/UIResolutionHeightFragments(), max_scaling_factor) -- Changed to allow scaling up to quadruple the original max scale (1 -> 4)
 
-		HiDefUIScaling.is_enabled = true
+		mod.is_enabled = true
 		return math.min(width_scale, height_scale)
 	else
-		HiDefUIScaling.is_enabled = false
+		mod.is_enabled = false
 		return func(...)
 	end
 end)
@@ -101,7 +103,7 @@ end)
 -- ##########################################################
 -- ################### Script ###############################
 
-HiDefUIScaling.create_options()
+mod.create_options()
 UPDATE_RESOLUTION_LOOKUP(true)
 
 -- ##########################################################

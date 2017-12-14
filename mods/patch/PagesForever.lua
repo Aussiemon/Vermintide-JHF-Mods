@@ -54,6 +54,8 @@ PagesForever = {
 	}
 }
 
+local mod = PagesForever
+
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -63,13 +65,13 @@ end
 local set = Application.set_user_setting
 local save = Application.save_user_settings
 
-PagesForever.create_options = function()
+mod.create_options = function()
 	Mods.option_menu:add_group("pages_forever", "Lorebook Pages Forever")
-	Mods.option_menu:add_item("pages_forever", PagesForever.SETTINGS.ACTIVE, true)
-	Mods.option_menu:add_item("pages_forever", PagesForever.SETTINGS.SACKRAT, true)
+	Mods.option_menu:add_item("pages_forever", mod.SETTINGS.ACTIVE, true)
+	Mods.option_menu:add_item("pages_forever", mod.SETTINGS.SACKRAT, true)
 end
 
-PagesForever.redo_sackrat_weights = function()
+mod.redo_sackrat_weights = function()
 	local total_loot_rat_spawn_weighting = 0
 	for pickup_name, spawn_weighting in pairs(LootRatPickups) do
 		total_loot_rat_spawn_weighting = total_loot_rat_spawn_weighting + spawn_weighting
@@ -80,7 +82,7 @@ PagesForever.redo_sackrat_weights = function()
 	end
 end
 
-PagesForever.set_sackrat_pages = function(enabled)
+mod.set_sackrat_pages = function(enabled)
 	-- Enable sackrat pages
 	if enabled then
 		LootRatPickups = {
@@ -93,7 +95,7 @@ PagesForever.set_sackrat_pages = function(enabled)
 			loot_die = 4,
 			lorebook_page = 4
 		}
-		PagesForever.redo_sackrat_weights()
+		mod.redo_sackrat_weights()
 	
 	-- Disable sackrat pages
 	else
@@ -106,7 +108,7 @@ PagesForever.set_sackrat_pages = function(enabled)
 			fire_grenade_t2 = 1,
 			loot_die = 4,
 		}
-		PagesForever.redo_sackrat_weights()
+		mod.redo_sackrat_weights()
 	end
 end
 
@@ -117,15 +119,15 @@ Mods.hook.set(mod_name, "Pickups.lorebook_pages.lorebook_page.hide_func", functi
 	
 	-- Change sackrat drops if necessary
 	local result = func(...)
-	if get(PagesForever.SETTINGS.SACKRAT) and LootRatPickups["lorebook_page"] then
-		PagesForever.set_sackrat_pages(false)
+	if get(mod.SETTINGS.SACKRAT) and LootRatPickups["lorebook_page"] then
+		mod.set_sackrat_pages(false)
 		
 	-- Restore sackrat drops to default if necessary
-	elseif not (LootRatPickups["lorebook_page"] or get(PagesForever.SETTINGS.SACKRAT)) then
-		PagesForever.set_sackrat_pages(true)
+	elseif not (LootRatPickups["lorebook_page"] or get(mod.SETTINGS.SACKRAT)) then
+		mod.set_sackrat_pages(true)
 	end
 	
-	if get(PagesForever.SETTINGS.ACTIVE) then
+	if get(mod.SETTINGS.ACTIVE) then
 		-- Show lorebook pages
 		return false
 	end
@@ -137,6 +139,6 @@ end)
 -- ##########################################################
 -- #################### Script ##############################
 
-PagesForever.create_options()
+mod.create_options()
 
 -- ##########################################################

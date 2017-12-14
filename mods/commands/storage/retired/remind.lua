@@ -15,15 +15,16 @@
    
 	Allows the player to input a string that will reappear at the end of a mission.
 --]]
- 
+
 local command_name = "remind"
- 
-mod.auto_clear_after_display = true -- Set this variable to false to prevent the auto-clear of reminders after they display for the first time.
- 
+
 -- ##########################################################
 -- #################### Globals #############################
 
--- Initialize mod.reminder_string global
+RemindCommand = {} 
+
+local mod = RemindCommand
+mod.auto_clear_after_display = true -- Set this variable to false to prevent the auto-clear of reminders after they display for the first time.
 mod.reminder_string = mod.reminder_string or ""
 
 -- ##########################################################

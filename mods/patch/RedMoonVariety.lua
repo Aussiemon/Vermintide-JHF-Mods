@@ -22,6 +22,7 @@ local mod_name = "RedMoonVariety"
 -- ################## Variables #############################
 
 local current_act_progression_raw_hook_enabled = false
+local last_shown_screen_index = math.max((#GameActsOrder - 1), 0)
 
 -- ##########################################################
 -- ################## Functions #############################
@@ -33,7 +34,14 @@ Mods.hook.set(mod_name, "LevelUnlockUtils.current_act_progression_raw", function
 	
 	-- Randomize how the game sees act progression, when enabled
 	if current_act_progression_raw_hook_enabled then
-		return math.random(0, (#GameActsOrder - 1))
+		local chosen_act = math.max(math.random(0, (#GameActsOrder - 1)), 0)
+		
+		-- Don't show the same loading screen twice
+		while chosen_act == last_shown_screen_index do
+			chosen_act = math.max(math.random(0, (#GameActsOrder - 1)), 0)
+		end
+		last_shown_screen_index = chosen_act
+		return chosen_act
 	end
 	
 	return func(self, level_key, ...)

@@ -39,6 +39,8 @@ FashionPatrol = {
 	}
 }
 
+local mod = FashionPatrol
+
 mod.original_storm_variation = {
 		max = UnitVariationSettings.skaven_storm_vermin.material_variations.cloth_tint.max,
 		min = UnitVariationSettings.skaven_storm_vermin.material_variations.cloth_tint.min
@@ -52,9 +54,9 @@ mod.new_storm_variation = { -- Variation gradient values above 30 are treated as
 -- ##########################################################
 -- ################## Functions #############################
 
-FashionPatrol.create_options = function()
+mod.create_options = function()
 	Mods.option_menu:add_group("fashion_patrol", "Fashion Patrol")
-	Mods.option_menu:add_item("fashion_patrol", FashionPatrol.SETTINGS.ACTIVE, true)
+	Mods.option_menu:add_item("fashion_patrol", mod.SETTINGS.ACTIVE, true)
 end
 
 local get = function(data)
@@ -68,7 +70,7 @@ local save = Application.save_user_settings
 
 Mods.hook.set(mod_name, "UnitSpawner.spawn_network_unit", function(func, self, unit_name, unit_template_name, extension_init_data, position, rotation, material)
 	
-	if get(FashionPatrol.SETTINGS.ACTIVE) then
+	if get(mod.SETTINGS.ACTIVE) then
 		-- Identify Stormvermin patrol unit and change colors
 		local changed_color = false
 		if extension_init_data and extension_init_data.ai_group_system and extension_init_data.ai_group_system.template == "storm_vermin_formation_patrol" then
@@ -98,6 +100,6 @@ end)
 -- ##########################################################
 -- ################### Script ###############################
 
-FashionPatrol.create_options()
+mod.create_options()
 
 -- ##########################################################

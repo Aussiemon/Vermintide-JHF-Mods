@@ -21,6 +21,9 @@ local mod_name = "SkipCutscenes"
 -- ##########################################################
 -- ################## Variables #############################
 
+SkipCutscenes = {}
+local mod = SkipCutscenes
+
 -- Variable to track the need to skip the fade effect
 mod.skip_next_fade = false
 
