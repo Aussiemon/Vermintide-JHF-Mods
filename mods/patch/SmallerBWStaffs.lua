@@ -227,13 +227,11 @@ local save = Application.save_user_settings
 Mods.hook.set(mod_name, "UnitSpawner.spawn_local_unit", function (func, self, unit_name, position, rotation, material)
 	local unit = func(self, unit_name, position, rotation, material)
 	
-	if get(mod.LookupTable[unit_name]) then
-		-- Save oversized staff unit
-		if mod.LookupTable[unit_name] then
-			mod.scaled_unit = unit
-			mod.scaled_unit_name = unit_name
-			mod.counter = 1
-		end
+	-- Save oversized staff unit
+	if mod.LookupTable[unit_name] and get(mod.LookupTable[unit_name]) then
+		mod.scaled_unit = unit
+		mod.scaled_unit_name = unit_name
+		mod.counter = 1
 	end
 	
 	return unit
