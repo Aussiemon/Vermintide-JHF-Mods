@@ -36,6 +36,8 @@ Mod List:
 
 **Red Moon Variety** mod (restores multiple loading screen images to Red Moon Inn)
 
+**Sound Settings** mod (allows control over the presence of various sound effects on weapon hit)
+
 
 ----------------------------------------------------------------
 Retired Mods:
@@ -74,6 +76,7 @@ Full Setup Instructions:
 		Mods.exec("patch", "PagesForever")
 		Mods.exec("patch", "UnequipHats")
 		Mods.exec("patch", "RedMoonVariety")
+		Mods.exec("patch", "SoundSettings")
 	
 	underneath "--Additional mods go here :" comment.
 	
@@ -247,5 +250,19 @@ For **Red Moon Variety** mod (restores multiple loading screen images to Red Moo
 		Mods.exec("patch", "RedMoonVariety")
 	
 	underneath "--Additional mods go here :" comment.
+
+----------------------------------------------------------------
+
+For **Sound Settings** mod (allows control over the presence of various sound effects on weapon hit):
+
+1.	Open mods\Initialize.lua
+
+2.	Add line 
+
+		Mods.exec("patch", "SoundSettings")
+	
+	underneath "--Additional mods go here :" comment.
+	
+3.  Enable in Mod Settings
 
 ----------------------------------------------------------------
