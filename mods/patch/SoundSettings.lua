@@ -26,9 +26,9 @@ SoundSettings = {
 		GLING = {
 		["save"] = "cb_sound_settings_gling",
 		["widget_type"] = "stepper",
-		["text"] = "Trait \"Gling\" SFX",
-		["tooltip"] =  "Trait \"Gling\" SFX\n" ..
-			"Toggle \"gling\" sound effect when an attack is buffed by a trait on / off.",
+		["text"] = "Disable Trait \"Gling\" SFX",
+		["tooltip"] =  "Disable Trait \"Gling\" SFX\n" ..
+			"Toggle disabled \"gling\" sound effect when attack is buffed by traits on / off.",
 		["value_type"] = "boolean",
 		["options"] = {
 			{text = "Off", value = false},
@@ -39,9 +39,9 @@ SoundSettings = {
 		EXECUTIONER = {
 		["save"] = "cb_sound_settings_exec_headshot",
 		["widget_type"] = "stepper",
-		["text"] = "Executioner Headshot SFX",
-		["tooltip"] =  "Executioner Headshot SFX\n" ..
-			"Toggle guillotine sound effect upon executioner sword headshot on / off.",
+		["text"] = "Disable Executioner Headshot SFX",
+		["tooltip"] =  "Disable Executioner Headshot SFX\n" ..
+			"Toggle disabled guillotine sound effect on exec. sword headshot on / off.",
 		["value_type"] = "boolean",
 		["options"] = {
 			{text = "Off", value = false},
@@ -52,9 +52,9 @@ SoundSettings = {
 		KILLINGBLOW = {
 		["save"] = "cb_sound_settings_killing_blow",
 		["widget_type"] = "stepper",
-		["text"] = "Killing Blow SFX",
-		["tooltip"] =  "Killing Blow SFX\n" ..
-			"Toggle killing blow sound effect on / off.",
+		["text"] = "Disable Killing Blow SFX",
+		["tooltip"] =  "Disable Killing Blow SFX\n" ..
+			"Toggle disabled killing blow sound effect on / off.",
 		["value_type"] = "boolean",
 		["options"] = {
 			{text = "Off", value = false},
