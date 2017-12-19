@@ -118,7 +118,7 @@ Mods.hook.set(mod_name, "UnitSpawner.spawn_local_unit_with_extensions", function
 	-- Changes here: --------------------------------
 	if get(mod.SETTINGS.ACTIVE) then
 		
-		if extension_init_data and extension_init_data.ai_group_system and extension_init_data.ai_group_system.template == "storm_vermin_formation_patrol" then
+		if unit_template_name == "ai_unit_storm_vermin" and extension_init_data and extension_init_data.ai_group_system and extension_init_data.ai_group_system.template == "storm_vermin_formation_patrol" then
 			mod.trigger_stormvermin_variation(unit)
 		end
 	end
