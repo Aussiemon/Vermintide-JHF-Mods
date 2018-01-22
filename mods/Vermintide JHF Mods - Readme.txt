@@ -8,7 +8,7 @@ A collection of interesting Vermintide mods I've created, with no particular the
 
 Requires Grimalackt's quality-of-life modpack installed to function:
 
-(https://www.reddit.com/r/Vermintide/search?sort=new&restrict_sr=on&q=flair%3ACustom%2BContent) 
+(http://steamcommunity.com/sharedfiles/filedetails/?id=1090355288)
 
 ----------------------------------------------------------------
 Mod List:
