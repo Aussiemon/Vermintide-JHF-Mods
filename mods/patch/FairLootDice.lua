@@ -78,6 +78,8 @@ FairLootDice = {
 		dlc_dwarf_beacons = 2,
 		dlc_stromdorf_hills = 10,
 		dlc_stromdorf_town = 17,
+		dlc_reikwald_forest = 12,
+		dlc_reikwald_river = 4
 	},
 	TargetProbabilitiesTwoDice = {
 		0,
@@ -105,7 +107,7 @@ FairLootDice = {
 		0.3206,
 		0.3392,
 		0.3576,
-		0.3759,
+		0.3759
 	},
 	LongLevels = {
 		magnus = "Horn of Magnus",
@@ -118,6 +120,8 @@ FairLootDice = {
 		dlc_castle_dungeon = "The Dungeons",
 		dlc_dwarf_interior = "Khazid Kro",
 		dlc_dwarf_exterior = "Cursed Rune",
+		dlc_reikwald_forest = "Reikwald Forest",
+		dlc_reikwald_river = "River Reik"
 	},
 }
 
