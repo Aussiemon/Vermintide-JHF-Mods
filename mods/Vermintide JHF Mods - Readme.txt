@@ -36,7 +36,7 @@ Mod List:
 
 **Red Moon Variety** mod (restores multiple loading screen images to Red Moon Inn)
 
-**Sound Settings** mod (allows control over the presence of various sound effects on weapon hit)
+**Potion Dialogue** mod (plays unused relevant character voicelines when drinking potions)
 
 
 ----------------------------------------------------------------
@@ -53,6 +53,8 @@ Retired Mods:
 
 **Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walterr's BotImprovements mod) has been included in QoL pack.
 
+**Sound Settings** mod (allows control over the presence of various sound effects on weapon hit) has been included in QoL pack.
+
 
 ----------------------------------------------------------------
 Full Setup Instructions:
@@ -62,9 +64,9 @@ Full Setup Instructions:
 
 1.	Unpack .zip file. Drag mods folder to \<game folder\>\binaries. Merge and overwrite existing files or folders.
 
-2.	Open mods\Initialize.lua
+2.	Open mods\Initialize.lua (NOT NECESSARY IN QoL v15+)
 
-3.	Add lines 
+3.	Add lines (NOT NECESSARY IN QoL v15+)
 
 		Mods.exec("patch", "SkipCutscenes")
 		Mods.exec("patch", "SteamWarning")
@@ -76,7 +78,7 @@ Full Setup Instructions:
 		Mods.exec("patch", "PagesForever")
 		Mods.exec("patch", "UnequipHats")
 		Mods.exec("patch", "RedMoonVariety")
-		Mods.exec("patch", "SoundSettings")
+		Mods.exec("patch", "PotionDialogue")
 	
 	underneath "--Additional mods go here :" comment.
 	
@@ -253,13 +255,13 @@ For **Red Moon Variety** mod (restores multiple loading screen images to Red Moo
 
 ----------------------------------------------------------------
 
-For **Sound Settings** mod (allows control over the presence of various sound effects on weapon hit):
+For **Potion Dialogue** mod (plays unused relevant character voicelines when drinking potions):
 
 1.	Open mods\Initialize.lua
 
 2.	Add line 
 
-		Mods.exec("patch", "SoundSettings")
+		Mods.exec("patch", "PotionDialogue")
 	
 	underneath "--Additional mods go here :" comment.
 	
