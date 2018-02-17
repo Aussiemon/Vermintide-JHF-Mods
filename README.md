@@ -33,6 +33,8 @@ Mod List:
 
 **Potion Dialogue** mod (plays unused relevant character voicelines when drinking potions)
 
+**Inn Decoration Control** mod (allows control over all decorations in the Red Moon Inn)
+
 
 ----------------------------------------------------------------
 Retired Mods:
@@ -74,6 +76,7 @@ Full Setup Instructions:
 		Mods.exec("patch", "UnequipHats")
 		Mods.exec("patch", "RedMoonVariety")
 		Mods.exec("patch", "PotionDialogue")
+		Mods.exec("patch", "InnDecorationControl")
 	
 	underneath "--Additional mods go here :" comment.
 	
@@ -257,6 +260,20 @@ For **Potion Dialogue** mod (plays unused relevant character voicelines when dri
 2.	Add line 
 
 		Mods.exec("patch", "PotionDialogue")
+	
+	underneath "--Additional mods go here :" comment.
+	
+3.  Enable in Mod Settings
+
+----------------------------------------------------------------
+
+For **Inn Decoration Control** mod (allows control over all decorations in the Red Moon Inn):
+
+1.	Open mods\Initialize.lua
+
+2.	Add line 
+
+		Mods.exec("patch", "InnDecorationControl")
 	
 	underneath "--Additional mods go here :" comment.
 	
