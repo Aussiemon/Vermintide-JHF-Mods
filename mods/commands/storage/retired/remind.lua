@@ -16,7 +16,7 @@
 	Allows the player to input a string that will reappear at the end of a mission.
 --]]
 
-local command_name = "remind"
+local command_name = "Remind"
 
 -- ##########################################################
 -- #################### Globals #############################

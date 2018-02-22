@@ -79,7 +79,8 @@ FairLootDice = {
 		dlc_stromdorf_hills = 10,
 		dlc_stromdorf_town = 17,
 		dlc_reikwald_forest = 12,
-		dlc_reikwald_river = 4
+		dlc_reikwald_river = 4,
+		chamber = 7
 	},
 	TargetProbabilitiesTwoDice = {
 		0,

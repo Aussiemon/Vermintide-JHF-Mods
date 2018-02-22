@@ -16,7 +16,7 @@
 	Reports number of unlocked Lorebook pages for each level. Levels without pages are included in case of future additions.
 --]]
 
-local command_name = "lorebook"
+local command_name = "Lorebook"
 
 -- ##########################################################
 -- ################## Definitions ###########################
@@ -48,6 +48,7 @@ StatPopups.LevelKeyLookups = {
 	dlc_stromdorf_town = "Reaching Out",
 	dlc_reikwald_forest = "Reikwald Forest",
 	dlc_reikwald_river = "The River Reik",
+	chamber = "Waylaid",
 	dlc_challenge_wizard = "Trial of the Foolhardy",
 	dlc_survival_magnus = "Town Meeting",
 	dlc_survival_ruins = "The Fall"
@@ -78,6 +79,7 @@ StatPopups.LevelKeyArray = {
 	"dlc_stromdorf_town",
 	"dlc_reikwald_forest",
 	"dlc_reikwald_river",
+	"chamber",
 	"dlc_challenge_wizard",
 	"dlc_survival_magnus",
 	"dlc_survival_ruins"
