@@ -1,0 +1,12 @@
+mod =  [
+	"FairLootDice"
+]
+
+package = [
+	"resource_packages/fair_loot_dice/FairLootDice"
+]
+
+lua = [
+	"scripts/mods/fair_loot_dice/FairLootDice"
+	"localization/FairLootDice"
+]

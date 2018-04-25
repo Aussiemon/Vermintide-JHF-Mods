@@ -1,0 +1,12 @@
+mod =  [
+	"PagesForever"
+]
+
+package = [
+	"resource_packages/pages_forever/PagesForever"
+]
+
+lua = [
+	"scripts/mods/pages_forever/PagesForever"
+	"localization/PagesForever"
+]

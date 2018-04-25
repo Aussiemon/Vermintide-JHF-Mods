@@ -1,7 +1,0 @@
-=============================
-
-To use an alternate version of a command, replace the original file with the version in this folder.
-
-=============================
-
-The /missionstats command has been included in Grimalackt's QoL mod. This is an alternate version that displays stats publicly for the entire lobby to see.

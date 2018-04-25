@@ -1,0 +1,12 @@
+mod =  [
+	"SmallerBWStaffs"
+]
+
+package = [
+	"resource_packages/smaller_bright_wizard_staffs/SmallerBWStaffs"
+]
+
+lua = [
+	"scripts/mods/smaller_bright_wizard_staffs/SmallerBWStaffs"
+	"localization/SmallerBWStaffs"
+]

@@ -1,0 +1,12 @@
+mod =  [
+	"PubBrawl"
+]
+
+package = [
+	"resource_packages/pub_brawl/PubBrawl"
+]
+
+lua = [
+	"scripts/mods/pub_brawl/PubBrawl"
+	"localization/PubBrawl"
+]

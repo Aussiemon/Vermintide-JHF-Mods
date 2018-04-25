@@ -1,0 +1,12 @@
+mod =  [
+	"PotionDialogue"
+]
+
+package = [
+	"resource_packages/potion_dialogue/PotionDialogue"
+]
+
+lua = [
+	"scripts/mods/potion_dialogue/PotionDialogue"
+	"localization/PotionDialogue"
+]

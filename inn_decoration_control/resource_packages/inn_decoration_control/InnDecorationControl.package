@@ -1,0 +1,12 @@
+mod =  [
+	"InnDecorationControl"
+]
+
+package = [
+	"resource_packages/inn_decoration_control/InnDecorationControl"
+]
+
+lua = [
+	"scripts/mods/inn_decoration_control/InnDecorationControl"
+	"localization/InnDecorationControl"
+]

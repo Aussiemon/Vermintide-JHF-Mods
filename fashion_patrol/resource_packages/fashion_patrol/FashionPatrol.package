@@ -1,0 +1,12 @@
+mod =  [
+	"FashionPatrol"
+]
+
+package = [
+	"resource_packages/fashion_patrol/FashionPatrol"
+]
+
+lua = [
+	"scripts/mods/fashion_patrol/FashionPatrol"
+	"localization/FashionPatrol"
+]

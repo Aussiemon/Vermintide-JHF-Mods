@@ -1,0 +1,12 @@
+mod =  [
+	"Template"
+]
+
+package = [
+	"resource_packages/template/Template"
+]
+
+lua = [
+	"scripts/mods/template/Template"
+	"localization/Template"
+]

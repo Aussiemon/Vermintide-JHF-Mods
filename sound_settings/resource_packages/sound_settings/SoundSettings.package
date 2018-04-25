@@ -1,0 +1,12 @@
+mod =  [
+	"SoundSettings"
+]
+
+package = [
+	"resource_packages/sound_settings/SoundSettings"
+]
+
+lua = [
+	"scripts/mods/sound_settings/SoundSettings"
+	"localization/SoundSettings"
+]

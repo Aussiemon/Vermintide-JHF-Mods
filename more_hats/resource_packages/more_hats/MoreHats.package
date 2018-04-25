@@ -1,0 +1,12 @@
+mod =  [
+	"MoreHats"
+]
+
+package = [
+	"resource_packages/more_hats/MoreHats"
+]
+
+lua = [
+	"scripts/mods/more_hats/MoreHats"
+	"localization/MoreHats"
+]

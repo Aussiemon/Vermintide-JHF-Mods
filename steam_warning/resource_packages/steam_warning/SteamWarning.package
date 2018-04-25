@@ -1,0 +1,12 @@
+mod =  [
+	"SteamWarning"
+]
+
+package = [
+	"resource_packages/steam_warning/SteamWarning"
+]
+
+lua = [
+	"scripts/mods/steam_warning/SteamWarning"
+	"localization/SteamWarning"
+]
