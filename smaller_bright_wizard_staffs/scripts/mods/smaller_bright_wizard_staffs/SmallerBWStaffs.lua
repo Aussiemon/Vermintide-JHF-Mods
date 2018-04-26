@@ -22,6 +22,7 @@ local mod = get_mod("SmallerBWStaffs")
 -- ################## Variables #############################
 
 mod.scaled_unit = nil
+mod.scale_factor = nil
 mod.counter = 1
 mod.LookupTable = {}
 mod.LookupScaleTable = {}
@@ -143,6 +144,9 @@ mod_data.options_widgets = {
 	}
 }
 
+local Unit = Unit
+local Vector3 = Vector3
+
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -161,6 +165,7 @@ mod.bw_staff_apply_scale = function(scaling_factor, remove_unit, calling_functio
 					current_scale.z * (scaling_factor or 1)))
 			if remove_unit then
 				mod.scaled_unit = nil
+				mod.scale_factor = nil
 			end
 		end)
 		
@@ -189,17 +194,21 @@ end)
 mod:hook("UnitSpawner.spawn_local_unit_with_extensions", function (func, self, unit_name, ...)
 	local unit, unit_template_name = func(self, unit_name, ...)
 	
+	-- Handle delayed scaling
+	if mod.scale_factor then
+		if mod.counter > 2 then
+			mod.bw_staff_apply_scale(mod.scale_factor, true, nil)
+		else
+			mod.counter = mod.counter + 1
+		end
+	end
+	
 	if mod:get(mod.LookupTable[unit_name]) then
 		-- Apply scaling factor
-		local scale_setting = mod.LookupScaleTable[mod.scaled_unit_name]
-		local scale_factor = math.pow((((mod:get(scale_setting))/100) or 1), (1/3))
+		local scale_setting = mod.LookupScaleTable[mod.scaled_unit_name] or ""
+		mod.scale_factor = (mod:get(scale_setting) or 100) / 100
 		
-		if mod.counter < 3 then
-			mod.bw_staff_apply_scale(scale_factor, false, nil)
-			mod.counter = mod.counter + 1
-		else
-			mod.bw_staff_apply_scale(scale_factor, true, nil)
-		end
+		mod.counter = mod.counter + 1
 	end
 	
 	return unit, unit_template_name
@@ -212,12 +221,14 @@ end)
 mod.on_disabled = function(initial_call)
 	mod:disable_all_hooks()
 	mod.scaled_unit = nil
+	mod.scale_factor = nil
 	mod.counter = 1
 end
 
 -- Call when governing settings checkbox is checked
 mod.on_enabled = function(initial_call)
 	mod.counter = 1
+	mod.scale_factor = nil
 	mod.scaled_unit = nil
 	mod:enable_all_hooks()
 end
