@@ -1,0 +1,16 @@
+mod =  [
+	"OldSchoolLoadingScreens"
+]
+
+package = [
+	"resource_packages/old_school_loading_screens/OldSchoolLoadingScreens"
+]
+
+lua = [
+	"scripts/mods/old_school_loading_screens/OldSchoolLoadingScreens"
+	"localization/OldSchoolLoadingScreens"
+]
+
+material = [
+	"materials/old_school_loading_screens/old_school_loading_screens"
+]

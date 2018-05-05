@@ -1,0 +1,12 @@
+mod =  [
+	"Reminder"
+]
+
+package = [
+	"resource_packages/reminder/Reminder"
+]
+
+lua = [
+	"scripts/mods/reminder/Reminder"
+	"localization/Reminder"
+]

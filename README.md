@@ -57,20 +57,25 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=1314933016
 
 https://steamcommunity.com/sharedfiles/filedetails/?id=1314935545
 
+**Old School Loading Screens** mod (adds toggleable Vermintide 'old school' loading screen variants, adds unused mission briefs)
 
-----------------------------------------------------------------
-Pending Ports:
-----------------------------------------------------------------
+https://steamcommunity.com/sharedfiles/filedetails/?id=1378005474
 
-**Krench Mutation** command (replace ogres with Krench) 
+**Mission Stats** command (print # completions per level)
 
-**Red Moon Variety** mod (restores multiple loading screen images to Red Moon Inn)
+https://steamcommunity.com/sharedfiles/filedetails/?id=1378016151
 
-**Mission Stats** command (print # completions per level) has been included in QoL pack. An alternate version is included with this pack that prints stats publicly for the entire lobby to see. 
+**Lorebook Collection** command (reports unlock stats of lorebook pages)
 
-**Remind** command (save reminders to be repeated back to you at the scoreboard screen) has been included in QoL pack.
+https://steamcommunity.com/sharedfiles/filedetails/?id=1378016728
 
-**Lorebook** command (reports unlock stats of lorebook pages) has been included in QoL pack.
+**Reminder** command (save reminders to be repeated back to you at the scoreboard screen)
+
+https://steamcommunity.com/sharedfiles/filedetails/?id=1378016914
+
+**Krench Mutation** command (replace ogres with Krench)
+
+https://steamcommunity.com/sharedfiles/filedetails/?id=1378018281
 
 
 ----------------------------------------------------------------
@@ -81,7 +86,7 @@ Retired Mods:
 
 **Size Tweaks** mod (control sizes of creatures and players)  is at least temporarily retired for lack of immediate interest.
 
-**Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walterr's BotImprovements mod) has been included in the Qol pack.
+**Bot Improvements Extra** mod (additions to grimalackt, iamlupo, and walterr's BotImprovements mod) has been included in the main mod.
 
 
 ----------------------------------------------------------------

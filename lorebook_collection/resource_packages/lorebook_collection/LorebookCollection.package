@@ -1,0 +1,12 @@
+mod =  [
+	"LorebookCollection"
+]
+
+package = [
+	"resource_packages/lorebook_collection/LorebookCollection"
+]
+
+lua = [
+	"scripts/mods/lorebook_collection/LorebookCollection"
+	"localization/LorebookCollection"
+]

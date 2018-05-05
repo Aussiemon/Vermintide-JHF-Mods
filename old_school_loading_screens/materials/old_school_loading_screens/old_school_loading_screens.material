@@ -1,0 +1,196 @@
+loading_screen_bridge_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_bridge"
+	}
+
+	variables = {
+	}
+}
+loading_screen_cemetery_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_cemetery"
+	}
+
+	variables = {
+	}
+}
+loading_screen_city_wall_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_city_wall"
+	}
+
+	variables = {
+	}
+}
+loading_screen_courtyard_level_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_courtyard_level"
+	}
+
+	variables = {
+	}
+}
+loading_screen_dlc_castle_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_dlc_castle"
+	}
+
+	variables = {
+	}
+}
+loading_screen_docks_short_level_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_docks_short_level"
+	}
+
+	variables = {
+	}
+}
+loading_screen_end_boss_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_end_boss"
+	}
+
+	variables = {
+	}
+}
+loading_screen_farm_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_farm"
+	}
+
+	variables = {
+	}
+}
+loading_screen_forest_ambush_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_forest_ambush"
+	}
+
+	variables = {
+	}
+}
+loading_screen_magnus_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_magnus"
+	}
+
+	variables = {
+	}
+}
+loading_screen_merchant_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_merchant"
+	}
+
+	variables = {
+	}
+}
+loading_screen_sewers_short_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_sewers_short"
+	}
+
+	variables = {
+	}
+}
+loading_screen_tunnels_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_tunnels"
+	}
+
+	variables = {
+	}
+}
+loading_screen_wizard_1 = {
+	material_contexts = {
+		surface_material = ""
+	}
+
+	shader = "gui:DIFFUSE_MAP"
+
+	textures = {
+		diffuse_map = "textures/old_school_loading_screens/loading_screen_wizard"
+	}
+
+	variables = {
+	}
+}

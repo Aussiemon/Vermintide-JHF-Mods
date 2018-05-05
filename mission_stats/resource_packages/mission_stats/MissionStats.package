@@ -1,0 +1,12 @@
+mod =  [
+	"MissionStats"
+]
+
+package = [
+	"resource_packages/mission_stats/MissionStats"
+]
+
+lua = [
+	"scripts/mods/mission_stats/MissionStats"
+	"localization/MissionStats"
+]
