@@ -1,0 +1,22 @@
+local directory_name = "krench_mutation"
+local file_name = "KrenchMutation"
+
+local main_script_path = "scripts/mods/"..directory_name.."/"..file_name
+
+print("'"..file_name.."' Mod loading...")
+
+local ret = {
+	run = function()
+		if new_mod then
+			local mod = new_mod(file_name)
+			mod:localization("localization/"..file_name)
+			mod:initialize(main_script_path)
+		else
+			print(file_name.." requires the Vermintide Mod Framework to function.")
+		end
+	end,
+	packages = {
+		"resource_packages/"..directory_name.."/"..file_name
+	},
+}
+return ret

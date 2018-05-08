@@ -1,0 +1,12 @@
+mod =  [
+	"KrenchMutation"
+]
+
+package = [
+	"resource_packages/krench_mutation/KrenchMutation"
+]
+
+lua = [
+	"scripts/mods/krench_mutation/KrenchMutation"
+	"localization/KrenchMutation"
+]
