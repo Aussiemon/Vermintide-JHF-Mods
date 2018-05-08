@@ -110,6 +110,7 @@ mod:hook("Pickups.lorebook_pages.lorebook_page.hide_func", function (func, ...)
 	end
 	
 	-- Return original result
+	local result = func(...)
 	return result
 end)
 
