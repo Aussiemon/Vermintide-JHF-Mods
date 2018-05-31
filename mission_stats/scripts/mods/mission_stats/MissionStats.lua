@@ -21,22 +21,6 @@ local mod = get_mod("MissionStats")
 -- ##########################################################
 -- ################## Variables #############################
 
-local mod_data = {}
-mod_data.name = "Mission Stats" -- Readable mod name
-mod_data.description = "Reports number of completed attempts for each level." -- Readable mod description
-mod_data.is_togglable = true -- If the mod can be enabled/disabled
-mod_data.is_mutator = false -- If the mod is mutator
-mod_data.options_widgets = {
-	{
-    ["setting_name"] = "mission_stats_keybind",
-    ["widget_type"] = "keybind",
-    ["text"] = "Keybind: Display Mission Stats",
-    ["tooltip"] = "Choose the keybinding that displays your mission stats.",
-    ["default_value"] = {},
-    ["action"] = "run_script"
-  },
-}
-
 mod:command("missionstats", "displays mission stats", function() mod.run_script() end)
 
 -- Level Key to Level Name Lookup Table
@@ -944,7 +928,5 @@ end
 
 -- ##########################################################
 -- ################### Script ###############################
-
-mod:initialize_data(mod_data)
 
 -- ##########################################################

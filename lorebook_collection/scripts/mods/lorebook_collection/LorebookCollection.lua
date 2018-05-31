@@ -21,22 +21,6 @@ local mod = get_mod("LorebookCollection")
 -- ##########################################################
 -- ################## Variables #############################
 
-local mod_data = {}
-mod_data.name = "Lorebook Collection" -- Readable mod name
-mod_data.description = "Reports number of unlocked Lorebook pages for each level. Levels without pages are included in case of future additions." -- Readable mod description
-mod_data.is_togglable = true -- If the mod can be enabled/disabled
-mod_data.is_mutator = false -- If the mod is mutator
-mod_data.options_widgets = {
-	{
-    ["setting_name"] = "lorebook_keybind",
-    ["widget_type"] = "keybind",
-    ["text"] = "Keybind: Display Lorebook Collection",
-    ["tooltip"] = "Choose the keybinding that displays your lorebook collection.",
-    ["default_value"] = {},
-    ["action"] = "run_script"
-  },
-}
-
 mod:command("lorebook", "displays lorebook collection", function() mod.run_script() end)
 
 -- Level Key to Level Name Lookup Table
@@ -925,7 +909,5 @@ end
 
 -- ##########################################################
 -- ################### Script ###############################
-
-mod:initialize_data(mod_data)
 
 -- ##########################################################

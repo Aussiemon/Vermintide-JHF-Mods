@@ -66,28 +66,6 @@ mod.LongLevels = {
 	dlc_reikwald_river = "River Reik"
 }
 
-local mod_data = {}
-mod_data.name = "Fair Loot Dice" -- Readable mod name
-mod_data.description = "Modifies the base loot die chance to account for number of chests in a map." -- Readable mod description
-mod_data.is_togglable = true -- If the mod can be enabled/disabled
-mod_data.is_mutator = false -- If the mod is mutator
-mod_data.options_widgets = {
-	{
-		["setting_name"] = "method",
-		["widget_type"] = "dropdown",
-		["text"] = "Dice Chance Method",
-		["tooltip"] = "Dice Chance Method\n" ..
-			"Allows choosing how odds are determined.\n\n" ..
-			"-- LENGTH --\nTwo-grimoire maps normalized to at least 17 chests, otherwise 14.\n\n" ..
-			"-- FLAT-RATE --\nAll maps normalized to exactly 17 chests.",
-		["options"] = {
-			{text = "Length", value = mod.LENGTH_METHOD},
-			{text = "Flat-Rate", value = mod.FLATRATE_METHOD},
-		},
-		["default_value"] = mod.LENGTH_METHOD, -- Default first option is enabled. In this case Length
-	}
-}
-
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -166,7 +144,5 @@ end
 
 -- ##########################################################
 -- ################### Script ###############################
-
-mod:initialize_data(mod_data)
 
 -- ##########################################################

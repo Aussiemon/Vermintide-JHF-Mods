@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/sound_settings/SoundSettings"
-	"localization/SoundSettings"
+	"scripts/mods/sound_settings/*"
 ]

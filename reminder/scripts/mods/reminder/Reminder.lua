@@ -21,22 +21,6 @@ local mod = get_mod("Reminder")
 -- ##########################################################
 -- ################## Variables #############################
 
-local mod_data = {}
-mod_data.name = "Reminder" -- Readable mod name
-mod_data.description = "Allows users to write messages that will be played back at the end of missions." -- Readable mod description
-mod_data.is_togglable = true -- If the mod can be enabled/disabled
-mod_data.is_mutator = false -- If the mod is mutator
-mod_data.options_widgets = {
-	{
-		["setting_name"] = "auto_clear_reminders",
-		["widget_type"] = "checkbox",
-		["text"] = "Auto-Clear Reminders",
-		["tooltip"] = "Auto-Clear Reminders After Playback\n" ..
-					"Enable to automatically clear reminders after they've been displayed.",
-		["default_value"] = true -- Default first option is enabled. In this case true
-	}
-}
-
 mod:command("reminder", "adds a reminder for playback at mission-end", function(...) mod.record_reminder(...) end)
 mod:command("clear_reminders", "clears mission-end reminders", function() mod.clear_reminders() end)
 
@@ -151,7 +135,5 @@ end
 
 -- ##########################################################
 -- ################### Script ###############################
-
-mod:initialize_data(mod_data)
 
 -- ##########################################################

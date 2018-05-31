@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/pages_forever/PagesForever"
-	"localization/PagesForever"
+	"scripts/mods/pages_forever/*"
 ]

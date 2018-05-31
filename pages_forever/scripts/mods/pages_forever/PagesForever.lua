@@ -21,38 +21,6 @@ local mod = get_mod("PagesForever")
 -- ##########################################################
 -- ################## Variables #############################
 
-local mod_data = {}
-mod_data.name = "Pages Forever" -- Readable mod name
-mod_data.description = "Allows the pickup of lorebook pages (that do nothing) after they've all been unlocked. Allows prevention of sackrat lorebook drops." -- Readable mod description
-mod_data.is_togglable = true -- If the mod can be enabled/disabled
-mod_data.is_mutator = false -- If the mod is mutator
-mod_data.options_widgets = {
-	{
-		["setting_name"] = "show_lorebook_pages",
-		["widget_type"] = "checkbox",
-		["text"] = "Always Show Lorebook Pages",
-		["tooltip"] = "Always Show Lorebook Pages\n" ..
-			"Toggle showing lorebook pages after they're all unlocked on / off.",
-		["options"] = {
-			{text = "On", value = true},
-			{text = "Off", value = false}
-		},
-		["default_value"] = 1, -- Default first option In this case On
-	},
-	{
-		["setting_name"] = "sackrat_pages_disabled",
-		["widget_type"] = "checkbox",
-		["text"] = "Prevent Sackrat Pages",
-		["tooltip"] = "Disable Sackrat Page Drops\n" ..
-			"Toggle the drop of sackrat lorebook pages on / off.",
-		["options"] = {
-			{text = "On", value = true},
-			{text = "Off", value = false}
-		},
-		["default_value"] = 2, -- Default first option In this case Off
-	}
-}
-
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -150,7 +118,5 @@ end
 
 -- ##########################################################
 -- ################### Script ###############################
-
-mod:initialize_data(mod_data)
 
 -- ##########################################################

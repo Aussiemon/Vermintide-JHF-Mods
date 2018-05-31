@@ -35,12 +35,6 @@ mod.stance_equivalents_limited = {
 	damage_boost_potion = "offensive"
 }
 
-local mod_data = {}
-mod_data.name = "Potion Dialogue" -- Readable mod name
-mod_data.description = "Plays relevant unused character-specific dialogue when a potion is consumed." -- Readable mod description
-mod_data.is_togglable = true -- If the mod can be enabled/disabled
-mod_data.is_mutator = false -- If the mod is mutator
-
 -- Optimization locals
 local Unit_alive = Unit.alive
 local ScriptUnit_extension_input = ScriptUnit.extension_input
@@ -92,7 +86,5 @@ end
 
 -- ##########################################################
 -- ################### Script ###############################
-
-mod:initialize_data(mod_data)
 
 -- ##########################################################

@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/skip_cutscenes/SkipCutscenes"
-	"localization/SkipCutscenes"
+	"scripts/mods/skip_cutscenes/*"
 ]

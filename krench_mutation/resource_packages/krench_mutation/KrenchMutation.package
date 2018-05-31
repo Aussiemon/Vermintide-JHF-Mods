@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/krench_mutation/KrenchMutation"
-	"localization/KrenchMutation"
+	"scripts/mods/krench_mutation/*"
 ]

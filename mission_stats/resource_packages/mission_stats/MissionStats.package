@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/mission_stats/MissionStats"
-	"localization/MissionStats"
+	"scripts/mods/mission_stats/*"
 ]

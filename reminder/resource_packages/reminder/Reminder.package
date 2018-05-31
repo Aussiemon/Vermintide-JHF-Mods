@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/reminder/Reminder"
-	"localization/Reminder"
+	"scripts/mods/reminder/*"
 ]

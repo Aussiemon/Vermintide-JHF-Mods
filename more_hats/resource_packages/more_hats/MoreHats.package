@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/more_hats/MoreHats"
-	"localization/MoreHats"
+	"scripts/mods/more_hats/*"
 ]

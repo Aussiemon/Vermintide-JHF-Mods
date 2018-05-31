@@ -27,28 +27,6 @@ mod.steam_time_zone = -8 -- Change this to set the timezone used by Steam.
 mod.PER_MISSION = 1
 mod.ONCE = 2
 
-local mod_data = {}
-mod_data.name = "Steam Warning" -- Readable mod name
-mod_data.description = "Displays a warning on the day that Steam usually schedules routine maintenance." -- Readable mod description
-mod_data.is_togglable = true -- If the mod can be enabled/disabled
-mod_data.is_mutator = false -- If the mod is mutator
-mod_data.options_widgets = {
-	{
-		["setting_name"] = "frequency",
-		["widget_type"] = "dropdown",
-		["text"] = "Frequency of Display",
-		["tooltip"] = "Frequency of Display\n" ..
-			"Choose how often the Steam disconnect warning will be displayed.\n\n" ..
-			"-- Per-Mission --\nDisplay warning once per entered lobby / mission.\n\n" ..
-			"-- Once --\nDisplay warning once on usual disconnect day.",
-		["options"] = {
-			{text = "Per-Mission", value = mod.PER_MISSION},
-			{text = "Once", value = mod.ONCE},
-		},
-		["default_value"] = mod.ONCE, -- Default first option is enabled. In this case Once
-	}
-}
-
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -100,7 +78,5 @@ end
 
 -- ##########################################################
 -- ################### Script ###############################
-
-mod:initialize_data(mod_data)
 
 -- ##########################################################

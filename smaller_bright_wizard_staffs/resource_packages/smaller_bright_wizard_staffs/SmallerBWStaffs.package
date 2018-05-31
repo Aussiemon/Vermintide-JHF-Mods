@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/smaller_bright_wizard_staffs/SmallerBWStaffs"
-	"localization/SmallerBWStaffs"
+	"scripts/mods/smaller_bright_wizard_staffs/*"
 ]

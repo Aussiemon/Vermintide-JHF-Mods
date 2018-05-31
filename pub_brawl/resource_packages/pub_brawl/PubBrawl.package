@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/pub_brawl/PubBrawl"
-	"localization/PubBrawl"
+	"scripts/mods/pub_brawl/*"
 ]

@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/steam_warning/SteamWarning"
-	"localization/SteamWarning"
+	"scripts/mods/steam_warning/*"
 ]

@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/lorebook_collection/LorebookCollection"
-	"localization/LorebookCollection"
+	"scripts/mods/lorebook_collection/*"
 ]

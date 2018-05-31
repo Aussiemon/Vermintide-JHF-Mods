@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/potion_dialogue/PotionDialogue"
-	"localization/PotionDialogue"
+	"scripts/mods/potion_dialogue/*"
 ]

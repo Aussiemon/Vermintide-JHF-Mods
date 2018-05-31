@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/fashion_patrol/FashionPatrol"
-	"localization/FashionPatrol"
+	"scripts/mods/fashion_patrol/*"
 ]

@@ -7,8 +7,7 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/old_school_loading_screens/OldSchoolLoadingScreens"
-	"localization/OldSchoolLoadingScreens"
+	"scripts/mods/old_school_loading_screens/*"
 ]
 
 material = [

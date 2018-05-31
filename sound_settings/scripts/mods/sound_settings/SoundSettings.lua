@@ -27,38 +27,6 @@ mod.LookupTable["Play_hud_trait_active"] = "disable_gling" -- Trait Buff SFX
 mod.LookupTable["executioner_sword_critical"] = "disable_guillotine" -- Executioner Headshot SFX
 mod.LookupTable["Play_hud_matchmaking_countdown"] = "disable_killing_blow" -- Killing Blow SFX
 
-local mod_data = {}
-mod_data.name = "Sound Settings" -- Readable mod name
-mod_data.description = "Allows the user to toggle the \"gling\" sound on trait hits, as well as various other effects." -- Readable mod description
-mod_data.is_togglable = true -- If the mod can be enabled/disabled
-mod_data.is_mutator = false -- If the mod is mutator
-mod_data.options_widgets = {
-	{
-	  ["setting_name"] = "disable_gling",
-	  ["widget_type"] = "checkbox",
-	  ["text"] = "Disable Trait \"Gling\" SFX",
-	  ["tooltip"] =  "Disable Trait \"Gling\" SFX\n" ..
-			"Toggle disabled \"gling\" sound effect when attack is buffed by traits on / off.",
-	  ["default_value"] = true -- Default first option is enabled. In this case true
-	},
-	{
-	  ["setting_name"] = "disable_guillotine",
-	  ["widget_type"] = "checkbox",
-	  ["text"] = "Disable Executioner Headshot SFX",
-	  ["tooltip"] =  "Disable Executioner Headshot SFX\n" ..
-			"Toggle disabled guillotine sound effect on exec. sword headshot on / off.",
-	  ["default_value"] = false -- Default first option is enabled. In this case false
-	},
-	{
-	  ["setting_name"] = "disable_killing_blow",
-	  ["widget_type"] = "checkbox",
-	  ["text"] = "Disable Killing Blow SFX",
-	  ["tooltip"] =  "Disable Killing Blow SFX\n" ..
-			"Toggle disabled killing blow sound effect on / off.",
-	  ["default_value"] = false -- Default first option is enabled. In this case false
-	}
-}
-
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -106,7 +74,5 @@ end
 
 -- ##########################################################
 -- ################### Script ###############################
-
-mod:initialize_data(mod_data)
 
 -- ##########################################################

@@ -21,23 +21,6 @@ local mod = get_mod("PubBrawl")
 -- ##########################################################
 -- ################## Variables #############################
 
-local mod_data = {}
-mod_data.name = "Pub Brawl" -- Readable mod name
-mod_data.description = "Adds pub brawl access back to inn, with optional extras." -- Readable mod description
-mod_data.is_togglable = true -- If the mod can be enabled/disabled
-mod_data.is_mutator = false -- If the mod is mutator
-mod_data.options_widgets = {
-	{
-	  ["setting_name"] = "additional_items",
-	  ["widget_type"] = "checkbox",
-	  ["text"] = "Additional Items",
-	  ["tooltip"] = "Additional Items\n" ..
-				"Toggle additional extras on / off.\n\n" ..
-				"Adds wooden swords, a bomb, and potions to the inn.",
-	  ["default_value"] = false -- Default first option is enabled. In this case false
-	}
-}
-
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -173,7 +156,5 @@ end
 
 -- ##########################################################
 -- ################### Script ###############################
-
-mod:initialize_data(mod_data)
 
 -- ##########################################################

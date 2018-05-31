@@ -69,22 +69,6 @@ mod.players_nodes = {
 	},
 }
 
-local mod_data = {}
-mod_data.name = "More Hats" -- Readable mod name
-mod_data.description = "Makes selected hats equippable by other heroes, and allows total unequipping of hats." -- Readable mod description
-mod_data.is_togglable = true -- If the mod can be enabled/disabled
-mod_data.is_mutator = false -- If the mod is mutator
-mod_data.options_widgets = {
-	{
-	  ["setting_name"] = "allow_unequip_wood_elf",
-	  ["widget_type"] = "checkbox",
-	  ["text"] = "Allow Unequip of Wood Elf Headgear",
-	  ["tooltip"] = "Allow Unequip of Wood Elf Headgear\n" ..
-					"Kerillian has no head, so this is disabled by default.",
-	  ["default_value"] = false -- Default first option is enabled. In this case true
-	}
-}
-
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -255,7 +239,5 @@ end
 
 -- ##########################################################
 -- ################### Script ###############################
-
-mod:initialize_data(mod_data)
 
 -- ##########################################################

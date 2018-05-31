@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/inn_decoration_control/InnDecorationControl"
-	"localization/InnDecorationControl"
+	"scripts/mods/inn_decoration_control/*"
 ]

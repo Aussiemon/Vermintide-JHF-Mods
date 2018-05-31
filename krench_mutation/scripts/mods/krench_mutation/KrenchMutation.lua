@@ -24,15 +24,6 @@ local mod = get_mod("KrenchMutation")
 Backup_Breeds_skaven_storm_vermin_champion = Backup_Breeds_skaven_storm_vermin_champion or nil
 Backup_Breeds_skaven_rat_ogre = Backup_Breeds_skaven_rat_ogre or nil
 
-local mod_data = {}
-mod_data.name = "Krench Mutation" -- Readable mod name
-mod_data.description = "Replaces ogres with Krench the Stormvermin Champion." -- Readable mod description
-mod_data.is_togglable = false -- If the mod can be enabled/disabled
-mod_data.is_mutator = true -- If the mod is mutator
-mod_data.mutator_settings = { -- Extra settings for mutator
-}
-mod_data.options_widgets = nil
-
 local Managers = Managers
 local Breeds = Breeds
 local Unit = Unit
@@ -162,7 +153,5 @@ end
 
 -- ##########################################################
 -- ################### Script ###############################
-
-mod:initialize_data(mod_data)
 
 -- ##########################################################

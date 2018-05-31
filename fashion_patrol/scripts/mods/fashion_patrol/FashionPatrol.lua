@@ -39,12 +39,6 @@ mod.white_storm_variation = {
 	}
 }
 
-local mod_data = {}
-mod_data.name = "Fashion Patrol" -- Readable mod name
-mod_data.description = "Gives Stormvermin patrols white armor (client-side, host only)." -- Readable mod description
-mod_data.is_togglable = true -- If the mod can be enabled/disabled
-mod_data.is_mutator = false -- If the mod is mutator
-
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -114,7 +108,5 @@ end
 
 -- ##########################################################
 -- ################### Script ###############################
-
-mod:initialize_data(mod_data)
 
 -- ##########################################################

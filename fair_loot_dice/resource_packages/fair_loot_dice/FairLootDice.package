@@ -7,6 +7,5 @@ package = [
 ]
 
 lua = [
-	"scripts/mods/fair_loot_dice/FairLootDice"
-	"localization/FairLootDice"
+	"scripts/mods/fair_loot_dice/*"
 ]
