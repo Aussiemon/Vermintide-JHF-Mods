@@ -1,0 +1,11 @@
+mod = [
+	"SoundEventMonitor"
+]
+
+package = [
+	"resource_packages/SoundEventMonitor/SoundEventMonitor"
+]
+
+lua = [
+	"scripts/mods/SoundEventMonitor/*"
+]
