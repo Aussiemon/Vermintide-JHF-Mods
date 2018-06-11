@@ -22,25 +22,25 @@ local mod_data = {
 
 mod_data.options_widgets = {
 	{
-	  ["setting_name"] = "disable_gling",
-	  ["widget_type"] = "checkbox",
-	  ["text"] = "Disable Trait \"Gling\" SFX",
-	  ["tooltip"] =  "Toggle disabled \"gling\" sound effect when attack is buffed by traits on / off.",
-	  ["default_value"] = true -- Default first option is enabled. In this case true
+		["setting_name"] = "disable_gling",
+		["widget_type"] = "checkbox",
+		["text"] = "Disable Trait \"Gling\" SFX",
+		["tooltip"] =  "Toggle disabled \"gling\" sound effect when attack is buffed by traits on / off.",
+		["default_value"] = true -- Default first option is enabled. In this case true
 	},
 	{
-	  ["setting_name"] = "disable_guillotine",
-	  ["widget_type"] = "checkbox",
-	  ["text"] = "Disable Executioner Headshot SFX",
-	  ["tooltip"] =  "Toggle disabled guillotine sound effect on exec. sword headshot on / off.",
-	  ["default_value"] = false -- Default first option is enabled. In this case false
+		["setting_name"] = "disable_guillotine",
+		["widget_type"] = "checkbox",
+		["text"] = "Disable Executioner Headshot SFX",
+		["tooltip"] =  "Toggle disabled guillotine sound effect on exec. sword headshot on / off.",
+		["default_value"] = false -- Default first option is enabled. In this case false
 	},
 	{
-	  ["setting_name"] = "disable_killing_blow",
-	  ["widget_type"] = "checkbox",
-	  ["text"] = "Disable Killing Blow SFX",
-	  ["tooltip"] =  "Toggle disabled killing blow sound effect on / off.",
-	  ["default_value"] = false -- Default first option is enabled. In this case false
+		["setting_name"] = "disable_killing_blow",
+		["widget_type"] = "checkbox",
+		["text"] = "Disable Killing Blow SFX",
+		["tooltip"] =  "Toggle disabled killing blow sound effect on / off.",
+		["default_value"] = false -- Default first option is enabled. In this case false
 	}
 }
 

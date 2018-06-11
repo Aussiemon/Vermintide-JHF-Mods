@@ -20,7 +20,7 @@ local mod_data = {
 	mutator_settings = {}
 }
 
-mod_data.options_widgets = { -- Widget settings for the mod options menu
+mod_data.options_widgets = {
 	{
 		["setting_name"] = "max_repeat",
 		["widget_type"] = "numeric",
