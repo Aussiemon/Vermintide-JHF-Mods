@@ -75,7 +75,7 @@ end
 -- ##########################################################
 -- #################### Hooks ###############################
 
-mod:hook(Pickups, "lorebook_pages.lorebook_page.hide_func", function (func, ...)
+mod:hook(Pickups.lorebook_pages.lorebook_page, "hide_func", function (func, ...)
 	
 	if mod:get("show_lorebook_pages") then
 		-- Do not hide lorebook pages

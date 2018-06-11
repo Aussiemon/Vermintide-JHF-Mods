@@ -898,7 +898,7 @@ end
 -- ##########################################################
 -- #################### Hooks ###############################
 
-mod:hook(SimplePopup, "update", function(func, self, ...)
+mod:hook_safe(SimplePopup, "update", function(self, ...)
 	local popup_manager = Managers.popup
 	local popup_handler = popup_manager._handler
 	
@@ -912,8 +912,6 @@ mod:hook(SimplePopup, "update", function(func, self, ...)
 			mod._old_ui_frame_widget = nil
 		end
 	end
-	
-	return func(self, ...)
 end)
 
 -- ##########################################################

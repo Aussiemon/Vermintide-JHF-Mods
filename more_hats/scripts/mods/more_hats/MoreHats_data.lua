@@ -22,11 +22,11 @@ local mod_data = {
 
 mod_data.options_widgets = {
 	{
-	  ["setting_name"] = "allow_unequip_wood_elf",
-	  ["widget_type"] = "checkbox",
-	  ["text"] = "Allow Unequip of Wood Elf Headgear",
-	  ["tooltip"] = "Kerillian has no head, so this is disabled by default.",
-	  ["default_value"] = false -- Default first option is enabled. In this case true
+		["setting_name"] = "allow_unequip_wood_elf",
+		["widget_type"] = "checkbox",
+		["text"] = "Allow Unequip of Wood Elf Headgear",
+		["tooltip"] = "Kerillian has no head, so this is disabled by default.",
+		["default_value"] = false -- Default first option is enabled. In this case true
 	}
 }
 

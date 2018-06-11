@@ -22,14 +22,14 @@ local mod_data = {
 
 mod_data.options_widgets = {
 	{
-    ["setting_name"] = "lorebook_keybind",
-    ["widget_type"] = "keybind",
-	["type"] = "pressed",
-    ["text"] = "Keybind: Display Lorebook Collection",
-    ["tooltip"] = "Choose the keybinding that displays your lorebook collection.",
-    ["default_value"] = {},
-    ["action"] = "run_script"
-  },
+		["setting_name"] = "lorebook_keybind",
+		["widget_type"] = "keybind",
+		["type"] = "pressed",
+		["text"] = "Keybind: Display Lorebook Collection",
+		["tooltip"] = "Choose the keybinding that displays your lorebook collection.",
+		["default_value"] = {},
+		["action"] = "run_script"
+	},
 }
 
 return mod_data
