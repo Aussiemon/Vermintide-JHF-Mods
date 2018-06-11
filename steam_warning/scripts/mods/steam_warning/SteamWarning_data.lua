@@ -28,8 +28,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "frequency",
 		["widget_type"] = "dropdown",
 		["text"] = "Frequency of Display",
-		["tooltip"] = "Frequency of Display\n" ..
-			"Choose how often the Steam disconnect warning will be displayed.\n\n" ..
+		["tooltip"] = "Choose how often the Steam disconnect warning will be displayed.\n\n" ..
 			"-- Per-Mission --\nDisplay warning once per entered lobby / mission.\n\n" ..
 			"-- Once --\nDisplay warning once on usual disconnect day.",
 		["options"] = {

@@ -14,8 +14,7 @@
 
 local mod_data = {
 	name = "Pages Forever",               -- Readable mod name
-	description = "Allows the pickup of lorebook pages (that do nothing) after they've all been unlocked. Allows prevention of sackrat lorebook drops.",  -- Mod description
-	is_togglable = true,            -- If the mod can be enabled/disabled
+	description = "Allows the pickup of lorebook pages (that do nothing) after they've all been unlocked. Allows prevention of sackrat lorebook drops.",is_togglable = true,            -- If the mod can be enabled/disabled
 	is_mutator = false,             -- If the mod is mutator
 	mutator_settings = {}          -- Extra settings, if it's mutator
 }
@@ -25,8 +24,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "show_lorebook_pages",
 		["widget_type"] = "checkbox",
 		["text"] = "Always Show Lorebook Pages",
-		["tooltip"] = "Always Show Lorebook Pages\n" ..
-			"Toggle showing lorebook pages after they're all unlocked on / off.",
+		["tooltip"] = "Toggle showing lorebook pages after they're all unlocked on / off.",
 		["options"] = {
 			{text = "On", value = true},
 			{text = "Off", value = false}
@@ -36,9 +34,8 @@ mod_data.options_widgets = {
 	{
 		["setting_name"] = "sackrat_pages_disabled",
 		["widget_type"] = "checkbox",
-		["text"] = "Prevent Sackrat Pages",
-		["tooltip"] = "Disable Sackrat Page Drops\n" ..
-			"Toggle the drop of sackrat lorebook pages on / off.",
+		["text"] = "Disable Sackrat Page Drops",
+		["tooltip"] = "Toggle the drop of sackrat lorebook pages on / off.",
 		["options"] = {
 			{text = "On", value = true},
 			{text = "Off", value = false}

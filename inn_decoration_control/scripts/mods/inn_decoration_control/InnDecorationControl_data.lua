@@ -28,8 +28,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "main_game",
 		["widget_type"] = "numeric",
 		["text"] = "Main Game Decorations",
-		["tooltip"] =  "Main Game Decorations\n" ..
-			"Maximum general state of the Red Moon Inn by main game act:\n\n" ..
+		["tooltip"] =  "Maximum general state of the Red Moon Inn by main game act:\n\n" ..
 			"PROLOGUE = 0\n\n" ..
 			"ACT 1: CONSOLIDATION = 1\n\n" ..
 			"ACT 2: RETALIATION = 2\n\n" ..
@@ -42,8 +41,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "difficulty_banner",
 		["widget_type"] = "numeric",
 		["text"] = "Banner Decorations",
-		["tooltip"] =  "Banner Decorations\n" ..
-			"Maximum state of the main game banner decorations by difficulty:\n\n" ..
+		["tooltip"] =  "Maximum state of the main game banner decorations by difficulty:\n\n" ..
 			"UNCOMPLETED = 0\n\n" ..
 			"EASY = 1\n\n" ..
 			"NORMAL = 2\n\n" ..
@@ -57,8 +55,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "drachenfels",
 		["widget_type"] = "numeric",
 		["text"] = "Castle Drachenfels Decorations",
-		["tooltip"] =  "Castle Drachenfels DLC Decorations\n" ..
-			"Maximum state of the Castle Drachenfels DLC decorations by difficulty:\n\n" ..
+		["tooltip"] =  "Maximum state of the Castle Drachenfels DLC decorations by difficulty:\n\n" ..
 			"UNCOMPLETED = 0\n\n" ..
 			"EASY = 1\n\n" ..
 			"NORMAL = 2\n\n" ..
@@ -72,8 +69,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "dwarfs",
 		["widget_type"] = "numeric",
 		["text"] = "Karak Azgaraz Decorations",
-		["tooltip"] =  "Karak Azgaraz DLC Decorations\n" ..
-			"Maximum state of the Karak Azgaraz DLC decorations by difficulty:\n\n" ..
+		["tooltip"] =  "Maximum state of the Karak Azgaraz DLC decorations by difficulty:\n\n" ..
 			"UNCOMPLETED = 0\n\n" ..
 			"EASY = 1\n\n" ..
 			"NORMAL = 2\n\n" ..
@@ -87,8 +83,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "stromdorf",
 		["widget_type"] = "numeric",
 		["text"] = "Stromdorf Decorations",
-		["tooltip"] =  "Stromdorf DLC Decorations\n" ..
-			"Maximum state of the Stromdorf DLC decorations by difficulty:\n\n" ..
+		["tooltip"] =  "Maximum state of the Stromdorf DLC decorations by difficulty:\n\n" ..
 			"UNCOMPLETED = 0\n\n" ..
 			"EASY = 1\n\n" ..
 			"NORMAL = 2\n\n" ..
@@ -102,8 +97,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "reikwald",
 		["widget_type"] = "numeric",
 		["text"] = "Reik Decorations",
-		["tooltip"] =  "Reik DLC Decorations\n" ..
-			"Maximum state of the Reik DLC decorations by difficulty:\n\n" ..
+		["tooltip"] =  "Maximum state of the Reik DLC decorations by difficulty:\n\n" ..
 			"UNCOMPLETED = 0\n\n" ..
 			"EASY = 1\n\n" ..
 			"NORMAL = 2\n\n" ..
@@ -117,8 +111,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "chamber",
 		["widget_type"] = "numeric",
 		["text"] = "Waylaid Decorations",
-		["tooltip"] =  "Waylaid DLC Decorations\n" ..
-			"Maximum state of the Waylaid DLC decorations by difficulty:\n\n" ..
+		["tooltip"] =  "Maximum state of the Waylaid DLC decorations by difficulty:\n\n" ..
 			"UNCOMPLETED = 0\n\n" ..
 			"EASY = 1\n\n" ..
 			"NORMAL = 2\n\n" ..
@@ -132,8 +125,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "town_meeting",
 		["widget_type"] = "numeric",
 		["text"] = "Town Meeting Decorations",
-		["tooltip"] =  "Town Meeting (Last Stand) Decorations\n" ..
-			"Maximum state of the Town Meeting (Last Stand) decorations:\n\n" ..
+		["tooltip"] =  "Maximum state of the Town Meeting (Last Stand) decorations:\n\n" ..
 			"UNCOMPLETED = 0\n\n" ..
 			"BRONZE = 1\n\n" ..
 			"SILVER = 2\n\n" ..
@@ -145,8 +137,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "fall",
 		["widget_type"] = "numeric",
 		["text"] = "The Fall Decorations",
-		["tooltip"] =  "The Fall (Last Stand) Decorations\n" ..
-			"Maximum state of the The Fall DLC (Last Stand) decorations:\n\n" ..
+		["tooltip"] =  "Maximum state of the The Fall DLC (Last Stand) decorations:\n\n" ..
 			"UNCOMPLETED = 0\n\n" ..
 			"BRONZE = 1\n\n" ..
 			"SILVER = 2\n\n" ..

@@ -21,6 +21,14 @@ local mod = get_mod("PubBrawl")
 -- ##########################################################
 -- ################## Variables #############################
 
+local Managers = Managers
+local NetworkLookup = NetworkLookup
+local Pickups = Pickups
+local Quaternion = Quaternion
+local Vector3 = Vector3
+
+local GameModeManager = GameModeManager
+
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -111,7 +119,7 @@ end
 -- #################### Hooks ###############################
 
 -- Re-enables the flow event that causes Lohner to pour a drink when approached
-mod:hook("GameModeManager.pvp_enabled", function (func, self, ...)
+mod:hook(GameModeManager, "pvp_enabled", function (func, self, ...)
 	
 	-- Changes here:
 	if mod:is_enabled() and Managers.state.game_mode and Managers.state.game_mode._game_mode_key == "inn" then
@@ -145,12 +153,10 @@ mod.on_disabled = function(initial_call)
 	if not initial_call then
 		mod.update_title_properties(false)
 	end
-	mod:disable_all_hooks()
 end
 
 -- Call when governing settings checkbox is checked
 mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
 	mod.update_title_properties(true)
 end
 

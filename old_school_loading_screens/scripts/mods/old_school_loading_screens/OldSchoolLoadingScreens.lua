@@ -44,6 +44,11 @@ mod.last_shown_screen_index = mod.last_shown_screen_index or -1
 
 local LevelSettings = LevelSettings
 local UIRenderer = UIRenderer
+
+local LoadingView = LoadingView
+local LevelUnlockUtils = LevelUnlockUtils
+local StateLoading = StateLoading
+
 local pairs = pairs
 local math = math
 
@@ -122,7 +127,7 @@ end
 -- #################### Hooks ###############################
 
 -- Randomizes how the game sees act progression, when enabled
-mod:hook("LevelUnlockUtils.current_act_progression_raw", function (func, self, level_key, ...)
+mod:hook(LevelUnlockUtils, "current_act_progression_raw", function (func, self, level_key, ...)
 
 	if mod.current_act_progression_raw_hook_enabled then
 		local chosen_act = math.max(math.random(0, (#GameActsOrder - 1)), 0)
@@ -139,7 +144,7 @@ mod:hook("LevelUnlockUtils.current_act_progression_raw", function (func, self, l
 end)
 
 -- Modifies loading screen image choice behavior
-mod:hook("StateLoading.setup_loading_view", function (func, self, level_key, ...)
+mod:hook(StateLoading, "setup_loading_view", function (func, self, level_key, ...)
 
 	-- For the inn, choose a random screen
 	if mod:get("inn_level_ls") then
@@ -150,7 +155,7 @@ mod:hook("StateLoading.setup_loading_view", function (func, self, level_key, ...
 end)
 
 -- Modifies loading screen image choice behavior
-mod:hook("LoadingView.texture_resource_loaded", function (func, self, level_key, act_progression_index, game_difficulty, ...)
+mod:hook_origin(LoadingView, "texture_resource_loaded", function (self, level_key, act_progression_index, game_difficulty, ...)
 	UIRenderer.destroy(self.ui_renderer, self.world)
 
 	self.level_key = level_key
@@ -228,12 +233,10 @@ mod.on_disabled = function(initial_call)
 		mod.use_default_mission_briefs()
 		mod.disable_multiple_loading_screens()
 	end
-	mod:disable_all_hooks()
 end
 
 -- Call when governing settings checkbox is checked
 mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
 	mod.setup_multiple_loading_screens()
 	mod.use_all_mission_briefs()
 end

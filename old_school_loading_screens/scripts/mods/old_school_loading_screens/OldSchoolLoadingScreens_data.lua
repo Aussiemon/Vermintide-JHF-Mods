@@ -58,8 +58,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "randomize_screens",
 		["widget_type"] = "checkbox",
 		["text"] = "Randomize Loading Screens",
-		["tooltip"] = "Randomize Loading Screens\n" ..
-			"Randomly select loading screens for enabled maps.\n\n" ..
+		["tooltip"] = "Randomly select loading screens for enabled maps.\n\n" ..
 			"If disabled, only 'old school' variants will be used.",
 		["default_value"] = true, -- Default first option In this case true
 	},
@@ -67,16 +66,14 @@ mod_data.options_widgets = {
 		["setting_name"] = "randomize_tips",
 		["widget_type"] = "checkbox",
 		["text"] = "Randomize Loading Screen Tips",
-		["tooltip"] = "Randomize Loading Screen Tips\n" ..
-			"Randomly select loading screen tips for enabled maps.",
+		["tooltip"] = "Randomly select loading screen tips for enabled maps.",
 		["default_value"] = false, -- Default first option In this case false
 	},
 	{
 		["setting_name"] = "toggle_maps",
 		["widget_type"] = "dropdown",
 		["text"] = "Toggle Maps",
-		["tooltip"] = "Toggle Maps\n" ..
-			"Allows maps with loading screens to be toggled On / Off",
+		["tooltip"] = "Allows maps with loading screens to be toggled On / Off",
 		["options"] = {
 			{--[[1]] text = "Enabled",       value = true},
 			{--[[2]] text = "Disabled",     value = false}
@@ -89,8 +86,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "inn_level_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Red Moon Inn",
-				["tooltip"] = "Red Moon Inn\n" ..
-							"Toggle loading screen changes for Red Moon Inn.",
+				["tooltip"] = "Toggle loading screen changes for Red Moon Inn.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -99,8 +95,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "magnus_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Horn of Magnus",
-				["tooltip"] = "Horn of Magnus\n" ..
-							"Toggle loading screen changes for Horn of Magnus.",
+				["tooltip"] = "Toggle loading screen changes for Horn of Magnus.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -109,8 +104,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "merchant_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Supply and Demand",
-				["tooltip"] = "Supply and Demand\n" ..
-							"Toggle loading screen changes for Supply and Demand.",
+				["tooltip"] = "Toggle loading screen changes for Supply and Demand.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -119,8 +113,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "sewers_short_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Smuggler's Run",
-				["tooltip"] = "Smuggler's Run\n" ..
-							"Toggle loading screen changes for Smuggler's Run.",
+				["tooltip"] = "Toggle loading screen changes for Smuggler's Run.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -129,8 +122,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "wizard_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Wizard's Tower",
-				["tooltip"] = "Wizard's Tower\n" ..
-							"Toggle loading screen changes for Wizard's Tower.",
+				["tooltip"] = "Toggle loading screen changes for Wizard's Tower.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -139,8 +131,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "bridge_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Black Powder",
-				["tooltip"] = "Black Powder\n" ..
-							"Toggle loading screen changes for Black Powder.",
+				["tooltip"] = "Toggle loading screen changes for Black Powder.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -149,8 +140,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "forest_ambush_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Engines of War",
-				["tooltip"] = "Engines of War\n" ..
-							"Toggle loading screen changes for Engines of War.",
+				["tooltip"] = "Toggle loading screen changes for Engines of War.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -159,8 +149,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "city_wall_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Man the Ramparts",
-				["tooltip"] = "Man the Ramparts\n" ..
-							"Toggle loading screen changes for Man the Ramparts.",
+				["tooltip"] = "Toggle loading screen changes for Man the Ramparts.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -169,8 +158,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "cemetery_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Garden of Morr",
-				["tooltip"] = "Garden of Morr\n" ..
-							"Toggle loading screen changes for Garden of Morr.",
+				["tooltip"] = "Toggle loading screen changes for Garden of Morr.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -179,8 +167,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "farm_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Wheat and Chaff",
-				["tooltip"] = "Wheat and Chaff\n" ..
-							"Toggle loading screen changes for Farm.",
+				["tooltip"] = "Toggle loading screen changes for Farm.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -189,8 +176,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "tunnels_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Enemy Below",
-				["tooltip"] = "Enemy Below\n" ..
-							"Toggle loading screen changes for Enemy Below.",
+				["tooltip"] = "Toggle loading screen changes for Enemy Below.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -199,8 +185,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "courtyard_level_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Well Watch",
-				["tooltip"] = "Well Watch\n" ..
-							"Toggle loading screen changes for Well Watch.",
+				["tooltip"] = "Toggle loading screen changes for Well Watch.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -209,8 +194,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "docks_short_level_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Waterfront",
-				["tooltip"] = "Waterfront\n" ..
-							"Toggle loading screen changes for Waterfront.",
+				["tooltip"] = "Toggle loading screen changes for Waterfront.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -219,8 +203,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "end_boss_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "White Rat",
-				["tooltip"] = "White Rat\n" ..
-							"Toggle loading screen changes for White Rat.",
+				["tooltip"] = "Toggle loading screen changes for White Rat.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			},
 			{
@@ -229,8 +212,7 @@ mod_data.options_widgets = {
 				["setting_name"] = "dlc_castle_ls",
 				["widget_type"] = "checkbox",
 				["text"] = "Castle Drachenfels",
-				["tooltip"] = "Castle Drachenfels\n" ..
-							"Toggle loading screen changes for Castle Drachenfels.",
+				["tooltip"] = "Toggle loading screen changes for Castle Drachenfels.",
 				["default_value"] = true -- Default first option is enabled. In this case true
 			}
 		}

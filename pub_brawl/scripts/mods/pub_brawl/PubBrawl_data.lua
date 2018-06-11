@@ -25,8 +25,7 @@ mod_data.options_widgets = {
 	  ["setting_name"] = "additional_items",
 	  ["widget_type"] = "checkbox",
 	  ["text"] = "Additional Items",
-	  ["tooltip"] = "Additional Items\n" ..
-				"Toggle additional extras on / off.\n\n" ..
+	  ["tooltip"] = "Toggle additional extras on / off.\n\n" ..
 				"Adds wooden swords, a bomb, and potions to the inn.",
 	  ["default_value"] = false -- Default first option is enabled. In this case false
 	}

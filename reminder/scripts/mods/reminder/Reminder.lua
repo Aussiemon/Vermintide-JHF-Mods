@@ -27,6 +27,9 @@ mod:command("clear_reminders", "clears mission-end reminders", function() mod.cl
 mod.reminder_string = mod.reminder_string or ""
 
 local Managers = Managers
+
+local ScoreboardUI = ScoreboardUI
+
 local pairs = pairs
 local type = type
 
@@ -101,7 +104,7 @@ end
 -- #################### Hooks ###############################
 
 -- Hook the scoreboard function to play back reminders upon entry
-mod:hook("ScoreboardUI.on_enter", function (func, ...)
+mod:hook(ScoreboardUI, "on_enter", function (func, ...)
    
 	-- Playback reminders and show chat window
 	if mod.reminder_string ~= "" then
@@ -122,16 +125,6 @@ end)
 
 -- ##########################################################
 -- ################### Callback #############################
-
--- Call when governing settings checkbox is unchecked
-mod.on_disabled = function(initial_call)
-	mod:disable_all_hooks()
-end
-
--- Call when governing settings checkbox is checked
-mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
-end
 
 -- ##########################################################
 -- ################### Script ###############################

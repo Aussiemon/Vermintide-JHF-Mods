@@ -25,8 +25,7 @@ mod_data.options_widgets = { -- Widget settings for the mod options menu
 		["setting_name"] = "max_repeat",
 		["widget_type"] = "numeric",
 		["text"] = "Max Repeated Events",
-		["tooltip"] = "Max Repeated Events\n" ..
-					"Max number of times to report an already-recorded event.",
+		["tooltip"] = "Max number of times to report an already-recorded event.",
 		["range"] = {1, 100},
 		["default_value"] = 30,
 	}

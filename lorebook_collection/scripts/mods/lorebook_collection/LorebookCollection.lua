@@ -698,6 +698,9 @@ local UIWidget = UIWidget
 local RESOLUTION_LOOKUP = RESOLUTION_LOOKUP
 local Managers = Managers
 local ShowCursorStack = ShowCursorStack
+
+local SimplePopup = SimplePopup
+
 local pairs = pairs
 
 -- ##########################################################
@@ -876,12 +879,10 @@ end
 -- ##########################################################
 -- #################### Hooks ###############################
 
-mod:hook("SimplePopup.update", function(func, self, dt)
-
-	func(self, dt)
-
+mod:hook(SimplePopup, "update", function(func, self, ...)
 	local popup_manager = Managers.popup
 	local popup_handler = popup_manager._handler
+	
 	if #self._tracked_popups == 0 then
 		if mod._old_ui_scenegraph then
 			popup_handler.ui_scenegraph = mod._old_ui_scenegraph
@@ -892,20 +893,12 @@ mod:hook("SimplePopup.update", function(func, self, dt)
 			mod._old_ui_frame_widget = nil
 		end
 	end
+	
+	return func(self, ...)
 end)
 
 -- ##########################################################
 -- ################### Callback #############################
-
--- Call when governing settings checkbox is unchecked
-mod.on_disabled = function(initial_call)
-	mod:disable_all_hooks()
-end
-
--- Call when governing settings checkbox is checked
-mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
-end
 
 -- ##########################################################
 -- ################### Script ###############################

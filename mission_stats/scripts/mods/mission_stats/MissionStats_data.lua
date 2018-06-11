@@ -24,6 +24,7 @@ mod_data.options_widgets = {
 	{
 		["setting_name"] = "mission_stats_keybind",
 		["widget_type"] = "keybind",
+		["type"] = "pressed",
 		["text"] = "Keybind: Display Mission Stats",
 		["tooltip"] = "Choose the keybinding that displays your mission stats.",
 		["default_value"] = {},

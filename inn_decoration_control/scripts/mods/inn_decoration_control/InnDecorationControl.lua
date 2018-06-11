@@ -113,16 +113,6 @@ end)
 -- ##########################################################
 -- ################### Callback #############################
 
--- Call when governing settings checkbox is unchecked
-mod.on_disabled = function(initial_call)
-	mod:disable_all_hooks()
-end
-
--- Call when governing settings checkbox is checked
-mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
-end
-
 -- ##########################################################
 -- ################### Script ###############################
 

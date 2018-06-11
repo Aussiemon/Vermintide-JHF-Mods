@@ -66,6 +66,11 @@ mod.LongLevels = {
 	dlc_reikwald_river = "River Reik"
 }
 
+local DiceKeeper = DiceKeeper
+local Managers = Managers
+
+local math = math
+
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -91,7 +96,7 @@ end
 -- ##########################################################
 -- #################### Hooks ###############################
 
-mod:hook("DiceKeeper.chest_loot_dice_chance", function (func, ...)
+mod:hook(DiceKeeper, "chest_loot_dice_chance", function (func, ...)
 	
 	-- Change odds according to settings
 	if Managers and Managers.state and Managers.state.game_mode then
@@ -131,16 +136,6 @@ end)
 
 -- ##########################################################
 -- ################### Callback #############################
-
--- Call when governing settings checkbox is unchecked
-mod.on_disabled = function(initial_call)
-	mod:disable_all_hooks()
-end
-
--- Call when governing settings checkbox is checked
-mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
-end
 
 -- ##########################################################
 -- ################### Script ###############################

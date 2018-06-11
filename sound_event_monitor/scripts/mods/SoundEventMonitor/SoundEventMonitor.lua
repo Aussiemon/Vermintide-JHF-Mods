@@ -48,6 +48,7 @@ mod:command("clear_recordings", "clear recorded sound events",
 mod:command("play_sound", "attempt to play a given sound event name", function(...) mod.play_sound_event(...) end)
 
 local Managers = Managers
+local WwiseWorld = WwiseWorld
 
 local io = io
 local type = type
@@ -121,48 +122,33 @@ end
 -- ##########################################################
 -- #################### Hooks ###############################
 
-mod:hook("WwiseWorld.trigger_event", function (func, self, event_name, ...)
-	local result = func(self, event_name, ...)
-	if not mod.recording then
-		return result
-	end
-	
-	if not mod.event_table[event_name] then
-		
-		local level_key = "loading_screen"
-		if Managers and Managers.state and Managers.state.game_mode then
-			level_key = Managers.state.game_mode:level_key() or "loading_screen"
-		end
-		
-		if mod.write_line(tostring(level_key)..","..tostring(event_name)) then
-			mod:echo(event_name)
-			mod.event_table[event_name] = 1
+mod:hook_safe(WwiseWorld, "trigger_event", function (self, event_name, ...)
+	if mod.recording then
+		if not mod.event_table[event_name] then
+			
+			local level_key = "loading_screen"
+			if Managers and Managers.state and Managers.state.game_mode then
+				level_key = Managers.state.game_mode:level_key() or "loading_screen"
+			end
+			
+			if mod.write_line(tostring(level_key)..","..tostring(event_name)) then
+				mod:echo(event_name)
+				mod.event_table[event_name] = 1
+			else
+				mod.recording = false
+				mod:echo("Output file not accessible.")
+			end
 		else
-			mod.recording = false
-			mod:echo("Output file not accessible.")
-		end
-	else
-		mod.event_table[event_name] = mod.event_table[event_name] + 1
-		if mod.event_table[event_name] < mod:get("max_repeat") then
-			mod:echo(event_name)
+			mod.event_table[event_name] = mod.event_table[event_name] + 1
+			if mod.event_table[event_name] < mod:get("max_repeat") then
+				mod:echo(event_name)
+			end
 		end
 	end
-	
-	return result
 end)
 
 -- ##########################################################
 -- ################### Callback #############################
-
--- Call when governing settings checkbox is unchecked
-mod.on_disabled = function(initial_call)
-	mod:disable_all_hooks()
-end
-
--- Call when governing settings checkbox is checked
-mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
-end
 
 -- ##########################################################
 -- ################### Script ###############################

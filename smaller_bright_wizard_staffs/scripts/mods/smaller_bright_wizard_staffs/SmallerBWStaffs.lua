@@ -44,6 +44,8 @@ mod.LookupScaleTable["units/weapons/player/wpn_brw_staff_02/wpn_brw_staff_02"] =
 local Unit = Unit
 local Vector3 = Vector3
 
+local UnitSpawner = UnitSpawner
+
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -75,7 +77,7 @@ end
 -- ##########################################################
 -- #################### Hooks ###############################
 
-mod:hook("UnitSpawner.spawn_local_unit", function (func, self, unit_name, position, rotation, material, ...)
+mod:hook(UnitSpawner, "spawn_local_unit", function (func, self, unit_name, position, rotation, material, ...)
 	local unit = func(self, unit_name, position, rotation, material, ...)
 	
 	-- Save oversized staff unit
@@ -88,7 +90,7 @@ mod:hook("UnitSpawner.spawn_local_unit", function (func, self, unit_name, positi
 	return unit
 end)
 
-mod:hook("UnitSpawner.spawn_local_unit_with_extensions", function (func, self, unit_name, ...)
+mod:hook(UnitSpawner, "spawn_local_unit_with_extensions", function (func, self, unit_name, ...)
 	local unit, unit_template_name = func(self, unit_name, ...)
 	
 	-- Handle delayed scaling
@@ -116,7 +118,6 @@ end)
 
 -- Call when governing settings checkbox is unchecked
 mod.on_disabled = function(initial_call)
-	mod:disable_all_hooks()
 	mod.scaled_unit = nil
 	mod.scale_factor = nil
 	mod.counter = 1
@@ -127,7 +128,6 @@ mod.on_enabled = function(initial_call)
 	mod.counter = 1
 	mod.scale_factor = nil
 	mod.scaled_unit = nil
-	mod:enable_all_hooks()
 end
 
 -- ##########################################################

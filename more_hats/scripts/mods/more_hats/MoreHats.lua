@@ -69,16 +69,24 @@ mod.players_nodes = {
 	},
 }
 
+local table = table
+local pairs = pairs
+
+local item_master_list = ItemMasterList
+local get_item_template = BackendUtils.get_item_template
+local table_clone = table.clone
+
+local InventorySettings = InventorySettings
+local InventoryEquipmentUI = InventoryEquipmentUI
+local ScriptBackendItem = ScriptBackendItem
+local ScriptUnit = ScriptUnit
+
 -- ##########################################################
 -- ################## Functions #############################
 
 -- Build a list of hat attachment nodes
 mod.get_all_hats_nodes = function()
 	local list = {}
-	
-	local item_master_list = ItemMasterList
-	local get_item_template = BackendUtils.get_item_template
-	local table_clone = table.clone
 	
 	for item_name, item in pairs(item_master_list) do
 		if item.item_type == "hat" then
@@ -131,7 +139,7 @@ end
 -- ##########################################################
 -- #################### Hooks ###############################
 
-mod:hook("InventoryEquipmentUI.remove_inventory_item", function (func, self, item_data, specific_slot_index, ...)
+mod:hook(InventoryEquipmentUI, "remove_inventory_item", function (func, self, item_data, specific_slot_index, ...)
 	
 	-- Original function
 	local result = func(self, item_data, specific_slot_index, ...)
@@ -226,14 +234,8 @@ end)
 -- ##########################################################
 -- ################### Callback #############################
 
--- Call when governing settings checkbox is unchecked
-mod.on_disabled = function(initial_call)
-	mod:disable_all_hooks()
-end
-
 -- Call when governing settings checkbox is checked
 mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
 	mod.patch_hats()
 end
 

@@ -27,6 +27,10 @@ mod.LookupTable["Play_hud_trait_active"] = "disable_gling" -- Trait Buff SFX
 mod.LookupTable["executioner_sword_critical"] = "disable_guillotine" -- Executioner Headshot SFX
 mod.LookupTable["Play_hud_matchmaking_countdown"] = "disable_killing_blow" -- Killing Blow SFX
 
+local Managers = Managers
+
+local WwiseWorld = WwiseWorld
+
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -48,7 +52,7 @@ end
 -- ##########################################################
 -- #################### Hooks ###############################
 
-mod:hook("WwiseWorld.trigger_event", function (func, self, event_name, ...)
+mod:hook(WwiseWorld, "trigger_event", function (func, self, event_name, ...)
 	local event = event_name
 	if mod.LookupTable[event] and mod:get(mod.LookupTable[event]) then
 		if not (event == "Play_hud_matchmaking_countdown" and mod.check_for_inn_or_loading()) then
@@ -61,16 +65,6 @@ end)
 
 -- ##########################################################
 -- ################### Callback #############################
-
--- Call when governing settings checkbox is unchecked
-mod.on_disabled = function(initial_call)
-	mod:disable_all_hooks()
-end
-
--- Call when governing settings checkbox is checked
-mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
-end
 
 -- ##########################################################
 -- ################### Script ###############################

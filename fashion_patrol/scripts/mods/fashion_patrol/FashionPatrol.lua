@@ -39,6 +39,13 @@ mod.white_storm_variation = {
 	}
 }
 
+local Material = Material
+local Mesh = Mesh
+local Unit = Unit
+local UnitSpawner = UnitSpawner
+
+local math = math
+
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -81,7 +88,7 @@ end
 -- ##########################################################
 -- #################### Hooks ###############################
 
-mod:hook("UnitSpawner.spawn_local_unit_with_extensions", function (func, self, unit_name, unit_template_name, extension_init_data, ...)
+mod:hook(UnitSpawner, "spawn_local_unit_with_extensions", function (func, self, unit_name, unit_template_name, extension_init_data, ...)
 	local unit, unit_template_name = func(self, unit_name, unit_template_name, extension_init_data, ...)
 	
 	-- Changes here: --------------------------------
@@ -95,16 +102,6 @@ end)
 
 -- ##########################################################
 -- ################### Callback #############################
-
--- Call when governing settings checkbox is unchecked
-mod.on_disabled = function(initial_call)
-	mod:disable_all_hooks()
-end
-
--- Call when governing settings checkbox is checked
-mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
-end
 
 -- ##########################################################
 -- ################### Script ###############################

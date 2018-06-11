@@ -27,6 +27,10 @@ Backup_Breeds_skaven_rat_ogre = Backup_Breeds_skaven_rat_ogre or nil
 local Managers = Managers
 local Breeds = Breeds
 local Unit = Unit
+
+local AiBreedSnippets = AiBreedSnippets
+local BTSpawnAllies = BTSpawnAllies
+
 local pairs = pairs
 local type = type
 local rawget = rawget
@@ -79,7 +83,7 @@ end
 -- #################### Hooks ###############################
 
 -- Check for lack of spawn_group in this level
-mod:hook("BTSpawnAllies.enter", function (func, self, unit, blackboard, t, ...)
+mod:hook(BTSpawnAllies, "enter", function (func, self, unit, blackboard, t, ...)
 	local action = self._tree_node.action_data
 	local spawn_group = action.spawn_group
 	local spawner_system = Managers.state.entity:system("spawner_system")
@@ -112,7 +116,7 @@ mod:hook("BTSpawnAllies.enter", function (func, self, unit, blackboard, t, ...)
 end)
 
 -- Catch nil spawning allies flag
-mod:hook("BTSpawnAllies.run", function (func, self, unit, blackboard, t, dt, ...)
+mod:hook(BTSpawnAllies, "run", function (func, self, unit, blackboard, t, dt, ...)
 	if blackboard.spawning_allies == nil then
 		return "done"
 	else
@@ -122,7 +126,7 @@ mod:hook("BTSpawnAllies.run", function (func, self, unit, blackboard, t, dt, ...
 end)
 
 -- Catch rare husk error
-mod:hook("AiBreedSnippets.on_storm_vermin_champion_husk_spawn", function (func, unit, ...)
+mod:hook(AiBreedSnippets, "on_storm_vermin_champion_husk_spawn", function (func, unit, ...)
 	if unit ~= nil then
 		local actor = Unit.actor(unit, "c_trophy_rack_ward")
 		if actor ~= nil then
@@ -142,12 +146,10 @@ mod.on_disabled = function(initial_call)
 	if not initial_call then
 		mod.deactivate_mutation()
 	end
-	mod:disable_all_hooks()
 end
 
 -- Call when governing settings checkbox is checked
 mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
 	mod.activate_mutation()
 end
 

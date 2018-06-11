@@ -21,6 +21,11 @@ local mod = get_mod("PagesForever")
 -- ##########################################################
 -- ################## Variables #############################
 
+local Pickups = Pickups
+local LootRatPickups = LootRatPickups
+
+local pairs = pairs
+
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -70,7 +75,7 @@ end
 -- ##########################################################
 -- #################### Hooks ###############################
 
-mod:hook("Pickups.lorebook_pages.lorebook_page.hide_func", function (func, ...)
+mod:hook(Pickups, "lorebook_pages.lorebook_page.hide_func", function (func, ...)
 	
 	if mod:get("show_lorebook_pages") then
 		-- Do not hide lorebook pages
@@ -107,12 +112,10 @@ mod.on_disabled = function(initial_call)
 	if not initial_call then
 		mod.set_sackrat_pages(true)
 	end
-	mod:disable_all_hooks()
 end
 
 -- Call when governing settings checkbox is checked
 mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
 	mod.set_sackrat_pages(not mod:get("sackrat_pages_disabled"))
 end
 

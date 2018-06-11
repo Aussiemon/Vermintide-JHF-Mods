@@ -25,8 +25,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "automatic",
 		["widget_type"] = "dropdown",
 		["text"] = "Mode",
-		["tooltip"] = "Skip Cutscenes Mode\n" ..
-			"Toggle method of skipping cutscenes.\n\n" ..
+		["tooltip"] = "Toggle method of skipping cutscenes.\n\n" ..
 			"Automatic will skip cutscenes by default; Manual uses ESC / Space.",
 		["options"] = {
 			{text = "Automatic", value = true},

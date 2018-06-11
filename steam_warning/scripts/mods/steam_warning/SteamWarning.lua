@@ -27,6 +27,8 @@ mod.steam_time_zone = -8 -- Change this to set the timezone used by Steam.
 mod.PER_MISSION = 1
 mod.ONCE = 2
 
+local os = os
+
 -- ##########################################################
 -- ################## Functions #############################
 
@@ -65,9 +67,6 @@ mod.on_game_state_changed = function(status, state)
 		mod.check_for_date_of_maintenance()
 	end
 end
-
--- Call when governing settings checkbox is unchecked
-mod.on_disabled = function(initial_call) return end
 
 -- Call when governing settings checkbox is checked
 mod.on_enabled = function(initial_call)

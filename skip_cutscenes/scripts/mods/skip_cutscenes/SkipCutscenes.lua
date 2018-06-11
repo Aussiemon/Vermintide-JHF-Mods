@@ -31,7 +31,7 @@ mod.skip_next_fade = false
 -- #################### Hooks ###############################
 
 -- Automatically skip cutscenes if necessary
-mod:hook("CutsceneSystem.flow_cb_activate_cutscene_camera", function (func, self, ...)
+mod:hook(CutsceneSystem, "flow_cb_activate_cutscene_camera", function (func, self, ...)
 
 	-- Skip cutscene if set to 'automatic'
 	if mod:get("automatic") then
@@ -43,7 +43,7 @@ mod:hook("CutsceneSystem.flow_cb_activate_cutscene_camera", function (func, self
 end)
 
 -- Automatically skip cutscenes if necessary
-mod:hook("CutsceneSystem.flow_cb_activate_cutscene_logic", function (func, self, player_input_enabled, event_on_activate, event_on_skip, ...)
+mod:hook(CutsceneSystem, "flow_cb_activate_cutscene_logic", function (func, self, player_input_enabled, event_on_activate, event_on_skip, ...)
 
 	-- Skip cutscene if set to 'automatic'
 	if mod:get("automatic") then
@@ -61,17 +61,16 @@ mod:hook("CutsceneSystem.flow_cb_activate_cutscene_logic", function (func, self,
 end)
 
 -- Set up skip for fade effect
-mod:hook("CutsceneSystem.skip_pressed", function (func, ...)
+mod:hook(CutsceneSystem, "skip_pressed", function (func, ...)
 	
 	mod.skip_next_fade = script_data.skippable_cutscenes and true
 	
-	-- Original function
 	local result = func(...)
 	return result
 end)
 
 -- Skip fade when applicable
-mod:hook("CutsceneSystem.flow_cb_cutscene_effect", function (func, self, name, ...)
+mod:hook(CutsceneSystem, "flow_cb_cutscene_effect", function (func, self, name, ...)
 	
 	if name == "fx_fade" and (mod.skip_next_fade) then
 		mod.skip_next_fade = false
@@ -84,7 +83,7 @@ mod:hook("CutsceneSystem.flow_cb_cutscene_effect", function (func, self, name, .
 end)
 
 -- Don't restore player input if player already has active input
-mod:hook("CutsceneSystem.flow_cb_deactivate_cutscene_logic", function (func, self, event_on_deactivate, ...)
+mod:hook(CutsceneSystem, "flow_cb_deactivate_cutscene_logic", function (func, self, event_on_deactivate, ...)
 	
 	-- If a popup is open or cursor present, skip the input restore
 	if ShowCursorStack.stack_depth > 0 or Managers.popup:has_popup() then
@@ -103,7 +102,7 @@ mod:hook("CutsceneSystem.flow_cb_deactivate_cutscene_logic", function (func, sel
 end)
 
 -- Prevent invalid cursor pop crash if another mod interferes
-mod:hook("ShowCursorStack.pop", function (func, ...)
+mod:hook(ShowCursorStack, "pop", function (func, ...)
 	
 	-- Catch a starting depth of 0 or negative cursors before pop
 	if ShowCursorStack.stack_depth <= 0 then
@@ -129,13 +128,11 @@ mod.on_disabled = function(initial_call)
 	if not initial_call then
 		script_data.skippable_cutscenes = false
 	end
-	mod:disable_all_hooks()
 end
 
 -- Call when governing settings checkbox is checked
 mod.on_enabled = function(initial_call)
 	script_data.skippable_cutscenes = true
-	mod:enable_all_hooks()
 end
 
 -- ##########################################################

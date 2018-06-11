@@ -24,9 +24,8 @@ mod_data.options_widgets = {
 	{
 		["setting_name"] = "auto_clear_reminders",
 		["widget_type"] = "checkbox",
-		["text"] = "Auto-Clear Reminders",
-		["tooltip"] = "Auto-Clear Reminders After Playback\n" ..
-					"Enable to automatically clear reminders after they've been displayed.",
+		["text"] = "Auto-Clear Reminders After Playback",
+		["tooltip"] = "Enable to automatically clear reminders after they've been displayed.",
 		["default_value"] = true -- Default first option is enabled. In this case true
 	}
 }

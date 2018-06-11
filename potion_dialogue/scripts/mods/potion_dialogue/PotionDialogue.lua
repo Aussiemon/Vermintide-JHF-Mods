@@ -36,6 +36,11 @@ mod.stance_equivalents_limited = {
 }
 
 -- Optimization locals
+local Unit = Unit
+local ScriptUnit = ScriptUnit
+local FrameTable = FrameTable
+local ActionPotion = ActionPotion
+
 local Unit_alive = Unit.alive
 local ScriptUnit_extension_input = ScriptUnit.extension_input
 local FrameTable_alloc_table = FrameTable.alloc_table
@@ -60,29 +65,16 @@ end
 -- ##########################################################
 -- #################### Hooks ###############################
 
-mod:hook("ActionPotion.finish", function (func, self, reason, ...)
+mod:hook_safe(ActionPotion, "finish", function (self, reason, ...)
 	
 	-- Play dialogue events
 	if reason == "action_complete" then
 		mod.trigger_potion_dialogue_event(self)
 	end
-	
-	local result = func(self, reason, ...)
-	return result
 end)
 
 -- ##########################################################
 -- ################### Callback #############################
-
--- Call when governing settings checkbox is unchecked
-mod.on_disabled = function(initial_call)
-	mod:disable_all_hooks()
-end
-
--- Call when governing settings checkbox is checked
-mod.on_enabled = function(initial_call)
-	mod:enable_all_hooks()
-end
 
 -- ##########################################################
 -- ################### Script ###############################

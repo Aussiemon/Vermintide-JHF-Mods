@@ -28,8 +28,7 @@ mod_data.options_widgets = {
 		["setting_name"] = "method",
 		["widget_type"] = "dropdown",
 		["text"] = "Dice Chance Method",
-		["tooltip"] = "Dice Chance Method\n" ..
-			"Allows choosing how odds are determined.\n\n" ..
+		["tooltip"] = "Allows choosing how odds are determined.\n\n" ..
 			"-- LENGTH --\nTwo-grimoire maps normalized to at least 17 chests, otherwise 14.\n\n" ..
 			"-- FLAT-RATE --\nAll maps normalized to exactly 17 chests.",
 		["options"] = {
