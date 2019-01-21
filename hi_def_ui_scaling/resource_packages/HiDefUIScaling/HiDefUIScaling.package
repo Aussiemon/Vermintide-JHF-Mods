@@ -1,3 +1,11 @@
+mod = [
+	"HiDefUIScaling"
+]
+
+package = [
+	"resource_packages/HiDefUIScaling/HiDefUIScaling"
+]
+
 lua = [
 	"scripts/mods/HiDefUIScaling/*"
 ]
